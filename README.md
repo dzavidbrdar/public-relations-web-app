@@ -1,2 +1,2 @@
-# public-relations-web-app
-ETF Sarajevo - Softver Inžinjering - Projekat
+# Grupa Charlie - Softverski inženjering 2019/2020
+## Tema: Informacioni sistem za prodaju i naplatu / Public Relations Web Application
