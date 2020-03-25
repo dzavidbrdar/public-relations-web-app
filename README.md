@@ -5,5 +5,5 @@
 2. [Nadija Borovina](https://github.com/lizardqueen98)
 3. [Dalila Ćorović](https://github.com/dcorovic2)
 4. [Irma Dedić](https://github.com/idedic2)
-5. Emir Kurtović
+5. [Emir Kurtović](https://github.com/emirkurtovic)
 6. [Džavid Brdar](https://github.com/avid-dz)
