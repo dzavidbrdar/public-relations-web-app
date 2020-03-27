@@ -1,7 +1,7 @@
 # Feature
-Login merchanta
+Login radnika koji je zadužen za odgovaranje na pitanja
 ## Item
-Merchant mora imati mogućnost logovanja na aplikaciju sa pristupnim podacima koje dobija od admina.
+Korisnik treba biti u mogućnosti da se prijavi na svoj korisnički račun.
 ### Task
 * Kreirati izgled login stranice
 * Implementirati validaciju za polja forme
@@ -11,10 +11,8 @@ Merchant mora imati mogućnost logovanja na aplikaciju sa pristupnim podacima ko
 * Uraditi push koda
 * Napraviti pull request
 
-# Feature
-Mogućnost odjave sa aplikacije
 ## Item
-Merchant koji je ulogovan mora imati mogućnost odjave sa aplikacije.
+Korisnik treba biti u mogućnosti da se odjavi sa svog korisničkog računa.
 ### Task
 * Implementirati odjavu prijavljnog korisnika
 * Implementirati vraćanje na početnu stranicu nakon odjavljivanja
