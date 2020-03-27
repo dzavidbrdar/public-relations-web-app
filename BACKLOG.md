@@ -24,7 +24,10 @@ Prikaz informativnog materijala kupcima - promocije i akcije
 ## Item
 Korisnik (potencijalna mušterija) treba biti u stanju vidjeti informacije o eventualnim promocijama ili akcijama na početnoj stranici kako bi mogao ostvariti određenu pogodnost prilikom kupovine.
 ### Task
-* 
+* Implementirati dobavljanje podataka sa servera o proizvodima koji imaju određeni popust
+* Odabrati podatke od interesa za dobavljene proizvode (procenat popusta, staru i novu cijenu)
+* Prikazati navedene podatke u obliku image slider-a na vrhu početne stranice
+* Omogućiti interakciju korisnika sa sliderom
 * Uraditi push koda
 * Napraviti pull request
 
