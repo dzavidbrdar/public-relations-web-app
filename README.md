@@ -3,12 +3,12 @@
 ## Public Relations Web Application
 
 **Team members**:
-1. [Esmina Radušić]()
-2. [Nadija Borovina]()
-3. [Irma Dedić]()
-4. [Dalila Ćorović]()
-5. [Emir Kurtović]()
-6. [Džavid Brdar](https://github.com/avid-dz/)
+1. [Esmina Radušić](https://github.com/cminaa)
+2. [Nadija Borovina](https://github.com/lizardqueen98)
+3. [Irma Dedić](https://github.com/idedic2)
+4. [Dalila Ćorović](https://github.com/dcorovic2)
+5. [Emir Kurtović](https://github.com/emirkurtovic)
+6. [Džavid Brdar](https://github.com/avid-dz)
 
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
