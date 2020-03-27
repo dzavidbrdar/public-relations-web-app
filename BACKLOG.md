@@ -178,3 +178,15 @@ Merchant mora imati mogućnost da pošalje notifikaciju Merchant Dashboard web a
 * Implementirati slanje notifikacije prema servera nakon otpuštanja uposlenika u slučaju da su notifikacije uključene
 * Uraditi push koda
 * Napraviti pull request
+
+# Feature
+Radnik odgovara na pitanja koja kupci postavljaju
+## Item
+Radnik koji se prijavi na svoj korisnički račun treba da odgovara na neodgovorena pitanja koja su poslana od strane kupca i na taj način pospiješi komunikaciju s potencijanim kupcima.
+### Task
+* Omogućiti pokretanje forme reply na klik buttona reply određenog neodgovorenog pitanja
+* Implementirati prikazivanje odgovora na pitanje 
+* Uvesti restrikciju na prazan odgovor
+* Slanje podataka na server/odgovori na potencijana pitanja
+* Uraditi push koda
+* Napraviti pull request
