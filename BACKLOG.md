@@ -20,15 +20,11 @@ Korisnik treba biti u mogućnosti da se odjavi sa svog korisničkog računa.
 * Napraviti pull request
 
 # Feature
-Dodavanje novog uposlenika
+Prikaz informativnog materijala kupcima - promocije i akcije
 ## Item
-Merchant mora imati mogućnost dodavanja novog uposlenika poslovnice, uposlenika koji je zadužen za upravljanje skladištem, uposlenika koji je zadužen za korisničku podršku ili nekog drugog korisnika sistema.
+Korisnik (potencijalna mušterija) treba biti u stanju vidjeti informacije o eventualnim promocijama ili akcijama na početnoj stranici kako bi mogao ostvariti određenu pogodnost prilikom kupovine.
 ### Task
-* Kreirati izgled stranice za dodavanje uposlenika
-* Implementirati validaciju za polja forme
-* Implementirati ispis poruke u slučaju nevalidnih podataka
-* Implementirati slanje podataka sa forme na server
-* Implementirati ispis poruke o (ne)uspješnom dodavanju
+* 
 * Uraditi push koda
 * Napraviti pull request
 
