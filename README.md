@@ -2,7 +2,7 @@
 
 ## Public Relations Web Application
 
-**Članovi tima**:
+**Team members**:
 1. [Esmina Radušić]()
 2. [Nadija Borovina]()
 3. [Irma Dedić]()
