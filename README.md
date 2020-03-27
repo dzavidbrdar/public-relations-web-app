@@ -1,3 +1,16 @@
+# Team Charlie - Software Engineering 2019/2020
+
+## Public Relations Web Application
+
+**Članovi tima**:
+1. [Esmina Radušić]()
+2. [Nadija Borovina]()
+3. [Irma Dedić]()
+4. [Dalila Ćorović]()
+5. [Emir Kurtović]()
+6. [Džavid Brdar](https://github.com/avid-dz/)
+
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
