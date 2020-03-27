@@ -47,7 +47,11 @@ Mogućnost da korisnik postavlja pitanja
 ## Item
 Korisnik (potencijalna mušterija) treba imati mogućnost da postavi pitanje, kako bi dobio dodatne informacije o onom što ga zanima, a što eventualno nema na stranici. Pritom mora unijeti i ime, prezime i e-mail kako bi se spriječila zloupotreba.
 ### Task
-* 
+* Kreirati izgled forme za postavljanje pitanja
+* Implementirati validaciju za polja forme
+* Implementirati ispis poruke u slučaju nevalidnih podataka
+* Implementirati slanje podataka sa forme na server
+* Implementirati povratak na prethodnu stranicu nakon predaje forme(prilikom klika na dugme submit)
 * Uraditi push koda
 * Napraviti pull request
 
