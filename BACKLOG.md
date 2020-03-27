@@ -14,7 +14,7 @@ Korisnik treba biti u mogućnosti da se prijavi na svoj korisnički račun.
 ## Item
 Korisnik treba biti u mogućnosti da se odjavi sa svog korisničkog računa.
 ### Task
-* Implementirati odjavu prijavljnog korisnika
+* Implementirati odjavu prijavljenog korisnika
 * Implementirati vraćanje na početnu stranicu nakon odjavljivanja
 * Uraditi push koda
 * Napraviti pull request
@@ -33,15 +33,13 @@ Merchant mora imati mogućnost dodavanja novog uposlenika poslovnice, uposlenika
 * Napraviti pull request
 
 # Feature
-Ažuriranje postojećeg uposlenika
+Pregled artikala koji su na raspolaganju sa cijenama (online katalog)
 ## Item
-Merchant mora imati mogućnost ažuriranja informacija o postojećem uposleniku poslovnice, uposleniku koji je zadužen za upravljanje skladištem, uposleniku koji je zadužen za korisničku podršku ili nekom drugom postojećem korisniku sistema.
+Korisnik (potencijalna mušterija) treba biti u stanju vidjeti pregled artikala na raspolaganju sa cijenama kako bi mogao odabrati željeni artikal prilikom kupovine.
 ### Task
-* Kreirati izgled stranice za ažuriranje postojećeg uposlenika
-* Implementirati validaciju za polja forme
-* Implementirati ispis poruke u slučaju nevalidnih podataka
-* Implementirati slanje podataka sa forme na server
-* Implementirati ispis poruke o (ne)uspješnom ažuriranju
+* Implementirati dobavljanje podataka o svim proizvodima sa servera
+* Prikazati dobavljene podatke za svaki proizvod (slika, naziv, cijena, eventualni popust i nova cijena)
+* Poredati proizvode u obliku grid-a
 * Uraditi push koda
 * Napraviti pull request
 
