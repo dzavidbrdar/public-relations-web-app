@@ -56,7 +56,16 @@ Korisnik (potencijalna mušterija) treba imati mogućnost da postavi pitanje, ka
 * Napraviti pull request
 
 # Feature
-Radnik odgovara na pitanja koja kupci postavljaju
+Radnik odgovara na pitanja postavljena od strane klijenata
+## Item
+Radnik koji se prijavi na svoj korisnički račun treba imati mogućnost pregleda svih neodgovorenih pitanja koja postavljaju klijenti kako bi u svakom trenutku znao na koja pitanja treba da odgovori.
+### Task
+* Implementirati dobavljanje pitanja koja postavljaju klijenti sa servera
+* Implementirati filtiranje dobavljenih pitanja tako da se odaberu samo neodgovorena pitanja
+* Prikazati neodgovorena pitanja kroz tabelu
+* Dodati button "Reply" na svako neodgovoreno pitanje
+* Uraditi push koda
+* Napraviti pull request
 ## Item
 Radnik koji se prijavi na svoj korisnički račun treba da odgovara na neodgovorena pitanja koja su poslana od strane kupca i na taj način pospiješi komunikaciju s potencijanim kupcima.
 ### Task
@@ -67,14 +76,4 @@ Radnik koji se prijavi na svoj korisnički račun treba da odgovara na neodgovor
 * Uraditi push koda
 * Napraviti pull request
 
-# Feature
-Pregled neodgovorenih pitanja
-## Item
-Radnik koji se prijavi na svoj korisnički račun treba imati mogućnost pregleda svih neodgovorenih pitanja koja postavljaju klijenti kako bi u svakom trenutku znao na koja pitanja treba da odgovori.
-### Task
-* Implementirati dobavljanje pitanja koja postavljaju klijenti sa servera
-* Implementirati filtiranje dobavljenih pitanja tako da se odaberu samo neodgovorena pitanja
-* Prikazati neodgovorena pitanja kroz tabelu
-* Dodati button "Reply" na svako neodgovoreno pitanje
-* Uraditi push koda
-* Napraviti pull request
+
