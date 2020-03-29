@@ -54,7 +54,7 @@ class Login extends React.Component {
           let odgObjekat=JSON.parse(aodg);
           let odgToken=odgObjekat.token;
           document.cookie="username=dzavid";
-          document.cookie="token="+odgToken; console.log(odgToken);
+          document.cookie="token="+odgToken; 
         }
         if (ajax.readyState == 4 && ajax.status == 404)
           console.log('greska 404');

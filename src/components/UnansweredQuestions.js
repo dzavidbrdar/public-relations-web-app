@@ -37,7 +37,8 @@ class UnansweredQuestions extends Component {
       tekst: null,
       value: '',
       hover: true,
-      Qnumber: 0
+      Qnumber: 0, 
+      token: null
     };
   }
 
@@ -65,8 +66,6 @@ class UnansweredQuestions extends Component {
     })
   }
 
-  function 
-
   handleSubmit = () => {
     if (!this.state.value) {
       message.warning('Input field is empty!');
@@ -77,17 +76,15 @@ class UnansweredQuestions extends Component {
         value: ''
     });
 
-    var token = document.cookie; console.log(token);
-    token = token.substring(23, token.length);
+    let privremena = getCookie("token");
 
     fetch('https://main-server-si.herokuapp.com/api/questions/' + this.state.id +'/answer', {
       method: 'POST',
       headers: {
-        Authorization: `Bearer ` + token
+        Authorization: `Bearer ` + privremena,
       }, 
       body: JSON.stringify({
-        text: this.state.value,
-        username: 'dzavid',
+        text: this.state.value
       })
     })
 
@@ -137,5 +134,22 @@ class UnansweredQuestions extends Component {
     );
   }
 }
+
+let getCookie=(cname)=>{
+  var name = cname + "=";
+  var decodedCookie = decodeURIComponent(document.cookie);
+  var ca = decodedCookie.split(';');
+  for(var i = 0; i <ca.length; i++) {
+    var c = ca[i];
+    while (c.charAt(0) == ' ') {
+      c = c.substring(1);
+    }
+    if (c.indexOf(name) == 0) {
+      return c.substring(name.length, c.length);
+    }
+  }
+  return "";
+}
+
 
 export default UnansweredQuestions;
