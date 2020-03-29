@@ -77,19 +77,17 @@ class UnansweredQuestions extends Component {
         value: ''
     });
 
-    var token = document.cookie; 
+    var token = document.cookie; console.log(token);
     token = token.substring(23, token.length);
 
     fetch('https://main-server-si.herokuapp.com/api/questions/' + this.state.id +'/answer', {
       method: 'POST',
       headers: {
-        Authorization: `Basic ` + token,
-        Username: 'dzavid',
-        Password: 'dzavid'
+        Authorization: `Bearer ` + token
       }, 
       body: JSON.stringify({
-        'text': this.state.value,
-        'username': 'dzavid',
+        text: this.state.value,
+        username: 'dzavid',
       })
     })
 
