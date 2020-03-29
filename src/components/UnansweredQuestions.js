@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import 'antd/dist/antd.css';
-import axios from 'axios';
 import logo1 from '../logo1.png';
 import logo2 from '../logo2.png';
 import { Avatar, Form, Button, Input, Layout, Table, Badge, message, Menu } from 'antd';
@@ -52,11 +51,10 @@ class UnansweredQuestions extends Component {
     });
   }
 
-  prikazi(tekst1, id1){
+  prikazi(id1){
     this.setState({
       showMe: !this.state.showMe,
-      id: id1.id,
-      tekst: tekst1
+      id: id1.id
     }) 
   }
 
@@ -67,30 +65,34 @@ class UnansweredQuestions extends Component {
     })
   }
 
+  function 
+
   handleSubmit = () => {
     if (!this.state.value) {
       message.warning('Input field is empty!');
       return;
     }
-    //samo unosimo podatke koje mijenjamo
-    const pitanje = {
-        answered: true,
-        answer: this.state.value
-    } 
 
     this.setState({
         value: ''
     });
-    //u linku mora stajati neki id usera da se zna na sta se const pitanje odnosi
-    /*axios.put('https://api.myjson.com/bins/1gpg60/:' + this.state.id, pitanje)
-        .then(this.componentDidMount());*/
 
-    /////////////////
-    this.state.data.forEach(x => {
-        if(x.id == this.state.id){
-            x.answer = this.state.value;
-        }
-    });
+    var token = document.cookie; 
+    token = token.substring(23, token.length);
+
+    fetch('https://main-server-si.herokuapp.com/api/questions/' + this.state.id +'/answer', {
+      method: 'POST',
+      headers: {
+        Authorization: `Basic ` + token,
+        Username: 'dzavid',
+        Password: 'dzavid'
+      }, 
+      body: JSON.stringify({
+        'text': this.state.value,
+        'username': 'dzavid',
+      })
+    })
+
   };
 
   handleChange = e => {
@@ -110,9 +112,6 @@ class UnansweredQuestions extends Component {
     
     return (
     <Layout className="layout">
-      <Header style = {{minHeight: '130px', padding: '30px', paddingTop: '10px'}}>
-          
-      </Header>
 
     <Content  className="table" style={{ padding: '30 30px' }} >
       <div class="AppQ">
@@ -124,7 +123,7 @@ class UnansweredQuestions extends Component {
             <Column title="Action" key="id" width="10%"
               render={(text, record) => (
                 <span>
-                  <Button onClick = {() => {this.prikazi(text.name, record)}}>Reply</Button>
+                  <Button onClick = {() => {this.prikazi(record)}}>Reply</Button>
                 </span>
               )}
             />

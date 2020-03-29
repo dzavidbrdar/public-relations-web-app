@@ -13,11 +13,7 @@
     right: auto;
     max-width: 100%;
   }
-
-  .table{
-    background-color: rgb(28, 28, 49);
-  }
-
+  
   #cancel{
     float: right;
   }
