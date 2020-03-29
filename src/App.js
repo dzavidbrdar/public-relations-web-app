@@ -6,6 +6,7 @@ import Dashboard from './components/Dashboard.js';
 import Contact from './components/Contact.js';
 import Products from './components/Products';
 import Questions from './components/Questions.js';
+import Login from './components/Login.js';
 
 function App() {
   return (
@@ -13,10 +14,11 @@ function App() {
     <div className="App">
       <div className="container">
         <Header />
-        <Route exact path="/" component={Dashboard} />        
+        <Route exact path="/" component={Dashboard} />
         <Route path="/products" component={Products} />
         <Route path="/questions" component={Questions} />
         <Route path="/contact" component={Contact} />
+        <Route path="/login" component={Login} />
       </div>
     </div>
   </Router>
