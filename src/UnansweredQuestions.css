@@ -1,0 +1,24 @@
+.UnansweredQuestions {
+    text-align: center;
+  }
+  
+  .site-layout-content {
+    background:rgb(54, 5, 50);
+    padding: 24px;
+    min-height: 280px;
+  }
+  
+  .MenuItem{
+    font-size: large;
+    font-weight: bold;
+    padding: 24px;
+    color: white;
+  }
+  
+  .table{
+    background-color: rgb(28, 28, 49);
+   
+  }
+  
+  
+  
