@@ -37,7 +37,7 @@ class UnansweredQuestions extends Component {
         defaultSelectedKeys={['2']}
       >
 
-        <Menu.Item className="MenuItem" key="1" >Questions</Menu.Item>
+        <Menu.Item className="MenuItem" key="1" ></Menu.Item>
         
       </Menu>
     </Header>
@@ -49,12 +49,14 @@ class UnansweredQuestions extends Component {
      
        <Column title="Number" dataIndex="id" key="id" width="7%"/>
       <Column title="Question" dataIndex="text" key="text" />
+      <Column title="Author's email" dataIndex="authorEmail" key="authorEmail" width="11%"/>
+      <Column title="Date" dataIndex="date" key="date" width="9%"/>
       <Column title="Response" dataIndex="answer" key="answer"/>
-    
+ 
       <Column
         title="Action"
         key="id"
-        width="10%"
+        width="9%"
         
         render={(text, record) => (
           <span>

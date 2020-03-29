@@ -3,7 +3,7 @@
   }
   
   .site-layout-content {
-    background:rgb(54, 5, 50);
+    background: white;
     padding: 24px;
     min-height: 280px;
   }
@@ -11,12 +11,19 @@
   .MenuItem{
     font-size: large;
     font-weight: bold;
-    padding: 24px;
-    color: white;
+    padding: 0px;
+    color: rgb(236, 212, 212);
+
+    
   }
   
   .table{
     background-color: rgb(28, 28, 49);
+   
+  }
+
+  .ant-table thead > tr > th {
+    font-weight: bold;
    
   }
   
