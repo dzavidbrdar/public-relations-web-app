@@ -1,8 +1,6 @@
 import React, { Component } from "react";
 import 'antd/dist/antd.css';
-import logo1 from '../logo1.png';
-import logo2 from '../logo2.png';
-import { Avatar, Form, Button, Input, Layout, Table, Badge, message, Menu } from 'antd';
+import { Avatar, Form, Button, Input, Layout, Table, message, Menu } from 'antd';
 import '../UnansweredQuestions.css'
 
 const { TextArea } = Input;
@@ -10,9 +8,7 @@ const { Column } = Table;
 const { Header, Content } = Layout;
 const Editor = ({ onChange, onChange1, onSubmit, value, Qnumber}) => (
     <div class="editor" >
-      <Badge count={Qnumber}>
         <Avatar shape="square"size="large" style={{backgroundColor: 'rgb(1, 1, 43)'}}>Employee</Avatar> <br/><br/>
-      </Badge>
       <Form.Item>
         <TextArea rows={10} cols={100} placeholder="Answer the question!" onChange={onChange1} value={value}/>
       </Form.Item>
@@ -78,16 +74,34 @@ class UnansweredQuestions extends Component {
 
     let privremena = getCookie("token");
 
-    fetch('https://main-server-si.herokuapp.com/api/questions/' + this.state.id +'/answer', {
+    /*fetch('https://main-server-si.herokuapp.com/api/questions/' + this.state.id +'/answer', {
       method: 'POST',
       headers: {
-        Authorization: `Bearer ` + privremena,
+        Authorization: 'Bearer '+ privremena
       }, 
       body: JSON.stringify({
         text: this.state.value
       })
-    })
+    })*/
 
+      var ajax=new XMLHttpRequest();
+      ajax.onreadystatechange=()=>{
+        if (ajax.readyState == 4 && ajax.status == 200){
+          let aodg=ajax.responseText;
+          console.log(aodg);
+        }
+        if (ajax.readyState == 4 && ajax.status == 404)
+          console.log('greska 404');
+      }
+      ajax.open("POST", 'https://main-server-si.herokuapp.com/api/questions/' + this.state.id +'/answer', true);
+      //ajax.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+      ajax.setRequestHeader("Content-Type", "application/json");
+      ajax.setRequestHeader("Authorization", "Bearer "+privremena);
+      //ajax.send("{username=public1&password=password&role=ROLE_PRW}");
+      let objekat={text:this.state.value};
+      //let objekat={user:'root',password:'password'};
+      ajax.send(JSON.stringify(objekat));
+    
   };
 
   handleChange = e => {
