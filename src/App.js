@@ -8,7 +8,6 @@ import Products from './components/Products';
 import Questions from './components/Questions.js';
 import Login from './components/Login.js';
 import UnansweredQuestions from './components/UnansweredQuestions.js';
-import Login from './components/Login.js';
 
 
 function App() {
@@ -23,7 +22,6 @@ function App() {
         <Route path="/contact" component={Contact} />
         <Route path="/login" component={Login} />
         <Route path="/unansweredQuestions" component={UnansweredQuestions}/>
-        <Route path="/login" component={Login} />
       </div>
     </div>
   </Router>

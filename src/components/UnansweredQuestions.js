@@ -92,7 +92,8 @@ class UnansweredQuestions extends Component {
         }
         if (ajax.readyState == 4 && ajax.status == 404)
           console.log('greska 404');
-      }
+      } 
+      console.log(this.state.id, this.state.tekst);
       ajax.open("POST", 'https://main-server-si.herokuapp.com/api/questions/' + this.state.id +'/answer', true);
       //ajax.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
       ajax.setRequestHeader("Content-Type", "application/json");
@@ -117,28 +118,13 @@ class UnansweredQuestions extends Component {
   }
 
   render() {
-
     const { value, Qnumber } = this.state;
-    
+
     return (
       
    <Layout className="layout">
-    <Header>
-  
-      <Menu
-        theme="dark"
-        mode="horizontal"
-        selectable="true"
-        defaultSelectedKeys={['2']}
-      >
-
-        <Menu.Item className="MenuItem" key="1" ></Menu.Item>
-        
-      </Menu>
-    </Header>
-
     <Content  className="table" style={{ padding: '0 50px' }} >
-      
+    <div class="AppQ">
       <div className="site-layout-content">
       <Table bordered dataSource={this.state.data}>
      
@@ -155,29 +141,12 @@ class UnansweredQuestions extends Component {
         
         render={(text, record) => (
           <span>
-            <a href={"https://c2.etf.unsa.ba/"+record.id}>Reply</a>
+            <Button onClick = {() => {this.prikazi(record)}}>Reply</Button>
           </span>
         )}
       />
         
       </Table>
-
-
-    <Content  className="table" style={{ padding: '30 30px' }} >
-      <div class="AppQ">
-        <div className="site-layout-content">
-          <Table bordered dataSource={this.state.data}>
-            <Column title="Number" dataIndex="id" key="id" width="7%"/>
-            <Column title="Question" dataIndex="text" key="text" />
-            <Column title="Response" dataIndex="answer" key="answer"/>
-            <Column title="Action" key="id" width="10%"
-              render={(text, record) => (
-                <span>
-                  <Button onClick = {() => {this.prikazi(record)}}>Reply</Button>
-                </span>
-              )}
-            />
-          </Table>
           </div>
 
           {
