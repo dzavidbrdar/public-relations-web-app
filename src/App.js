@@ -7,6 +7,8 @@ import Contact from './components/Contact.js';
 import Products from './components/Products';
 import Questions from './components/Questions.js';
 import QuestionAsk from './components/QuestionAsk.js';
+import Login from './components/Login.js';
+import UnansweredQuestions from './components/UnansweredQuestions.js';
 
 function App() {
   return (
@@ -14,11 +16,13 @@ function App() {
     <div className="App">
       <div className="container">
         <Header />
-        <Route exact path="/" component={Dashboard} />        
+        <Route exact path="/" component={Dashboard} />
         <Route path="/products" component={Products} />
         <Route path="/questions" component={Questions} />
         <Route path="/contact" component={Contact} />
         <Route path="/questionask" component={QuestionAsk} />
+        <Route path="/login" component={Login} />
+        <Route path="/unansweredQuestions" component={UnansweredQuestions}/>
       </div>
     </div>
   </Router>

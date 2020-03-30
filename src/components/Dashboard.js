@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
+import SaleCarousel from './SaleCarousel.js';
 
 class Dashboard extends Component {
     state = {  }
     render() { 
         return (  
             <h1>
-                Dashboard
+                <SaleCarousel />
             </h1>
         );
     }
