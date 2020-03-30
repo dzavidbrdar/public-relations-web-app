@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Redirect } from 'react-router-dom'
+import '../QuestionAsk.css';
 
 class Login extends React.Component {
   //3 faze:mounting, updating, unmounting
@@ -29,8 +30,8 @@ class Login extends React.Component {
     let err='';
     let regUsername=/^[a-zA-Z0-9]+$/;
     let regPass=/^[a-zA-Z0-9!@#$&*]+$/;
-    if (nam === "username" && !regUsername.test(val)) err=<p>Username can contain only letters or numbers</p>;
-    if (nam === "pass" && !regPass.test(val)) err=<p>Password can contain only letters, numbers or these characters: !,@,#,$,&,*</p>;
+    if (nam === "username" && !regUsername.test(val)) err=<p class="obavijest">Username can contain only letters or numbers</p>;
+    if (nam === "pass" && !regPass.test(val)) err=<p class="obavijest">Password can contain only letters, numbers or these characters: !,@,#,$,&,*</p>;
     this.setState({errormessage:err});
     this.setState({[nam]: val});
   }
@@ -59,7 +60,7 @@ class Login extends React.Component {
         if (ajax.readyState == 4 && ajax.status == 404)
           console.log('greska 404');
         if(ajax.readyState == 4 && ajax.status == 401) {
-          let err=<p>The username or password is incorrect</p>;
+          let err=<p class="obavijest">The username or password is incorrect</p>;
           this.setState({errormessage:err});
         }
 
@@ -83,10 +84,10 @@ class Login extends React.Component {
     let regUsername=/^[a-zA-Z0-9]+$/;
     let regPass=/^[a-zA-Z0-9!@#$&*]+$/;
     let err='';
-    if(user==='') err=<p>Username cannot be empty</p>;
-    else if(!regUsername.test(user)) err=<p>Username can contain only letters or numbers</p>;
-    else if(pass==='') err=<p>Password cannot be empty</p>;
-    else if(!regPass.test(pass)) err=<p>Password can contain only letters, numbers or these characters: !,@,#,$,&,*</p>;
+    if(user==='') err=<p class="obavijest">Username cannot be empty</p>;
+    else if(!regUsername.test(user)) err=<p class="obavijest">Username can contain only letters or numbers</p>;
+    else if(pass==='') err=<p class="obavijest">Password cannot be empty</p>;
+    else if(!regPass.test(pass)) err=<p class="obavijest">Password can contain only letters, numbers or these characters: !,@,#,$,&,*</p>;
     if(err!='') this.setState({errormessage:err});
     else this.loginAjax(0);
   }
@@ -102,10 +103,8 @@ class Login extends React.Component {
       <form onSubmit={this.submitHandler}>
       {this.renderRedirect()}
       <h1>Login</h1>
-      <input type="text" name="username" onChange={this.changeHandler} style={inputStyle} placeholder="username"/>
-      <br/>
-      <input type="password" name="pass" onChange={this.changeHandler} style={inputStyle} placeholder="password"/>
-      <br/>
+      <input type="text" name="username" onChange={this.changeHandler} style={inputStyle} placeholder="Username"/>
+      <input type="password" name="pass" onChange={this.changeHandler} style={inputStyle} placeholder="Password"/>
       {this.state.errormessage}
       <input type="submit" value="Login" style={btnStyle}/>
       {this.state.odg}
@@ -115,19 +114,27 @@ class Login extends React.Component {
   //
 }
 const inputStyle={
-  width:'30%',
+  /*width:'30%',
   border: '1px solid #ccc',
   borderRadius: '4px',
   padding: '12px 20px',
   margin: '8px 0',
-  boxSizing: 'border-box'
+  boxSizing: 'border-box'*/
+  borderRadius: '0.3em',
+  padding: '0.2em',
+  width: '15em',
+  height: '2em',
+  display: 'block',
+  margin: '1em auto 1em auto'
 }
 const btnStyle={
-  backgroundColor: '#cccccc',
-  border: 'none',
-  padding: '12px 32px',
-  textDecoration: 'none',
-  margin: '4px 2px',
-  cursor: 'pointer'
+  backgroundColor: 'rgb(51, 9, 86)',
+  cursor: 'pointer',
+  width: '7em',
+  height: '2em',
+  margin: 'auto',
+  color: 'rgb(232, 238, 242)',
+  borderColor: 'rgb(99, 26, 121)',
+  borderRadius: '1em'
 }
 export default Login;

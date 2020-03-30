@@ -37,7 +37,6 @@
 
   .ant-table thead > tr > th {
     font-weight: bold;
-   
   }
   
   @import '~antd/dist/antd.css';

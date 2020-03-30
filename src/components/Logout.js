@@ -37,11 +37,19 @@ class Logout extends React.Component {
   //
 }
 const btnStyle={
-  backgroundColor: '#cccccc',
+  /*backgroundColor: '#cccccc',
   border: 'none',
   padding: '12px 32px',
   textDecoration: 'none',
   margin: '4px 2px',
-  cursor: 'pointer'
+  cursor: 'pointer'*/
+  backgroundColor: 'rgb(51, 9, 86)',
+  cursor: 'pointer',
+  width: '7em',
+  height: '2em',
+  margin: '1em auto 1em auto',
+  color: 'rgb(232, 238, 242)',
+  borderColor: 'rgb(99, 26, 121)',
+  borderRadius: '1em'
 }
 export default Logout;

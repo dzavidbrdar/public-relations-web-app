@@ -125,10 +125,11 @@ class QuestionAsk extends Component {
         const {errors} = this.state;
         return (
           <form onSubmit={this.handleSubmit}>
-              <label>
+              <label class="labela">
                   Whats's Your Queston?
               </label>
             <input
+                class="unos"
                 name="name"
                 placeholder="Name"
                 type="text"
@@ -136,8 +137,9 @@ class QuestionAsk extends Component {
                 onChange={this.handleInputChange} 
                 required/>
                 {errors.name.length > 0 && 
-                <span className='error'>{errors.name}</span>}
+                <span className='error poruka'>{errors.name}</span>}
             <input
+                class="unos"
                 name="lastname"
                 placeholder="Last Name"
                 type="text"
@@ -145,8 +147,9 @@ class QuestionAsk extends Component {
                 onChange={this.handleInputChange} 
                 required/>
                 {errors.lastname.length > 0 && 
-                <span className='error'>{errors.lastname}</span>}
+                <span className='error poruka'>{errors.lastname}</span>}
             <input
+                class="unos"
                 name="email"
                 type="text"
                 placeholder="E-mail"
@@ -154,8 +157,9 @@ class QuestionAsk extends Component {
                 onChange={this.handleInputChange} 
                 required/>
                 {errors.email.length > 0 && 
-                <span className='error'>{errors.email}</span>}
+                <span className='error poruka'>{errors.email}</span>}
             <textarea
+                class="tekst"
                 name="question"
                 type="text"
                 placeholder="Question"
@@ -163,7 +167,7 @@ class QuestionAsk extends Component {
                 onChange={this.handleInputChange} 
                 required/>
                 {errors.question.length > 0 && 
-                <span className='error'>{errors.question}</span>}
+                <span className='error poruka'>{errors.question}</span>}
             <input class="button" type="submit" value="Submit" />
           </form>
         );

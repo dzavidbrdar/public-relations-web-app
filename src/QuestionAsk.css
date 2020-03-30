@@ -1,12 +1,11 @@
-label{
-    width: 13em;
-    margin: 2em auto 1em auto;
+.labela{
+    width: 15em;
+    margin: 1.5em auto 1em auto;
     display: block;
     height: 2em;
-    padding: 0.5em;
     text-align: left;
     }
-input{
+.unos{
     border-radius: 0.3em;
     padding: 0.2em;
     width: 15em;
@@ -14,7 +13,7 @@ input{
     display: block;
     margin: 1em auto 1em auto;
 }
-textarea{
+.tekst{
     border-radius: 0.3em;
     padding: 0.2em;
     margin: 0.5em;
@@ -30,12 +29,22 @@ textarea{
     border-radius: 1em;
     width: 7em;
     height: 2em;
+    margin: 1em auto 1em auto;
+    display: block;
 }
-span{
+.poruka{
     font-size: 0.7em;
     color: red;
     display: block;
-    width: 18.5em;
+    width: 21em;
     margin: auto;
+    text-align: left;
+}
+.obavijest{
+    font-size: 0.7em;
+    color: red;
+    display: block;
+    width: 21em;
+    margin: 1em auto 1em auto;
     text-align: left;
 }
