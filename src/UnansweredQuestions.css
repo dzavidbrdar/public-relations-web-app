@@ -7,6 +7,7 @@
   }
   
   .site-layout-content {
+    background: white;
     padding: 24px;
     min-height: 280px;
     flex: 1;
@@ -14,13 +15,29 @@
     max-width: 100%;
   }
   
+
   #cancel{
     float: right;
+}
+
+  .MenuItem{
+    font-size: large;
+    font-weight: bold;
+    padding: 0px;
+    color: rgb(236, 212, 212);
+
+    
+
   }
   
   .editor {
     flex: 1;
     margin: 1%;
+  }
+
+  .ant-table thead > tr > th {
+    font-weight: bold;
+   
   }
   
   @import '~antd/dist/antd.css';

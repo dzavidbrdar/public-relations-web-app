@@ -54,16 +54,21 @@ class Login extends React.Component {
           let odgObjekat=JSON.parse(aodg);
           let odgToken=odgObjekat.token;
           document.cookie="username=dzavid";
-          document.cookie="token="+odgToken; 
+          document.cookie="token="+odgToken;
         }
         if (ajax.readyState == 4 && ajax.status == 404)
           console.log('greska 404');
+        if(ajax.readyState == 4 && ajax.status == 401) {
+          let err=<p>The username or password is incorrect</p>;
+          this.setState({errormessage:err});
+        }
+
       }
       ajax.open("POST", "https://main-server-si.herokuapp.com/api/auth/login", true);
       //ajax.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
       ajax.setRequestHeader("Content-Type", "application/json");
       //ajax.send("{username=public1&password=password&role=ROLE_PRW}");
-      let objekat={username:'dzavid',password:'dzavid',role:'ROLE_PRW'};
+      let objekat={username:this.state.username,password:this.state.pass,role:'ROLE_PRW'};
       //let objekat={user:'root',password:'password'};
       ajax.send(JSON.stringify(objekat));
     }
