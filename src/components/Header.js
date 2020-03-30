@@ -9,7 +9,7 @@ function Header() {
                 <h1>PUBLIC RELATIONS</h1>
             </header>
             <div style={navbarStyle}>
-                <Link style={linkStyle} to="/">Home</Link>  |  <Link style={linkStyle} to="/products">Products</Link>  |  <Link style={linkStyle} to="/questions">Questions</Link>  |  <Link style={linkStyle} to="/contact">Contact</Link>  
+                <Link style={linkStyle} to="/">Home</Link>  |  <Link style={linkStyle} to="/products">Products</Link>  |  <Link style={linkStyle} to="/contact">Contact</Link>  |  <Link style={linkStyle} to="/questions">FAQ</Link>  |  <Link style={linkStyle} to="/questionask">Ask a Queston</Link> 
             </div>
         </div>
     );
