@@ -6,6 +6,7 @@ import Dashboard from './components/Dashboard.js';
 import Contact from './components/Contact.js';
 import Products from './components/Products';
 import Questions from './components/Questions.js';
+import Login from './components/Login.js';
 import UnansweredQuestions from './components/UnansweredQuestions.js';
 import Login from './components/Login.js';
 
@@ -20,6 +21,7 @@ function App() {
         <Route path="/products" component={Products} />
         <Route path="/questions" component={Questions} />
         <Route path="/contact" component={Contact} />
+        <Route path="/login" component={Login} />
         <Route path="/unansweredQuestions" component={UnansweredQuestions}/>
         <Route path="/login" component={Login} />
       </div>

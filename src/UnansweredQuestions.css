@@ -1,3 +1,7 @@
+  .AppQ{
+    display: flex;
+  }
+
 .UnansweredQuestions {
     text-align: center;
   }
@@ -6,8 +10,16 @@
     background: white;
     padding: 24px;
     min-height: 280px;
+    flex: 1;
+    right: auto;
+    max-width: 100%;
   }
   
+
+  #cancel{
+    float: right;
+}
+
   .MenuItem{
     font-size: large;
     font-weight: bold;
@@ -15,17 +27,20 @@
     color: rgb(236, 212, 212);
 
     
+
   }
   
-  .table{
-    background-color: rgb(28, 28, 49);
-   
+  .editor {
+    flex: 1;
+    margin: 1%;
   }
 
   .ant-table thead > tr > th {
     font-weight: bold;
    
   }
+  
+  @import '~antd/dist/antd.css';
   
   
   

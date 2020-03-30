@@ -62,6 +62,7 @@ class Login extends React.Component {
           let err=<p>The username or password is incorrect</p>;
           this.setState({errormessage:err});
         }
+
       }
       ajax.open("POST", "https://main-server-si.herokuapp.com/api/auth/login", true);
       //ajax.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
