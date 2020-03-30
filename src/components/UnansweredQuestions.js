@@ -102,6 +102,7 @@ class UnansweredQuestions extends Component {
       let objekat={text:this.state.value};
       //let objekat={user:'root',password:'password'};
       ajax.send(JSON.stringify(objekat));
+      this.componentDidMount();
     
   };
 
