@@ -39,9 +39,9 @@ class SaleCarousel extends Component {
                                     <div >
                                         <img src={item.image} alt={item.name} />
                                         <p className='legend'>
-                                            <h4 style={OldPrice}>{item.price.toFixed(2)}{item.unit}</h4>
+                                            <h4 style={OldPrice}>{item.price.toFixed(2)} KM</h4>
                                             <h4 style={Percentage}> {item.discount.percentage}% OFF</h4>
-                                            <h4 style={NewPrice}>{(item.price * (100 - item.discount.percentage) / 100).toFixed(2)}{item.unit}</h4>
+                                            <h4 style={NewPrice}>{(item.price * (100 - item.discount.percentage) / 100).toFixed(2)} KM</h4>
                                         </p>
                                     </div>)
                                 }
@@ -53,6 +53,7 @@ class SaleCarousel extends Component {
         else
             return (
                 <div>
+                    <br></br>
                     <h5 style={Motivation}>Currently no items are on sale. <br></br>Come back soon, we are preparing some special offers for you!</h5>
                 </div>
             );
