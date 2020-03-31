@@ -18,7 +18,7 @@ class Logout extends React.Component {
   }
   renderRedirect=()=>{
     if(this.state.kliknuto)
-      return <Redirect to='/login' />;
+      return <Redirect to='/' />;
   }
   btnHandler=(event)=>{
     event.preventDefault();

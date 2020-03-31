@@ -6,25 +6,27 @@ class SaleCarousel extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            items: []
+            items: [],
+            imaProizvoda: true
         }
     }
 
     componentDidMount() {
-        fetch('https://main-server-si.herokuapp.com/api/products?fbclid=IwAR0pgaS1MsBciio5y-0CiBcR_49Z-b0zDUuEo8EubzMhuZg4fAOrFvf0ofk')
+        fetch('https://main-server-si.herokuapp.com/api/products')
             .then(res => res.json())
             .then(json => {
-                const itemsOnSale = [];
+                let itemsOnSale = [];
                 json.forEach(element => {
                     if (element.discount.percentage > 0) itemsOnSale.push(element);
                 });
                 this.setState({ items: itemsOnSale });
+                if (itemsOnSale.length == 0) this.setState({ imaProizvoda: false });
             }
             );
     }
 
     render() {
-        const { items } = this.state;
+        const items  = this.state.items;
         if (items.length != 0)
             return (
                 <div>
@@ -47,16 +49,18 @@ class SaleCarousel extends Component {
                                 }
                             </Carousel>
                         </div>
-                    </div >
+                    </div>
                 </div>
             );
-        else
+        else {
+            let porukaONeimanjuProizvoda = <h5 style={Motivation}>Currently no items are on sale. <br></br>Come back soon, we are preparing some special offers for you!</h5>;
             return (
                 <div>
                     <br></br>
-                    <h5 style={Motivation}>Currently no items are on sale. <br></br>Come back soon, we are preparing some special offers for you!</h5>
+                    {(!this.state.imaProizvoda) ? porukaONeimanjuProizvoda : <div></div>}
                 </div>
             );
+        }
     }
 }
 
