@@ -18,7 +18,7 @@ function Products() {
             const oldProductPrice = product.price;
             const newProductPrice = oldProductPrice - (oldProductPrice * (product.discount.percentage / 100));
             const newRoundedPrice = Math.round(newProductPrice * 100) / 100;
-            const newPriceWithUnit = newRoundedPrice + " " + product.unit;
+            const newPriceWithUnit = newRoundedPrice + " " + "KM";
             imageObject.src = product.image;
             imageObject.thumbnail = product.image;
             imageObject.thumbnailWidth = thumbnailWidth;
