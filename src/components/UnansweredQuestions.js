@@ -92,7 +92,7 @@ class UnansweredQuestions extends Component {
           message.success('Your reply has been successfully submitted!');
         }
         if (ajax.readyState == 4 && ajax.status == 404)
-          console.log('greska 404');
+          message.error('Error 404');
       }
       console.log(this.state.id, this.state.tekst);
       ajax.open("POST", 'https://main-server-si.herokuapp.com/api/questions/' + this.state.id +'/answer', true);
