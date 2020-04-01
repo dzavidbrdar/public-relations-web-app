@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom';
 import { Avatar } from 'antd';
 
 function Header() {
-
     const linkHome = <Link style={linkStyle} to="/">Home</Link>;
     const linkProducts = <Link style={linkStyle} to="/products">Products</Link>;
     const linkContact = <Link style={linkStyle} to="/contact">Contact</Link>;
