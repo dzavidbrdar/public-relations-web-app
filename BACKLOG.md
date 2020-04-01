@@ -76,4 +76,15 @@ Radnik koji se prijavi na svoj korisnički račun treba da odgovara na neodgovor
 * Uraditi push koda
 * Napraviti pull request
 
-
+# Feature
+Prikaz svih poslovnica
+## Item
+Korisnik mora biti u mogućnosti da pregleda sve poslovnice, kako bi mogao odabrati željenu prilikom komentarisanja iste.
+### Task
+* Kreirati izgled prikaza svih poslovnica
+* Implementirati dobavljanje svih lokacija i njihovih propratnih podataka sa servera
+* Poredati poslovnice u obliku grid-a
+* Prikazati broj aktivnih poslovnica 
+* Dodati dugme "Rate"
+* Uraditi push koda
+* Napraviti pull request
