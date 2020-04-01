@@ -77,7 +77,7 @@ Radnik koji se prijavi na svoj korisnički račun treba da odgovara na neodgovor
 * Napraviti pull request
 
 # Feature
-Prikaz svih poslovnica
+Prikaz lokacija poslovnica
 ## Item
 Korisnik mora biti u mogućnosti da pregleda sve poslovnice, kako bi mogao odabrati željenu prilikom komentarisanja iste.
 ### Task
