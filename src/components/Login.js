@@ -51,10 +51,9 @@ class Login extends React.Component {
           this.setState({ulogovan:true});
           this.setState({odg:aodg});
           this.setState({redirect:true});
-          //
           let odgObjekat=JSON.parse(aodg);
           let odgToken=odgObjekat.token;
-          document.cookie="username=dzavid";
+          document.cookie="username="+this.state.username;
           document.cookie="token="+odgToken;
         }
         if (ajax.readyState == 4 && ajax.status == 404)
@@ -66,11 +65,8 @@ class Login extends React.Component {
 
       }
       ajax.open("POST", "https://main-server-si.herokuapp.com/api/auth/login", true);
-      //ajax.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
       ajax.setRequestHeader("Content-Type", "application/json");
-      //ajax.send("{username=public1&password=password&role=ROLE_PRW}");
       let objekat={username:this.state.username,password:this.state.pass,role:'ROLE_PRW'};
-      //let objekat={user:'root',password:'password'};
       ajax.send(JSON.stringify(objekat));
     }
   }
@@ -98,7 +94,6 @@ class Login extends React.Component {
   }
 
   render(){
-    /*{this.renderRedirect}*/
     return(
       <form onSubmit={this.submitHandler}>
       {this.renderRedirect()}
@@ -111,15 +106,8 @@ class Login extends React.Component {
       </form>
     );
   }
-  //
 }
 const inputStyle={
-  /*width:'30%',
-  border: '1px solid #ccc',
-  borderRadius: '4px',
-  padding: '12px 20px',
-  margin: '8px 0',
-  boxSizing: 'border-box'*/
   borderRadius: '0.3em',
   padding: '0.2em',
   width: '15em',

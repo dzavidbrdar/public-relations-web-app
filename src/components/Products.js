@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import Gallery from 'react-grid-gallery';
+import { Spin } from 'antd';
 
 function Products() {
 
@@ -39,7 +40,7 @@ function Products() {
     return (
         <div>
             <h1>Catalog</h1>
-            { loading ? <h2>...loading</h2> : <div style={frameStyle}><Gallery images={images} margin={10}/></div> }
+            { loading ? <Spin size="large" /> : <div style={frameStyle}><Gallery images={images} margin={10}/></div> }
         </div>
     );
 }

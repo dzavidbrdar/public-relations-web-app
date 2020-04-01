@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { Carousel } from 'react-responsive-carousel';
+import { Spin } from 'antd';
 //updatovala sam formu al fali jos kupljene i filtriranje pdoataka
 class SaleCarousel extends Component {
     constructor(props) {
@@ -57,7 +58,7 @@ class SaleCarousel extends Component {
             return (
                 <div>
                     <br></br>
-                    {(!this.state.imaProizvoda) ? porukaONeimanjuProizvoda : <div></div>}
+                    {(!this.state.imaProizvoda) ? porukaONeimanjuProizvoda : <div><Spin size="large" /></div>}
                 </div>
             );
         }
