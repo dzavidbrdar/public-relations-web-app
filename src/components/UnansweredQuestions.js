@@ -6,7 +6,7 @@ import Logout from './Logout.js';
 
 const { TextArea } = Input;
 const { Column } = Table;
-const { Header, Content } = Layout;
+const { Content } = Layout;
 const Editor = ({ onChange, onChange1, onSubmit, value, Qnumber}) => (
     <div class="editor" >
       <Badge count={Qnumber}>
