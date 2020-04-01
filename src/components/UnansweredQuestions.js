@@ -88,6 +88,8 @@ class UnansweredQuestions extends Component {
           this.setState({
             Qnumber: this.state.Qnumber--
           })
+
+          message.success('Your reply has been successfully submitted!');
         }
         if (ajax.readyState == 4 && ajax.status == 404)
           console.log('greska 404');
