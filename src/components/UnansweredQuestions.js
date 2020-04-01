@@ -35,9 +35,7 @@ class UnansweredQuestions extends Component {
       id: null,
       tekst: null,
       value: '',
-      hover: true,
       Qnumber: 0,
-      token: null,
       prikazati:false
     };
   }
@@ -106,12 +104,6 @@ class UnansweredQuestions extends Component {
   handleChange = e => {
     this.setState({
       value: e.target.value,
-    });
-  }
-
-  handleMouseOver = () =>{
-    this.setState({
-      hover: !this.state.hover
     });
   }
 
