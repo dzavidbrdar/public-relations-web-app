@@ -88,3 +88,15 @@ Korisnik mora biti u mogućnosti da pregleda sve poslovnice, kako bi mogao odabr
 * Dodati dugme "Rate"
 * Uraditi push koda
 * Napraviti pull request
+
+# Feature
+Brisanje neprimjerenih komentara
+## Item
+Korisnik (zaposlenik) mora biti u mogućnosti da izbriše neke od komentara u slučaju da su oni neprimjereni ili čak uvredljivog karaktera.
+### Task
+* Kreirati izgled prikaza komentara
+* Implementirati dobavljanje svih komentara sa servera i njihovo sortiranje
+* Poredati komentare u obliku liste
+* Omogućiti brisanje komentara putem dugmeta "Delete"
+* Uraditi push koda
+* Napraviti pull request
