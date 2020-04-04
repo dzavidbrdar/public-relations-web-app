@@ -1,0 +1,98 @@
+
+.block rating-label { 
+	display: inline-block; 
+	width: 40px; 
+	height: 20px;
+    text-align: left; 
+    font-size: 17px;
+    margin: 0.7em auto 0em auto;
+}
+
+
+.block label { 
+	display: inline-block; 
+	width: 100px; 
+	height: 30px;
+    text-align: left; 
+    font-size: 17px;
+    margin: 0.7em auto 0em auto;
+}
+
+.block input
+{
+    display: inline-block;
+    width: 200px;
+}
+
+.block textarea {
+    border-radius: 0.3em;
+    padding: 0.2em;
+    margin: 0.5em;
+    width: 24em;
+    height: 6em;
+    display: block;
+    margin: 1em auto 1em auto;
+    float: left;
+}
+
+label{
+    display: block;
+    height: 2em;
+    padding: 0.5em;
+    text-align: left;
+    font-weight: bold;
+    }
+input{
+    border-radius: 0.3em;
+    padding: 0.2em;
+    width: 15em;
+    height: 2em;
+    display: block;
+    margin: 1em auto 1em auto;
+}
+textarea{
+    border-radius: 0.3em;
+    padding: 0.2em;
+    margin: 0.5em;
+    width: 15em;
+    height: 5em;
+    display: block;
+    margin: 1em auto 1em auto;
+}
+
+.block input[type=submit] {
+    border: 0;
+    background: rgb(23, 43, 221);
+    border-radius: 5px;
+    padding: 0.9rem 1rem;
+    font-size: 0.9rem;
+    line-height: 1;
+    width: 80px;
+    color:white;
+    height: 45px;
+   
+
+  }
+
+.button{
+    border: 0;
+
+  background: rgb(23, 43, 221);
+  border-radius: 5px;
+  padding: 0.9rem 1rem;
+  font-size: 0.9rem;
+  line-height: 1;
+  position: fixed;
+  left: 12px;
+  bottom:25px;
+  color:white;
+  
+}
+span{
+    font-size: 0.7em;
+    color: red;
+    display: block;
+    width: 18.5em;
+    margin: auto;
+    text-align: left;
+}
