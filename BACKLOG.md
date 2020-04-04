@@ -112,3 +112,22 @@ Korisnik (zaposlenik) mora biti u mogućnosti da izbriše neke od komentara u sl
 * Omogućiti brisanje komentara putem dugmeta "Delete"
 * Uraditi push koda
 * Napraviti pull request
+
+# Feature
+Mogućnost ostavljanja recenzije na željenu poslovnicu
+## Item
+Klijent mora biti u mogućnosti da ostavi recenziju, odnosno kritički osvrt na željenu poslovnicu.
+### Task
+* Implementirati izgled forme za ostavljanje recenzije
+* Implementirati validaciju za polja forme
+* Implementirati ispis poruke u slučaju nevalidnih podataka
+* Implementirati slanje podataka sa forme na server
+* Uraditi push koda
+* Napraviti pull request
+## Item
+Klijent mora biti u mogućnosti da ocijeni željenu poslovnicu.
+### Task
+* Implementirati mogućnost ocjenljivanja željene poslovnice
+* Uraditi push koda
+* Napraviti pull request
+
