@@ -40,10 +40,12 @@ class UnansweredQuestions extends Component {
       privilegije: true
     };
   }
+
   static getDerivedStateFromProps(props, state) {
-    console.log(document.cookie);
-    if(getCookie("token")!="") return {prikazati:true};
-    else return {prikazati:false};
+    var tmp = (getCookie("priv") === 'true');
+
+    if(getCookie("token")!="") return {prikazati:true, privilegije:tmp};
+    else return {prikazati:false, privilegije:tmp};
   }
 
   async componentDidMount() {
