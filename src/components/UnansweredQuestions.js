@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import 'antd/dist/antd.css';
-import { Avatar, Form, Button, Input, Layout, Table, message, Badge } from 'antd';
+import { Avatar, Form, Button, Input, Layout, Table, message, Badge, Tooltip } from 'antd';
 import '../UnansweredQuestions.css'
 import Logout from './Logout.js';
 
@@ -36,13 +36,16 @@ class UnansweredQuestions extends Component {
       tekst: null,
       value: '',
       Qnumber: 0,
-      prikazati:false
+      prikazati:false,
+      privilegije: true
     };
   }
+
   static getDerivedStateFromProps(props, state) {
-    console.log(document.cookie);
-    if(getCookie("token")!="") return {prikazati:true};
-    else return {prikazati:false};
+    var tmp = (getCookie("priv") === 'true');
+
+    if(getCookie("token")!="") return {prikazati:true, privilegije:tmp};
+    else return {prikazati:false, privilegije:tmp};
   }
 
   async componentDidMount() {
@@ -133,7 +136,13 @@ class UnansweredQuestions extends Component {
 
         render={(text, record) => (
           <span>
-            <Button onClick = {() => {this.prikazi(record)}}>Reply</Button>
+            {
+              (!this.state.privilegije)?
+              <Tooltip placement="topLeft" title="You have no permissions">
+                <Button onClick = {() => {this.prikazi(record)}} disabled = {true} >Reply</Button>
+              </Tooltip> :
+              <Button onClick = {() => {this.prikazi(record)}} disabled = {false} >Reply</Button>
+            }
           </span>
         )}
       />
