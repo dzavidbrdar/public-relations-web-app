@@ -131,3 +131,13 @@ Klijent mora biti u mogućnosti da ocijeni željenu poslovnicu.
 * Uraditi push koda
 * Napraviti pull request
 
+# Feature
+Mogucnost da klijent vidi odgovorena pitanja
+## Item
+Korisnik (potencijalna mušterija) mora biti u mogućnosti vidjeti odgovore na sva dosad odgovorena pitanja, kako bi bio bolje informisan o stanju stvari.
+### Task
+* Implementirati dobavljanje pitanja koja postavljaju klijenti sa servera
+* Implementirati filtiranje dobavljenih pitanja tako da se odaberu samo odgovorena pitanja
+* Prikazati odgovorena pitanja
+* Uraditi push koda
+* Napraviti pull request
