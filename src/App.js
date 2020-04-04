@@ -9,6 +9,8 @@ import Questions from './components/Questions.js';
 import QuestionAsk from './components/QuestionAsk.js';
 import Login from './components/Login.js';
 import UnansweredQuestions from './components/UnansweredQuestions.js';
+import CommentReview from './components/CommentReview.js';
+import HeaderLogged from './components/HeaderLogged';
 
 function App() {
   return (
@@ -23,6 +25,7 @@ function App() {
         <Route path="/questionask" component={QuestionAsk} />
         <Route path="/login" component={Login} />
         <Route path="/unansweredQuestions" component={UnansweredQuestions}/>
+        <Route path="/commentReview" component={CommentReview}/>
       </div>
     </div>
   </Router>
