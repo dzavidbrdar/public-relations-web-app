@@ -1,0 +1,37 @@
+/*
+      <Collapse accordion style={collapseStyle_ek1} ref="emir">
+        <Panel header="This is panel header 1" key="1">
+          <p>{text}</p>
+        </Panel>
+        <Panel header="This is panel header 2" key="2">
+          <p>{text}</p>
+        </Panel>
+        <Panel header="This is panel header 3" key="3">
+          <p>{text}</p>
+        </Panel>
+      </Collapse>
+      <h2 style={h2Style_ek1}>Returns</h2>
+      <Collapse accordion style={collapseStyle_ek1}>
+        <Panel header="This is panel header 1" key="1">
+          <p>{text}</p>
+        </Panel>
+        <Panel header="This is panel header 2" key="2">
+          <p>{text}</p>
+        </Panel>
+        <Panel header="This is panel header 3" key="3">
+          <p>{text}</p>
+        </Panel>
+      </Collapse>
+      <h2 style={h2Style_ek1}>Reservations</h2>
+      <Collapse accordion style={collapseStyle_ek1}>
+        <Panel header="This is panel header 1" key="1">
+          <p>{text}</p>
+        </Panel>
+        <Panel header="This is panel header 2" key="2">
+          <p>{text}</p>
+        </Panel>
+        <Panel header="This is panel header 3" key="3">
+          <p>{text}</p>
+        </Panel>
+      </Collapse>
+      */

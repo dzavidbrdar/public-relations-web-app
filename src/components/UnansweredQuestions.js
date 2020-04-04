@@ -36,13 +36,16 @@ class UnansweredQuestions extends Component {
       tekst: null,
       value: '',
       Qnumber: 0,
-      prikazati:false
+      prikazati:false,
+      priv:false
     };
   }
   static getDerivedStateFromProps(props, state) {
-    console.log(document.cookie);
+    console.log('bbbbbbbbbbbbbbb'+document.cookie);
     if(getCookie("token")!="") return {prikazati:true};
     else return {prikazati:false};
+    if(getCookie("priv")=="da") return {priv:true};
+    else return {priv:false};
   }
 
   async componentDidMount() {

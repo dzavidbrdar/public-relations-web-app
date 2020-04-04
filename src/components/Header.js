@@ -43,8 +43,9 @@ const loginStyle = {
 
 const navbarStyle = {
     background: "#330956",
+    /*background: "#26272b",*/
     padding:'10px',
-    color:"#E8EEF2"
+    color:'#E8EEF2'
 }
 
 const headerStyle = {

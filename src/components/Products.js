@@ -36,7 +36,7 @@ function Products() {
     useEffect(() => {
         fetchProducts();
     });
-    
+
     return (
         <div>
             <h1>Catalog</h1>

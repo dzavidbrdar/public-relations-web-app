@@ -53,8 +53,12 @@ class Login extends React.Component {
           this.setState({redirect:true});
           let odgObjekat=JSON.parse(aodg);
           let odgToken=odgObjekat.token;
+          let odgPrivilegovan="false";
+          if(odgObjekat.profile.roles.length==2) odgPrivilegovan="true";
+          //if(odgObjekat)
           document.cookie="username="+this.state.username;
           document.cookie="token="+odgToken;
+          document.cookie="priv="+odgPrivilegovan;
         }
         if (ajax.readyState == 4 && ajax.status == 404)
           console.log('greska 404');
