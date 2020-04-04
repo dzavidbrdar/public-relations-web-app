@@ -77,6 +77,18 @@ Radnik koji se prijavi na svoj korisnički račun treba da odgovara na neodgovor
 * Napraviti pull request
 
 # Feature
+Mogućnost ostavljanja komentara na proizvode
+## Item
+Korisnik mora biti u mogućnosti ostaviti komentar na dati artikal. Kako korisnik ne mora biti logovan, prije unošenja komentara nužno je ostaviti lične informacije (ime, prezime i e-mail), kako bi se izbjegli neugodni i neprimjereni komentari.
+### Task
+* Implementirati formu za dodavanje novog komentara
+* Validirati formu za dodavanje novog komentara
+* Napraviti prikaz svih komentara svih korisnika
+* Napraviti prikaz komentara za tačno određeni (odabrani) artikal
+* Uraditi push koda
+* Napraviti pull request
+
+# Feature
 Prikaz lokacija poslovnica
 ## Item
 Korisnik mora biti u mogućnosti da pregleda sve poslovnice, kako bi mogao odabrati željenu prilikom komentarisanja iste.
