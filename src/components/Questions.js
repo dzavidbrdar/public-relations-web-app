@@ -30,17 +30,21 @@ class Questions2 extends Component {
     let i;
     for(i=0;i<filteredJson.length;i++){
       //bezveze podijeliti
-      if(i<3) nizGeneral.push(formirajPanel(filteredJson[i].text,filteredJson[i].answer.text,i));
+      nizGeneral.push(formirajPanel(filteredJson[i].text,filteredJson[i].answer.text,i));
+      /*
       else if(i<7) nizReturns.push(formirajPanel(filteredJson[i].text,filteredJson[i].answer.text,i));
       else nizReservations.push(formirajPanel(filteredJson[i].text,filteredJson[i].answer.text,i));
+      */
     }
     let ref1=this.refs.Q1_ek1;
+    /*
     let ref2=this.refs.Q2_ek1;
     let ref3=this.refs.Q3_ek1;
+    */
 
     ReactDOM.render(<div>{dataGeneral}</div>, ref1);
-    ReactDOM.render(<div>{dataReturns}</div>, ref2);
-    ReactDOM.render(<div>{dataReservations}</div>, ref3);
+    //ReactDOM.render(<div>{dataReturns}</div>, ref2);
+    //ReactDOM.render(<div>{dataReservations}</div>, ref3);
   }
 
   render() {
@@ -49,10 +53,6 @@ class Questions2 extends Component {
       <h1>Frequently Asked Questions</h1>
       <h2 style={h2Style_ek1}>General questions</h2>
       <div ref="Q1_ek1"></div>
-      <h2 style={h2Style_ek1}>Returns</h2>
-      <div ref="Q2_ek1"></div>
-      <h2 style={h2Style_ek1}>Reservations</h2>
-      <div ref="Q3_ek1"></div>
       </div>
     );
   }
