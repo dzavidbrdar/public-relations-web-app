@@ -1,42 +1,45 @@
-.labela{
-    width: 15em;
+.labelaNadija{
+    width: 13em;
     margin: 1.5em auto 1em auto;
     display: block;
     height: 2em;
     text-align: left;
+    font-size: x-large;
     }
-.unos{
+.unosNadija{
     border-radius: 0.3em;
     padding: 0.2em;
-    width: 15em;
+    width: 17em;
     height: 2em;
     display: block;
     margin: 1em auto 1em auto;
+    font-size: large;
 }
-.tekst{
+.tekstNadija{
     border-radius: 0.3em;
     padding: 0.2em;
     margin: 0.5em;
-    width: 15em;
+    width: 17em;
     height: 5em;
     display: block;
     margin: 1em auto 1em auto;
+    font-size: large;
 }
-.button{
+.buttonNadija{
     background-color: rgb(51, 9, 86);
     color: rgb(232, 238, 242);
     border-color: rgb(99, 26, 121);
-    border-radius: 1em;
-    width: 7em;
-    height: 2em;
+    border-radius: 2em;
+    width: 8em;
+    height: 3em;
     margin: 1em auto 1em auto;
     display: block;
 }
-.poruka{
-    font-size: 0.7em;
+.porukaNadija{
+    font-size: 0.8em;
     color: red;
     display: block;
-    width: 21em;
+    width: 27em;
     margin: auto;
     text-align: left;
 }
@@ -47,4 +50,22 @@
     width: 21em;
     margin: 1em auto 1em auto;
     text-align: left;
+}
+#alertmsgNadija{
+    width: 22em;
+    margin: 1em auto;
+    text-align: left;
+}
+.alert-shownNadija{
+    opacity: 1;
+    transition: all 250ms linear;
+}
+  
+.alert-hiddenNadija{
+    opacity: 0;
+    transition: all 250ms linear;
+}
+.recaptchaNadija{
+    margin: 1em auto 1em auto;
+    width: min-content;
 }

@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { Redirect } from 'react-router-dom'
 import '../QuestionAsk.css';
+import { Button } from 'antd';
 
 class Login extends React.Component {
   //3 faze:mounting, updating, unmounting
@@ -105,7 +106,7 @@ class Login extends React.Component {
       <input type="text" name="username" onChange={this.changeHandler} style={inputStyle} placeholder="Username"/>
       <input type="password" name="pass" onChange={this.changeHandler} style={inputStyle} placeholder="Password"/>
       {this.state.errormessage}
-      <input type="submit" value="Login" style={btnStyle}/>
+      <Button type="primary" htmlType="submit">Submit</Button>
       {this.state.odg}
       </form>
     );
@@ -114,10 +115,11 @@ class Login extends React.Component {
 const inputStyle={
   borderRadius: '0.3em',
   padding: '0.2em',
-  width: '15em',
+  width: '17em',
   height: '2em',
   display: 'block',
-  margin: '1em auto 1em auto'
+  margin: '1em auto 1em auto',
+  fontSize: 'large'
 }
 const btnStyle={
   backgroundColor: 'rgb(51, 9, 86)',

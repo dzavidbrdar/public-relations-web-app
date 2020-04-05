@@ -3,6 +3,7 @@ import '../PostComment.css';
 import { Alert } from 'antd';
 import 'antd/dist/antd.css';
 import ReactDOM from 'react-dom';
+import { Button } from 'antd';
 var Recaptcha = require('react-recaptcha');
 
 let recaptchaInstance;
@@ -234,7 +235,7 @@ class PostComment extends Component {
                 expiredCallback={this.expiredCallback}
             />
             </div>
-            <input class="button" type="submit" value="Submit" />
+            <Button type="primary" htmlType="submit">Submit</Button>
           </form>
         );
       }

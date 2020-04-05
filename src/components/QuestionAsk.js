@@ -1,5 +1,14 @@
 import React, { Component } from 'react';
 import '../QuestionAsk.css';
+import { Alert } from 'antd';
+import 'antd/dist/antd.css';
+import ReactDOM from 'react-dom';
+import { Button } from 'antd';
+//import ReCAPTCHA from "react-google-recaptcha";
+var Recaptcha = require('react-recaptcha');
+
+
+let recaptchaInstance;
 
 const validEmailRegex = RegExp(/^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i);
 const validateForm = (errors) => {
@@ -18,6 +27,8 @@ class QuestionAsk extends Component {
           lastname: undefined,
           email: undefined,
           question: undefined,
+          showingAlert: false,
+          recaptcha: false,
           errors: {
             name: '',
             lastname: '',
@@ -28,6 +39,27 @@ class QuestionAsk extends Component {
     
         this.handleInputChange = this.handleInputChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
+        this.onloadCallback = this.onloadCallback.bind(this);
+        this.verifyCallback = this.verifyCallback.bind(this);
+        this.expiredCallback = this.expiredCallback.bind(this);
+      }
+
+      onloadCallback() {
+        //console.log("Captcha loaded.");
+      }
+
+      verifyCallback(){
+        console.log('stisnuto');
+        this.setState({
+          recaptcha: true
+        });
+      }
+
+      expiredCallback(){
+        console.log("isteklo");
+        this.setState({
+          recaptcha: false
+        });
       }
     
       handleInputChange(event) {
@@ -72,9 +104,27 @@ class QuestionAsk extends Component {
     
         this.setState({errors, [name]: value});
       }
+      
       handleSubmit(event) {
         event.preventDefault();
-        if(validateForm(this.state.errors)) {
+        //alert
+        this.setState({
+          showingAlert: true
+        });
+        
+        setTimeout(() => {
+          this.setState({
+            showingAlert: false
+          });
+        }, 2000);
+
+        setTimeout(() => {
+          ReactDOM.render(
+            '', document.getElementById('alertmsgNadija')
+          );
+        }, 2500);
+
+        if(validateForm(this.state.errors) && this.state.recaptcha) {
             var today = new Date();
             var dd = today.getDate(); 
             var mm = today.getMonth() + 1; 
@@ -115,9 +165,16 @@ class QuestionAsk extends Component {
                     email: '',
                     question: ''
                 });
-                alert("Your question has been successfully submitted.");
+                recaptchaInstance.reset();
+                //alert("Your question has been successfully submitted.");
+                ReactDOM.render(
+                  <Alert message="Question successfully submitted." type="success" showIcon />, document.getElementById('alertmsgNadija')
+                );
           }else{
-            alert("Invalid form!");
+            //alert("Invalid form!");
+            ReactDOM.render(
+              <Alert message="Invalid form!" type="error" showIcon />, document.getElementById('alertmsgNadija')
+              );
           }
       }
     
@@ -125,11 +182,12 @@ class QuestionAsk extends Component {
         const {errors} = this.state;
         return (
           <form onSubmit={this.handleSubmit}>
-              <label class="labela">
-                  Whats's Your Queston?
+            <div id='alertmsgNadija' className={this.state.showingAlert ? 'alert-shownNadija' : 'alert-hiddenNadija'}></div>
+              <label class="labelaNadija">
+                  Whats's Your Question?
               </label>
             <input
-                class="unos"
+                class="unosNadija"
                 name="name"
                 placeholder="Name"
                 type="text"
@@ -137,9 +195,9 @@ class QuestionAsk extends Component {
                 onChange={this.handleInputChange} 
                 required/>
                 {errors.name.length > 0 && 
-                <span className='error poruka'>{errors.name}</span>}
+                <span className='error porukaNadija'>{errors.name}</span>}
             <input
-                class="unos"
+                class="unosNadija"
                 name="lastname"
                 placeholder="Last Name"
                 type="text"
@@ -147,9 +205,9 @@ class QuestionAsk extends Component {
                 onChange={this.handleInputChange} 
                 required/>
                 {errors.lastname.length > 0 && 
-                <span className='error poruka'>{errors.lastname}</span>}
+                <span className='error porukaNadija'>{errors.lastname}</span>}
             <input
-                class="unos"
+                class="unosNadija"
                 name="email"
                 type="text"
                 placeholder="E-mail"
@@ -157,9 +215,9 @@ class QuestionAsk extends Component {
                 onChange={this.handleInputChange} 
                 required/>
                 {errors.email.length > 0 && 
-                <span className='error poruka'>{errors.email}</span>}
+                <span className='error porukaNadija'>{errors.email}</span>}
             <textarea
-                class="tekst"
+                class="tekstNadija"
                 name="question"
                 type="text"
                 placeholder="Question"
@@ -167,8 +225,18 @@ class QuestionAsk extends Component {
                 onChange={this.handleInputChange} 
                 required/>
                 {errors.question.length > 0 && 
-                <span className='error poruka'>{errors.question}</span>}
-            <input class="button" type="submit" value="Submit" />
+                <span className='error porukaNadija'>{errors.question}</span>}
+            <div className='recaptchaNadija'>
+            <Recaptcha 
+                ref={e => recaptchaInstance = e}
+                sitekey="6LevSeYUAAAAAPJ8E2g1TCP4zwAgHWyryba2H7bH"
+                render="explicit"
+                onloadCallback={this.onloadCallback}
+                verifyCallback={this.verifyCallback}
+                expiredCallback={this.expiredCallback}
+            />
+            </div>
+            <Button type="primary" htmlType="submit">Submit</Button>
           </form>
         );
       }

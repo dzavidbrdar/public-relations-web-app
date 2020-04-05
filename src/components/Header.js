@@ -1,70 +1,94 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Avatar } from 'antd';
+import { UserOutlined } from '@ant-design/icons';
 
 function Header() {
-    const linkHome = <Link style={linkStyle} to="/">Home</Link>;
-    const linkProducts = <Link style={linkStyle} to="/products">Products</Link>;
-    const linkContact = <Link style={linkStyle} to="/contact">Contact</Link>;
-    const linkQuestions = <Link style={linkStyle} to="/questions">Q&A</Link>;
-    const linkAsk = <Link style={linkStyle} to="/questionask">Ask a Queston</Link>;
-    const avatarSlika = <Avatar size="large" style={{ fontSize: '17px', color: 'white', backgroundColor: '#4272f5', marginRight: '5px' }}>?</Avatar>;
-    const linkLogin = <Link style={blackStyle} to="/login">Log in</Link>;
-    const linkComments = <Link style={linkStyle} to="/commentsPublic">Comments</Link>;
+    
+    const linkHome = <Link class="effect-underline" style={linkStyle} to="/">Home</Link>;
+    const linkProducts = <Link class="effect-underline" style={linkStyle} to="/products">Products</Link>;
+    const linkContact = <Link class="effect-underline" style={linkStyle} to="/contact">Contact</Link>;
+    const linkQuestions = <Link class="effect-underline" style={linkStyle} to="/questions">Q&A</Link>;
+    const linkAsk = <Link class="effect-underline" style={linkStyle} to="/questionask">Ask a Queston</Link>;
+    //const avatarSlika = <Avatar class="effect-underline" size="medium" shape= "square" icon={<UserOutlined />} style = {{background: '#f56a00'}}></Avatar>;
+    const avatarSlika = <Avatar class="effect-underline" size="medium" shape= "square" icon={<UserOutlined />} style = {{background: '#1890ff'}}></Avatar>;
+    const linkLogin = <Link class="effect-underline" style={blackStyle} to="/login">Log in</Link>;
+    const linkComments = <Link class="effect-underline" style={linkStyle} to="/commentsPublic">Comments</Link>;
 
     return (
         <div>
-            <header style={headerStyle}>
-            <link href="https://fonts.googleapis.com/css?family=Stoke&display=swap" rel="stylesheet"/>
-                <h1>PUBLIC RELATIONS</h1>
-            </header>
+            <div>
+                <header style={headerStyle}>
+                    <h1 style={{ color: 'white', margin: 0, fontSize: '55px', lineHeight: '40px', paddingTop: '30px', textShadow: 'black 5px 5px 3px'}}>Public Relations</h1>
+                    <h2 style={{color: 'white', opacity: '0.6', fontSize: '20px', margin: 0, lineHeight: '35px', paddingLeft: '150px'}}>#weStandByYourSide!</h2>
+                </header>
+            </div>
             <div style={navbarStyle}>
-                <div style={linkoviStyle}>{linkHome}  |  {linkProducts}  |  {linkComments}  |  {linkContact}  |  {linkQuestions}  |  {linkAsk}</div>
-                <div style={loginStyle}>{avatarSlika}{linkLogin}</div>
+                <div style={linkoviStyle}> {linkHome}  |  {linkProducts}  |  {linkComments}  |  {linkContact}  |  {linkQuestions}  |  {linkAsk}</div>
+               <div style={loginStyle}>{avatarSlika}  {linkLogin}</div>
+                
             </div>
         </div>
+        
     );
 }
 
 const blackStyle = {
-    color: 'black',
-    fontSize: '17px'
+    color: 'white',
+    fontFamily: 'Trebuchet MS',
+    fontSize: '17px',
+    opacity: '0.85'
 }
 
 const linkoviStyle = {
-    display: 'inline'
+    display: 'inline',
+    wordSpacing: '10px',
+    fontSize: '16px',
+    opacity: '0.85'
 }
 
 const loginStyle = {
     position: 'absolute',
     right: '40px',
-    top: '25px',
+    top: '40px',
     display: 'inline'
 }
 
 const navbarStyle = {
-    background: "#330956",
+    background: 'rgba(0,109,117,1)',
+    //background: 'rgba(0,24,144,255)',
+    //background: 'rgba(24,144,255,1)',
     padding:'10px',
-    color:"#E8EEF2"
+    color:"#E8EEF2",
+    fontFamily: 'Trebuchet MS',
+    fontSize: '15px',
+    width: '100vw'
 }
 
 const headerStyle = {
-    background: '#E8EEF2',
+    background: 'rgb(0,35,41)',
+    //background: 'rgb(0,16,97)',
+    background: 'linear-gradient(180deg, rgba(0,35,41,1) 0%, rgba(0,109,117,1) 100%)',
+    //background: 'linear-gradient(180deg, rgba(0,16,97,163) 20%, rgba(0,24,144,255) 70%)',
+    //background: 'rgb(2,0,36)',
+    //background: 'linear-gradient(180deg, rgba(2,0,36,1) 0%, rgba(9,9,121,1) 50%, rgba(0,212,255,1) 100%)',
+    //background: 'rgb(2,0,36)',
+    //background: 'linear-gradient(180deg, rgba(2,0,36,1) 0%, rgba(7,56,152,1) 60%, rgba(24,144,255,1) 100%)',
+    //background: 'rgb(34,193,195)',
+    //background: 'linear-gradient(0deg, rgba(34,193,195,1) 0%, rgba(253,187,45,1) 100%)',
+    //background: 'rgb(24,144,255)',
+    //background: 'linear-gradient(0deg, rgba(24,144,255,1) 0%, rgba(253,187,45,1) 100%)',
     color: '#330956',
-    textAlign: 'center',
-    padding: '2px',
-    fontFamily: 'Stoke',
-    fontSize: '20px'
+    textAlign: 'left',
+    paddingTop: '15px',
+    paddingLeft: '50px',
+    fontFamily: 'Trebuchet MS'
 }
 
 const linkStyle = {
     padding:'10px',
     color: '#fff',
     textDecoration: 'none'
-}
-
-const naslovStyle = {
-    fontFamily: 'Arial'
 }
 
 export default Header;
