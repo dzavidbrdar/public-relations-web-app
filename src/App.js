@@ -16,27 +16,39 @@ import Footer from './components/Footer.js';
 import './css4.1/_source/bootstrapcustom.css';
 import './components/Footer.css';
 
-function App() {
-  return (
-    <Router>
-    <div className="App">
+class App extends React.Component {
+  constructor(props){
+    super(props);
+    this.headerHandler = this.headerHandler.bind(this);
+    this.headerElement=React.createRef();
+  }
 
-        <Header />
-        <div className="sadrzaj">
-        <Route exact path="/" component={Dashboard} />
-        <Route path="/products" component={Products} />
-        <Route path="/questions" component={Questions} />
-        <Route path="/questions2" component={Questions2} />
-        <Route path="/contact" component={Contact} />
-        <Route path="/questionask" component={QuestionAsk} />
-        <Route path="/login" component={Login} />
-        <Route path="/unansweredQuestions" component={UnansweredQuestions}/>
-        </div>
-        <Footer />
+  headerHandler=(logged)=>{
+    if(this.headerElement.current!=null) this.headerElement.current.changeLogged(logged);//provjeriti ako se prekine login ili logout refreshom
+  }
+  render(){
+    return (
+      <Router>
+      <div className="App">
 
-    </div>
-  </Router>
-  );
+          <Header ref={this.headerElement} />
+          <div className="sadrzaj">
+          <Route exact path="/" render={(props) => <Dashboard {...props} headerHandler={this.headerHandler}/>} />
+          <Route path="/products" component={Products} />
+          <Route path="/questions" component={Questions} />
+          <Route path="/questions2" component={Questions2} />
+          <Route path="/contact" component={Contact} />
+          <Route path="/questionask" component={QuestionAsk} />
+          <Route path="/login" component={Login} />
+          <Route path="/unansweredQuestions" render={(props) => <UnansweredQuestions {...props} headerHandler={this.headerHandler}/>}/>
+          </div>
+          <Footer />
+
+      </div>
+    </Router>
+    );
+  }
 }
+
 
 export default App;

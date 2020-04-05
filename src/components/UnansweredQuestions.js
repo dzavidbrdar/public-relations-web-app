@@ -42,10 +42,11 @@ class UnansweredQuestions extends Component {
   }
   static getDerivedStateFromProps(props, state) {
     console.log('bbbbbbbbbbbbbbb'+document.cookie);
-    if(getCookie("token")!="") return {prikazati:true};
+    if(getCookie("token")!="") {
+      if(!state.prikazati) props.headerHandler(true);//zbog refresha..
+      return {prikazati:true};
+    }
     else return {prikazati:false};
-    if(getCookie("priv")=="da") return {priv:true};
-    else return {priv:false};
   }
 
   async componentDidMount() {
