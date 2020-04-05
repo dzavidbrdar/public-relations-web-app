@@ -64,18 +64,15 @@ class Contact extends Component {
             items.push(
                 <Col className="gutter-row" span={6}>
                     <Card title={element.businessName + " " + element.id} style={{ width: 300 }} hoverable="true" 
-                    actions={[  <button
-                      class="toggle-button"
-                      id="centered-toggle-button"
+                    actions={[  <Button type = "link"
                       onClick={e => {
                         this.showModal(e);
                         this.state.clickedElement = element;
                         console.log(this.state.clickedElement);
                       }}
                     >
-                      {" "}
-                      Rate{" "}
-                    </button>, <Button type="link" onClick={this.showDrawer}>See comments</Button> ]}>
+                      Rate
+                    </Button>, <Button type="link" onClick={this.showDrawer}>See comments</Button> ]}>
                         <p style = {{fontWeight: "bold"}}><EnvironmentOutlined /> {element.country + "-"+ element.city + ", " +element.address} </p>
                         <p><PhoneOutlined /> {element.phoneNumber}</p>
                         <p><MailOutlined /> {element.email}</p>
