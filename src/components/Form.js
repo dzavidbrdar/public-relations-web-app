@@ -73,8 +73,8 @@ class Forma extends Component {
 
             case 'question':
               errors.question =
-                value.length < 3
-                  ? 'Comment must be at least 3 characters long!'
+                value.length < 2
+                  ? 'Comment must be at least 2 characters long!'
                   : '';
               break;
             default:
@@ -86,39 +86,14 @@ class Forma extends Component {
       handleSubmit(event) {
         event.preventDefault();
         if(validateForm(this.state.errors)) {
-            /*var today = new Date();
-            var dd = today.getDate();
-            var mm = today.getMonth() + 1;
-            var yyyy = today.getFullYear();
-
-            if (dd < 10) {
-                dd = '0' + dd;
-            }
-            if (mm < 10) {
-                mm = '0' + mm;
-            }
-            var today = dd + '.' + mm + '.' + yyyy;
-
-            var dateObj = new Date();
-            var hours = dateObj.getHours();
-            var minutes = dateObj.getMinutes();
-
-            var timeString = hours.toString().padStart(2, '0') + ':' + minutes.toString().padStart(2, '0');
-            */
             const object = {};
             object.firstName=this.state.name;
             object.lastName=this.state.lastname;
             object.email = this.state.email;
             object.text = this.state.question;
-            //object.nameSurname = this.state.name + " " + this.state.lastname;
-
-            //object.date = today;
-            //object.time = timeString;
             object.starReview=this.state.rating;
-            //object.office = this.props.valueFromParent;
-
-
             console.log(object);
+            
             const requestOptions = {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
@@ -134,6 +109,8 @@ class Forma extends Component {
                     question: ''
                 });
                 alert("Your question has been successfully submitted.");
+                var mod= document.getElementById('btnCancel');
+                mod.click();
           }else{
             alert("Invalid form!");
           }

@@ -98,7 +98,7 @@ class Contact extends Component {
                     { items }
                 </Row>
 
-                <Modalni onClose={this.showModal} show={this.state.show}>
+                <Modalni onClose={this.showModal} show={this.state.show} valueFromParent={this.state.clickedElement}>
                   <Forma valueFromParent={this.state.clickedElement} ></Forma>
                 </Modalni>
 
