@@ -1,0 +1,72 @@
+.labela {
+    width: 30em;
+    margin: 1.5em auto 1em auto;
+    display: block;
+    height: 2em;
+    text-align: center;
+    font-size: x-large;
+    }
+
+.unos{
+    border-radius: 0.3em;
+    padding: 0.2em;
+    width: 17em;
+    height: 2em;
+    display: block;
+    margin: 1em auto 1em auto;
+    font-size: large;
+}
+.tekst{
+    border-radius: 0.3em;
+    padding: 0.2em;
+    margin: 0.5em;
+    width: 17em;
+    height: 5em;
+    display: block;
+    margin: 1em auto 1em auto;
+    font-size: large;
+}
+.button{
+    background-color: rgb(51, 9, 86);
+    color: rgb(232, 238, 242);
+    border-color: rgb(99, 26, 121);
+    border-radius: 2em;
+    width: 8em;
+    height: 3em;
+    margin: 1em auto 1em auto;
+    display: block;
+}
+.poruka{
+    font-size: 0.8em;
+    color: red;
+    display: block;
+    width: 27em;
+    margin: auto;
+    text-align: left;
+}
+.obavijest{
+    font-size: 0.7em;
+    color: red;
+    display: block;
+    width: 21em;
+    margin: 1em auto 1em auto;
+    text-align: left;
+}
+#alertmsg{
+    width: 22em;
+    margin: 1em auto;
+    text-align: left;
+}
+.alert-shown {
+    opacity: 1;
+    transition: all 250ms linear;
+}
+  
+.alert-hidden {
+    opacity: 0;
+    transition: all 250ms linear;
+}
+.recaptcha{
+    margin: 1em auto 1em auto;
+    width: min-content;
+}
