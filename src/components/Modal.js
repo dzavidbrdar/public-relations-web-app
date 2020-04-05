@@ -1,5 +1,5 @@
 import React from "react";
-import "./Modal.css";
+import "../Modal.css";
 import PropTypes from "prop-types";
 
 export default class Modal extends React.Component {
@@ -11,12 +11,12 @@ export default class Modal extends React.Component {
       return null;
     }
     return (
-      <div class="modal" id="modal">
-        <h2>Make a review</h2> 
-        <div class="content">        
+      <div class="irma modal" id="modal">
+        <h2>Make a review</h2>
+        <div class="irma content">
           {this.props.children}</div>
-        <div class="actions">
-          <button class="toggle-button" onClick={this.onClose}>
+        <div class="irma  actions">
+          <button class="irma toggle-button" onClick={this.onClose}>
             Close
           </button>
         </div>

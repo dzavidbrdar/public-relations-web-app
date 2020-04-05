@@ -20,7 +20,7 @@ class Forma extends Component {
           email: undefined,
           question: undefined,
           rating: 0,
-          
+
           errors: {
             name: '',
             lastname: '',
@@ -28,11 +28,11 @@ class Forma extends Component {
             question: ''
           }
         };
-    
+
         this.handleInputChange = this.handleInputChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
       }
-     
+
       onStarClick(nextValue, prevValue, name) {
         this.setState({rating: nextValue});
       }
@@ -48,7 +48,7 @@ class Forma extends Component {
         let errors = this.state.errors;
 
         switch (name) {
-            case 'name': 
+            case 'name':
             if(/^[a-zA-Z ]+$/.test(value)){
                 errors.name = ''
             }
@@ -56,7 +56,7 @@ class Forma extends Component {
                 errors.name = "Name is not valid!"
             }
               break;
-            case 'lastname': 
+            case 'lastname':
             if(/^[a-zA-Z ]+$/.test(value)){
                 errors.lastname = ''
             }
@@ -64,15 +64,15 @@ class Forma extends Component {
                 errors.lastname = "Last name is not valid!"
             }
               break;
-            case 'email': 
-              errors.email = 
+            case 'email':
+              errors.email =
                 validEmailRegex.test(value)
                   ? ''
                   : 'Email is not valid!';
               break;
-            
-            case 'question': 
-              errors.question = 
+
+            case 'question':
+              errors.question =
                 value.length < 3
                   ? 'Comment must be at least 3 characters long!'
                   : '';
@@ -80,25 +80,25 @@ class Forma extends Component {
             default:
               break;
           }
-    
+
         this.setState({errors, [name]: value});
       }
       handleSubmit(event) {
         event.preventDefault();
         if(validateForm(this.state.errors)) {
             /*var today = new Date();
-            var dd = today.getDate(); 
-            var mm = today.getMonth() + 1; 
-            var yyyy = today.getFullYear(); 
-            
-            if (dd < 10) { 
-                dd = '0' + dd; 
-            } 
-            if (mm < 10) { 
-                mm = '0' + mm; 
-            } 
-            var today = dd + '.' + mm + '.' + yyyy; 
-            
+            var dd = today.getDate();
+            var mm = today.getMonth() + 1;
+            var yyyy = today.getFullYear();
+
+            if (dd < 10) {
+                dd = '0' + dd;
+            }
+            if (mm < 10) {
+                mm = '0' + mm;
+            }
+            var today = dd + '.' + mm + '.' + yyyy;
+
             var dateObj = new Date();
             var hours = dateObj.getHours();
             var minutes = dateObj.getMinutes();
@@ -111,13 +111,13 @@ class Forma extends Component {
             object.email = this.state.email;
             object.text = this.state.question;
             //object.nameSurname = this.state.name + " " + this.state.lastname;
-           
+
             //object.date = today;
             //object.time = timeString;
             object.starReview=this.state.rating;
             //object.office = this.props.valueFromParent;
 
-            
+
             console.log(object);
             const requestOptions = {
                 method: 'POST',
@@ -138,78 +138,82 @@ class Forma extends Component {
             alert("Invalid form!");
           }
       }
-    
+
       render() {
-       
+
         const {errors} = this.state;
         const { rating } = this.state;
-        return (              
+        return (
           <form onSubmit={this.handleSubmit}>
-           <div class="block">
-            <label>First name:</label>
+           <div class="irma block">
+            <label class="irma">First name:</label>
             <input
+                class="irma"
                 name="name"
                 placeholder="First name"
                 type="text"
                 value={this.state.name}
-                onChange={this.handleInputChange} 
+                onChange={this.handleInputChange}
                 required/>
-                {errors.name.length > 0 && 
-                <span className='error'>{errors.name}</span>}
+                {errors.name.length > 0 &&
+                <span className='irma error'>{errors.name}</span>}
             </div>
-            <div class="block">
-            <label>Last name:</label>
+            <div class="irma block">
+            <label class="irma">Last name:</label>
             <input
+                class="irma"
                 name="lastname"
                 placeholder="Last Name"
                 type="text"
                 value={this.state.lastname}
-                onChange={this.handleInputChange} 
+                onChange={this.handleInputChange}
                 required/>
-                {errors.lastname.length > 0 && 
-                <span className='error'>{errors.lastname}</span>}
+                {errors.lastname.length > 0 &&
+                <span className='irma error'>{errors.lastname}</span>}
             </div>
-            <div class="block">
-            <label>Email:</label>
+            <div class="irma block">
+            <label class="irma">Email:</label>
             <input
+                class="irma"
                 name="email"
                 type="text"
                 placeholder="E-mail"
                 value={this.state.email}
-                onChange={this.handleInputChange} 
+                onChange={this.handleInputChange}
                 required/>
-                {errors.email.length > 0 && 
-                <span className='error'>{errors.email}</span>}
+                {errors.email.length > 0 &&
+                <span className='irma error'>{errors.email}</span>}
                 </div>
                 <br/>
-                <div class="rating-label">
-                 <StarRatingComponent 
-                      name="rate1" 
+                <div class="irma rating-label">
+                 <StarRatingComponent
+                      name="rate1"
                       starCount={5}
                       value={rating}
 
                       onStarClick={this.onStarClick.bind(this)}
                   />
                 </div>
-            <div class="block">      
+            <div class="irma block">
             <textarea
+                class="irma"
                 name="question"
                 type="text"
                 placeholder="Share your own experience"
                 value={this.state.question}
-                onChange={this.handleInputChange} 
+                onChange={this.handleInputChange}
                 /*onClick={this.handleClick}*/
                 required/>
-                {errors.question.length > 0 && 
-                <span className='error'>{errors.question}</span>}
+                {errors.question.length > 0 &&
+                <span className='irma error'>{errors.question}</span>}
             </div>
-            <div class="block"> 
-              <input type="submit" value="Post" />              
+            <div class="irma block">
+              <input class="irma" type="submit" value="Post" />
             </div>
           </form>
-          
+
         );
       }
 }
- 
+
 export default Forma;
