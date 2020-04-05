@@ -50,7 +50,7 @@ class Header extends React.Component {
                 </header>
             </div>
             <div style={navbarStyle}>
-                <div style={linkoviStyle}> {linkHome}  |  {linkProducts}  |  {linkComments}  |  {linkContact}  |  {linkQuestions}</div>
+                <div style={linkoviStyle}> {linkHome}  |  {linkProducts}  |  {linkComments}  |  {linkContact}  |  {linkQuestions}  |  {linkAsk}</div>
                <div style={loginStyle}>{avatarSlika}  {linkLogin}</div>
 
             </div>
