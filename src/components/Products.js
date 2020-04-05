@@ -1,13 +1,16 @@
 import React, { useState, useEffect } from 'react';
 import Gallery from 'react-grid-gallery';
-import { Spin } from 'antd';
+import { Spin, Button } from 'antd';
+import { Redirect } from "react-router-dom";
 
 function Products() {
 
     const url = 'https://main-server-si.herokuapp.com/api/products';
     const [products, setProducts] = useState([]);
     const [images, setImages] = useState([]);
+    const [redirectaj, setRedirectaj] = useState(false);
     const [loading, setLoading] = useState(true);
+    const [currentPictureIndex, setCurrentPictureIndex] = useState(0);
     const thumbnailWidth = 500;
     const thumbnailHeight = 400;
 
@@ -36,11 +39,24 @@ function Products() {
     useEffect(() => {
         fetchProducts();
     });
+
+    const galerija = <Gallery images={images} margin={10} 
+    currentImageWillChange={(index) => { setCurrentPictureIndex(index); }} 
+    customControls={[
+        <Button type="primary" onClick={() => { setRedirectaj(true); }}>Leave a Comment</Button>
+    ]}/>;
+
+    if (redirectaj) {
+        return (<Redirect to = {{ 
+            pathname: '/postcomment', 
+            state: { productName: products[currentPictureIndex].name, id: products[currentPictureIndex].id }}}/>
+        );
+    }
     
     return (
         <div>
             <h1>Catalog</h1>
-            { loading ? <Spin size="large" /> : <div style={frameStyle}><Gallery images={images} margin={10}/></div> }
+            { loading ? <Spin size="large" /> : <div style={frameStyle}>{galerija}</div> }
         </div>
     );
 }

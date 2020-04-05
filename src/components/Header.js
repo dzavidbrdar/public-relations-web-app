@@ -10,6 +10,7 @@ function Header() {
     const linkAsk = <Link style={linkStyle} to="/questionask">Ask a Queston</Link>;
     const avatarSlika = <Avatar size="large" style={{ fontSize: '17px', color: 'white', backgroundColor: '#4272f5', marginRight: '5px' }}>?</Avatar>;
     const linkLogin = <Link style={blackStyle} to="/login">Log in</Link>;
+    const linkComments = <Link style={linkStyle} to="/commentsPublic">Comments</Link>;
 
     return (
         <div>
@@ -18,7 +19,7 @@ function Header() {
                 <h1>PUBLIC RELATIONS</h1>
             </header>
             <div style={navbarStyle}>
-                <div style={linkoviStyle}>{linkHome}  |  {linkProducts}  |  {linkContact}  |  {linkQuestions}  |  {linkAsk}</div>
+                <div style={linkoviStyle}>{linkHome}  |  {linkProducts}  |  {linkComments}  |  {linkContact}  |  {linkQuestions}  |  {linkAsk}</div>
                 <div style={loginStyle}>{avatarSlika}{linkLogin}</div>
             </div>
         </div>
