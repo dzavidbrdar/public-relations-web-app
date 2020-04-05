@@ -11,6 +11,7 @@ import PostComment from './components/PostComment.js';
 import Login from './components/Login.js';
 import UnansweredQuestions from './components/UnansweredQuestions.js';
 import CommentsPublic from './components/CommentsPublic';
+import CommentReview from'./components/CommentReview.js';
 
 function App() {
   return (
@@ -27,6 +28,7 @@ function App() {
         <Route path="/login" component={Login} />
         <Route path="/unansweredQuestions" component={UnansweredQuestions}/>
         <Route path="/commentsPublic" component={CommentsPublic}/>
+        <Route path="/commentReview" component={CommentReview}/>
       </div>
     </div>
   </Router>
