@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import {message} from 'antd';
 import '../Form.css';
 import StarRatingComponent from 'react-star-rating-component';
 
@@ -108,7 +109,7 @@ class Forma extends Component {
                     email: '',
                     question: ''
                 });
-                alert("Your question has been successfully submitted.");
+                message.success('Your review has been successfully submitted!');
                 var mod= document.getElementById('btnCancel');
                 mod.click();
           }else{
