@@ -3,19 +3,28 @@ import { Link } from 'react-router-dom';
 import { Avatar } from 'antd';
 import { UserOutlined } from '@ant-design/icons';
 
-function Header() {
-    
-    const linkHome = <Link class="effect-underline" style={linkStyle} to="/">Home</Link>;
-    const linkProducts = <Link class="effect-underline" style={linkStyle} to="/products">Products</Link>;
-    const linkContact = <Link class="effect-underline" style={linkStyle} to="/contact">Contact</Link>;
-    const linkQuestions = <Link class="effect-underline" style={linkStyle} to="/questions">Q&A</Link>;
-    const linkAsk = <Link class="effect-underline" style={linkStyle} to="/questionask">Ask a Queston</Link>;
-    //const avatarSlika = <Avatar class="effect-underline" size="medium" shape= "square" icon={<UserOutlined />} style = {{background: '#f56a00'}}></Avatar>;
-    const avatarSlika = <Avatar class="effect-underline" size="medium" shape= "square" icon={<UserOutlined />} style = {{background: '#1890ff'}}></Avatar>;
-    const linkLogin = <Link class="effect-underline" style={blackStyle} to="/login">Log in</Link>;
-    const linkComments = <Link class="effect-underline" style={linkStyle} to="/commentsPublic">Comments</Link>;
 
-    return (
+class Header extends React.Component {
+  constructor(props){
+    super(props);
+    this.state={
+      logged:false
+    }
+  }
+
+  static getDerivedStateFromProps(props, state) {
+    if(getCookie("token")!="") return{logged:true};
+    else return{logged:false};
+  }
+
+  changeLogged=(stanje)=>{
+    console.log('pozvana changeLogged()');
+    if(stanje!=this.state) this.setState({logged:stanje});
+  }
+
+  render(){
+    if(this.state.logged){
+      return (
         <div>
             <div>
                 <header style={headerStyle}>
@@ -24,13 +33,46 @@ function Header() {
                 </header>
             </div>
             <div style={navbarStyle}>
-                <div style={linkoviStyle}> {linkHome}  |  {linkProducts}  |  {linkComments}  |  {linkContact}  |  {linkQuestions}  |  {linkAsk}</div>
-               <div style={loginStyle}>{avatarSlika}  {linkLogin}</div>
-                
+                <div style={linkoviStyle}> {linkHome}  |  {linkProducts}  |  {linkCommentReview}  |  {linkUnansweredQuestions}</div>
+               <div style={loginStyle}>{avatarSlika}  {linkLogout}</div>
+
             </div>
         </div>
-        
-    );
+      );
+    }
+    else
+      return (
+        <div>
+            <div>
+                <header style={headerStyle}>
+                    <h1 style={{ color: 'white', margin: 0, fontSize: '55px', lineHeight: '40px', paddingTop: '30px', textShadow: 'black 5px 5px 3px'}}>Public Relations</h1>
+                    <h2 style={{color: 'white', opacity: '0.6', fontSize: '20px', margin: 0, lineHeight: '35px', paddingLeft: '150px'}}>#weStandByYourSide!</h2>
+                </header>
+            </div>
+            <div style={navbarStyle}>
+                <div style={linkoviStyle}> {linkHome}  |  {linkProducts}  |  {linkComments}  |  {linkContact}  |  {linkQuestions}</div>
+               <div style={loginStyle}>{avatarSlika}  {linkLogin}</div>
+
+            </div>
+        </div>
+      );
+  }
+}
+
+let getCookie=(cname)=>{
+  var name = cname + "=";
+  var decodedCookie = decodeURIComponent(document.cookie);
+  var ca = decodedCookie.split(';');
+  for(var i = 0; i <ca.length; i++) {
+    var c = ca[i];
+    while (c.charAt(0) == ' ') {
+      c = c.substring(1);
+    }
+    if (c.indexOf(name) == 0) {
+      return c.substring(name.length, c.length);
+    }
+  }
+  return "";
 }
 
 const blackStyle = {
@@ -90,5 +132,25 @@ const linkStyle = {
     color: '#fff',
     textDecoration: 'none'
 }
+
+let logOut=()=>{
+  document.cookie="username=";
+  document.cookie="token=";
+}
+
+const linkHome = <Link class="effect-underline" style={linkStyle} to="/">Home</Link>;
+const linkProducts = <Link class="effect-underline" style={linkStyle} to="/products">Products</Link>;
+const linkContact = <Link class="effect-underline" style={linkStyle} to="/contact">Contact</Link>;
+const linkQuestions = <Link class="effect-underline" style={linkStyle} to="/questions">Q&A</Link>;
+const linkAsk = <Link class="effect-underline" style={linkStyle} to="/questionask">Ask a Queston</Link>;
+//const avatarSlika = <Avatar class="effect-underline" size="medium" shape= "square" icon={<UserOutlined />} style = {{background: '#f56a00'}}></Avatar>;
+const avatarSlika = <Avatar class="effect-underline" size="medium" shape= "square" icon={<UserOutlined />} style = {{background: '#1890ff'}}></Avatar>;
+const linkLogin = <Link class="effect-underline" style={blackStyle} to="/login">Log in</Link>;
+const linkComments = <Link class="effect-underline" style={linkStyle} to="/commentsPublic">Comments</Link>;
+
+const linkUnansweredQuestions = <Link class="effect-underline" style={linkStyle} to="/unansweredQuestions">Answer Questions</Link>;
+const linkCommentReview = <Link class="effect-underline" style={linkStyle} to="/commentReview">Review Comments</Link>;
+const linkLogout = <Link class="effect-underline" style={blackStyle} to="/" onClick={logOut}>Log out</Link>;
+
 
 export default Header;

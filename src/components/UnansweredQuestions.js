@@ -44,7 +44,10 @@ class UnansweredQuestions extends Component {
   static getDerivedStateFromProps(props, state) {
     var tmp = (getCookie("priv") === 'true');
 
-    if(getCookie("token")!="") return {prikazati:true, privilegije:tmp};
+    if(getCookie("token")!="") {
+      if(!state.prikazati) props.headerHandler(true);
+      return {prikazati:true, privilegije:tmp};
+    }
     else return {prikazati:false, privilegije:tmp};
   }
 
