@@ -2,8 +2,10 @@ import React, { Component } from 'react';
 import { MailOutlined, PhoneOutlined, EnvironmentOutlined, HourglassOutlined } from '@ant-design/icons';
 import { Card, Modal, BackTop, Button, Empty } from 'antd'
 import { Row, Col, Statistic, Spin, Drawer } from 'antd';
+import Modalni from "./Modal.js";
+import Forma from "./Form.js";
 
-const Komentari = ({ onClose, visibleDrawer }) => (
+const Komentari = ({onClose, visibleDrawer}) => (
     <Drawer placement="right" title="Comment section for selected Office"
           closable={true}
           onClose={onClose}
@@ -17,6 +19,9 @@ const Komentari = ({ onClose, visibleDrawer }) => (
 );
 
 class Contact extends Component {
+  state = {
+    show: false
+  };
     constructor() {
         super();
         this.state = {
@@ -24,7 +29,8 @@ class Contact extends Component {
             brojPoslovnica: 0,
             visibleRate: false,
             visibleDrawer: false,
-            ucitavanje: false
+            ucitavanje: false,
+            clickedElement: []
         };
     }
 
@@ -39,38 +45,10 @@ class Contact extends Component {
         });
     }
 
-    //prikazivanje rate boxa
-    showModal = () => {
-        this.setState({
-          visibleRate: true,
-        });
-    };
-    
-    //submittanje ratea 
-    handleOk = e => {
-        //ovdje treba pokupiti podatke s forme ratea i poslati APIju
-        this.setState({
-          visibleRate: false,
-        });
-    };
-    
-    //cancel rate box
-    handleCancel = e => {
-        this.setState({
-          visibleRate: false,
-        });
-    };
-
-    showDrawer = () => {
-        this.setState({
-          visibleDrawer: true,
-        });
-    };
-    
-    onClose = () => {
-        this.setState({
-          visibleDrawer: false,
-        });
+    showModal = e => {
+      this.setState({
+        show: !this.state.show
+      });
     };
 
     render() { 
@@ -80,7 +58,18 @@ class Contact extends Component {
             items.push(
                 <Col className="gutter-row" span={6}>
                     <Card title={element.businessName + " " + element.id} style={{ width: 300 }} hoverable="true" 
-                    actions={[ <Button type="link" onClick={this.showModal} >Rate</Button>, <Button type="link" onClick={this.showDrawer}>See comments</Button> ]}>
+                    actions={[  <button
+                      class="toggle-button"
+                      id="centered-toggle-button"
+                      onClick={e => {
+                        this.showModal(e);
+                        this.state.clickedElement = element;
+                        console.log(this.state.clickedElement);
+                      }}
+                    >
+                      {" "}
+                      Rate{" "}
+                    </button>, <Button type="link" onClick={this.showDrawer}>See comments</Button> ]}>
                         <p style = {{fontWeight: "bold"}}><EnvironmentOutlined /> {element.country + "-"+ element.city + ", " +element.address} </p>
                         <p><PhoneOutlined /> {element.phoneNumber}</p>
                         <p><MailOutlined /> {element.email}</p>
@@ -100,13 +89,11 @@ class Contact extends Component {
                     { items }
                 </Row>
 
-                <Modal title="Rate this office" visible={this.state.visibleRate} onOk={this.handleOk} onCancel={this.handleCancel} >
-                
-                </Modal>
+                <Modalni onClose={this.showModal} show={this.state.show}>
+         <Forma valueFromParent={this.state.clickedElement} ></Forma>
+        </Modalni>
 
-                {
-                    this.state.visibleDrawer ? <Komentari onClose={this.onClose} visible={this.state.visibleDrawer} ></Komentari> : null
-                }
+               
 
                 <BackTop />
             </div>
