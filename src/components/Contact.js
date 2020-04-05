@@ -51,6 +51,12 @@ class Contact extends Component {
       });
     };
 
+    showDrawer = () => {
+      this.setState({
+        visibleDrawer: true,
+      });
+    };
+
     render() { 
         const items = []
 
@@ -90,10 +96,12 @@ class Contact extends Component {
                 </Row>
 
                 <Modalni onClose={this.showModal} show={this.state.show}>
-         <Forma valueFromParent={this.state.clickedElement} ></Forma>
-        </Modalni>
+                  <Forma valueFromParent={this.state.clickedElement} ></Forma>
+                </Modalni>
 
-               
+                {
+                    this.state.visibleDrawer ? <Komentari onClose={this.onClose} visible={this.state.visibleDrawer} ></Komentari> : null
+                }
 
                 <BackTop />
             </div>
