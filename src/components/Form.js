@@ -207,8 +207,8 @@ class Forma extends Component {
                 {errors.question.length > 0 &&
                 <span className='irma error'>{errors.question}</span>}
             </div>
-            <div class="irma block">
-              <input class="irma" type="submit" value="Post" />
+            <div class="irma block"  style={{float:'left', width: '80px'}}>
+              <input type="submit" value="Post" style={{ width: '80px', lineHeight: '1'}} />
             </div>
           </form>
 

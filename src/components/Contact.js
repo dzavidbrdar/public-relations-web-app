@@ -57,6 +57,12 @@ class Contact extends Component {
       });
     };
 
+    onClose = () => {	
+      this.setState({	
+        visibleDrawer: false,	
+      });	
+    };
+
     render() { 
         const items = []
 
