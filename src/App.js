@@ -14,7 +14,7 @@ import CommentsPublic from './components/CommentsPublic';
 import CommentReview from'./components/CommentReview.js';
 
 import Footer from './components/Footer.js';
-import './css4.1/bootstrapcustom.min.css';
+import './css4.1/bootstrapcustom.css';
 import './components/Footer.css';
 
 class App extends React.Component {
