@@ -141,3 +141,14 @@ Korisnik (potencijalna mušterija) mora biti u mogućnosti vidjeti odgovore na s
 * Prikazati odgovorena pitanja
 * Uraditi push koda
 * Napraviti pull request
+
+# Feature
+Mogućnost da klijent vidi ocjenu poslovnice.
+## Item
+Korisniku treba na vidljivom mjestu biti prikazana prosječna ocjena poslovnice.
+### Task
+* Implementirati dobavljanje svih ocjena poslovnica sa servera
+* Kreirati izgled ocjene kod svake poslovnice
+* Računanje prosječne ocjene za svaku poslovnicu i učitavanje istih dinamički(po učitavanju lokacija)
+* Uraditi push koda
+* Napraviti pull request
