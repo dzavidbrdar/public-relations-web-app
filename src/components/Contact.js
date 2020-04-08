@@ -90,10 +90,16 @@ class Contact extends Component {
 
     render() { 
         const items = []
+        const { ocjena } = this.state
 
         this.state.data.forEach(element => {
+          let index = ocjena.findIndex(x => x.id === element.id);
+
             items.push(
                 <Col className="gutter-row" span={6}>
+                  <Badge count = {<Statistic value={ ocjena[index].prosjecnaOcjena} prefix = {<StarTwoTone twoToneColor="gold"/>} suffix="/ 5" 
+                                             valueStyle={{ border: ocjena[index].prosjecnaOcjena<3?'2px solid #ffe58f':'2px solid #95de64',
+                                                           borderRadius: '15px 15px 15px 2px', width:'115px', height: '45px', boxShadow: '1px 5px 7px #888888'}}/> }>
                     <Card title={element.businessName + " " + element.id} style={{ width: 300 }} hoverable="true" 
                     actions={[  <Button type = "link"
                       onClick={e => {
