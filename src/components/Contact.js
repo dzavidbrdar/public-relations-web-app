@@ -122,8 +122,8 @@ class Contact extends Component {
             )
         });
         return (  
-            <div class = "mainDiv" style={{ padding: '30px', paddingLeft: '70px' }}>
-                <Statistic title = "Active Offices" value = {this.state.brojPoslovnica}/> <br/>
+            <div class = "mainDiv" style={{ padding: '30px' }}>
+                <Statistic title = "Active Offices" value = {this.state.brojPoslovnica}/> <br/><br/>
                 {
                     (!this.state.ucitavanje) ? <div><Spin size="large" /></div>: null
                 }
