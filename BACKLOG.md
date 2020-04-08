@@ -152,3 +152,14 @@ Korisniku treba na vidljivom mjestu biti prikazana prosječna ocjena poslovnice.
 * Računanje prosječne ocjene za svaku poslovnicu i učitavanje istih dinamički(po učitavanju lokacija)
 * Uraditi push koda
 * Napraviti pull request
+
+# Feature
+Filtriranje poslovnica po lokaciji
+## Item
+Korisnik treba da ima mogućnost filtriranja poslovnica kada u search box-u unese lokaciju poslovnice po gradu (ukoliko su poslovnice rasprostranjene van jednog grada) ili po adresama. Također, za tako pronađenu poslovnicu moraju stajati obavezne propratne kontakt informacije.
+### Task
+* Kreirati izgled search bara u prikazu poslovnica
+* Filtrirati postojeće poslovnice na osnovu unosa u search baru nakon klika na dugme "Search"
+* Omogućiti prikaz filtriranih poslovnica sa njihovim popratnim informacijama
+* Uraditi push koda
+* Napraviti pull request
