@@ -163,3 +163,15 @@ Korisnik treba da ima mogućnost filtriranja poslovnica kada u search box-u unes
 * Omogućiti prikaz filtriranih poslovnica sa njihovim popratnim informacijama
 * Uraditi push koda
 * Napraviti pull request
+
+# Feature
+Pregled recenzija
+## Item
+Klijent treba imati mogućnost pregleda svih recenzija koje se odnose na poslovnicu koja klijenta zanima. Tako klijent može vidjeti mišljenja i iskustva drugih klijenata što mu može pomoći pri donošenju odluka.
+### Task
+* Kreirati izgled prozora za prikazivanje recenzija
+* Implementirati dobavljenje svih recenzija sa servera
+* Implementirati filtriranje recenzija prema id-u poslovnice na koju se odnose
+* Implementirati prikazivanje recenzija pomoću komentara
+* Uraditi push koda
+* Napraviti pull request
