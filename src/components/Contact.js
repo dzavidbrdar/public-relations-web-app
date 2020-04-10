@@ -4,7 +4,8 @@ import { Card, Modal, BackTop, Button, Empty } from 'antd'
 import { Row, Col, Statistic, Spin, Drawer } from 'antd';
 import Modalni from "./Modal.js";
 import Forma from "./Form.js";
-
+import Proba from "./SeeReview.js";
+/*
 const Komentari = ({onClose, visibleDrawer}) => (
     <Drawer placement="right" title="Comment section for selected Office"
           closable={true}
@@ -14,21 +15,38 @@ const Komentari = ({onClose, visibleDrawer}) => (
           style={{ position: 'absolute' }}
           width={640}
         >
-        <Empty />
+         
+      <Proba></Proba>
     </Drawer>
 );
+*/
 
 class Contact extends Component {
   state = {
     show: false
   };
+
+  state = { visible: false };
+
+  showDrawer = () => {
+    this.setState({
+      visible: true,
+    });
+  };
+
+  onClose = () => {
+    this.setState({
+      visible: false,
+    });
+  };
+
     constructor() {
         super();
         this.state = {
             data: [],
-            brojPoslovnica: 0,
+            brojReviewa:0,
             visibleRate: false,
-            visibleDrawer: false,
+            //visibleDrawer: false,
             ucitavanje: false,
             clickedElement: []
         };
@@ -45,12 +63,15 @@ class Contact extends Component {
         });
     }
 
+  
+    
     showModal = e => {
       this.setState({
         show: !this.state.show
       });
     };
 
+    /*
     showDrawer = () => {
       this.setState({
         visibleDrawer: true,
@@ -62,6 +83,7 @@ class Contact extends Component {
         visibleDrawer: false,	
       });	
     };
+    */
 
     render() { 
         const items = []
@@ -78,7 +100,12 @@ class Contact extends Component {
                       }}
                     >
                       Rate
-                    </Button>, <Button type="link" onClick={this.showDrawer}>See comments</Button> ]}>
+                    </Button>,
+                    <Button type="link" onClick={e => {
+                      this.state.clickedElement = element;
+                      this.showDrawer(e);
+                    }}
+                    >Reviews</Button> ]}>
                         <p style = {{fontWeight: "bold"}}><EnvironmentOutlined /> {element.country + "-"+ element.city + ", " +element.address} </p>
                         <p><PhoneOutlined /> {element.phoneNumber}</p>
                         <p><MailOutlined /> {element.email}</p>
@@ -89,6 +116,22 @@ class Contact extends Component {
         });
         return (  
             <div class = "mainDiv" style={{ padding: '30px', paddingLeft: '70px' }}>
+
+                <Drawer placement="right" 
+                      closable={true}
+                      onClose={this.onClose}
+                      visible={this.state.visible}
+                      getContainer={false}
+                      style={{ position: 'absolute' }}
+                      width={640}
+                      title={this.state.clickedElement.businessName + ", " +this.state.clickedElement.address}
+                      
+                    >
+                  <Proba valueFromParent={this.state.clickedElement} ></Proba>
+                </Drawer>
+
+
+
                 <Statistic title = "Active Offices" value = {this.state.brojPoslovnica}/> <br/>
                 {
                     (!this.state.ucitavanje) ? <div><Spin size="large" /></div>: null
@@ -101,10 +144,6 @@ class Contact extends Component {
                 <Modalni onClose={this.showModal} show={this.state.show} valueFromParent={this.state.clickedElement}>
                   <Forma valueFromParent={this.state.clickedElement} ></Forma>
                 </Modalni>
-
-                {
-                    this.state.visibleDrawer ? <Komentari onClose={this.onClose} visible={this.state.visibleDrawer} ></Komentari> : null
-                }
 
                 <BackTop />
             </div>

@@ -1,8 +1,10 @@
-import React, { Component } from 'react';
-import {message} from 'antd';
+import React, { Component} from 'react';
 import '../Form.css';
+import { Alert } from 'antd';
+import {message} from 'antd';
 import StarRatingComponent from 'react-star-rating-component';
-
+var Recaptcha = require('react-recaptcha');
+let recaptchaInstance;
 const validEmailRegex = RegExp(/^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i);
 const validateForm = (errors) => {
   let valid = true;
@@ -21,26 +23,41 @@ class Forma extends Component {
           email: undefined,
           question: undefined,
           rating: 0,
+          Recaptcha: false,
+          postDisabled:true,
 
           errors: {
             name: '',
             lastname: '',
             email: '',
-            question: ''
+            question: '',
+            rating: ''
           }
         };
 
         this.handleInputChange = this.handleInputChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
+        this.verifyCallback = this.verifyCallback.bind(this);
+        this.expiredCallback = this.expiredCallback.bind(this);
       }
 
       onStarClick(nextValue, prevValue, name) {
         this.setState({rating: nextValue});
-      }
+        this.state.postDisabled = false;
 
-      /*handleClick(event){
-        if(this.rating==='0')if(window.confirm("je li stvarno necete glasat"))this.rating='0';
-      }*/
+
+      }
+      verifyCallback(){
+        this.setState({
+          recaptcha: true
+        });
+      }
+expiredCallback(){
+        this.setState({
+          recaptcha: false
+        });
+      }
+     
       handleInputChange(event) {
         const target = event.target;
         const value = target.value;
@@ -78,6 +95,14 @@ class Forma extends Component {
                   ? 'Comment must be at least 2 characters long!'
                   : '';
               break;
+/*
+              case 'rating':
+                errors.rating=
+                value=='0' 
+                ? 'glasaj'
+                : '';
+                break;
+*/
             default:
               break;
           }
@@ -100,7 +125,7 @@ class Forma extends Component {
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(object)
             };
-            fetch( 'https://main-server-si.herokuapp.com/api/reviews/' + this.props.valueFromParent.id, requestOptions)
+            fetch( 'https://main-server-si.herokuapp.com/api/reviews/offices/' + this.props.valueFromParent.id, requestOptions)
                 .then(response => response.json())
                 .then(data => console.log(data));
                 this.setState({
@@ -109,6 +134,10 @@ class Forma extends Component {
                     email: '',
                     question: ''
                 });
+                recaptchaInstance.reset();
+this.setState({
+	recaptcha: false
+});
                 message.success('Your review has been successfully submitted!');
                 var mod= document.getElementById('btnCancel');
                 mod.click();
@@ -167,10 +196,15 @@ class Forma extends Component {
                  <StarRatingComponent
                       name="rate1"
                       starCount={5}
-                      value={rating}
-
-                      onStarClick={this.onStarClick.bind(this)}
+                      //caption="Rate your stay!"
+                      value={this.state.rating}                    
+                      onStarClick={this.onStarClick.bind(this)}  
+                      onStarHoverOut={this.handleRating}                   
                   />
+                  <br/>
+                  { (this.state.postDisabled==true) ? <Alert message="Don't forget to rate!" type="warning" /> : ""}
+
+                   
                 </div>
             <div class="irma block">
             <textarea
@@ -185,8 +219,17 @@ class Forma extends Component {
                 {errors.question.length > 0 &&
                 <span className='irma error'>{errors.question}</span>}
             </div>
+            <div class="recaptchaIrma">
+            <Recaptcha 
+	ref={e => recaptchaInstance = e}
+	sitekey="6LevSeYUAAAAAPJ8E2g1TCP4zwAgHWyryba2H7bH"
+	render="explicit"
+	verifyCallback={this.verifyCallback}
+	expiredCallback={this.expiredCallback}
+	/>
+   </div>
             <div class="irma block"  style={{float:'left', width: '80px'}}>
-              <input type="submit" value="Post" style={{ width: '80px', lineHeight: '1'}} />
+              <input type="submit" value="Post" style={{ width: '80px', lineHeight: '1'}} disabled={this.state.postDisabled}/>
             </div>
           </form>
 
