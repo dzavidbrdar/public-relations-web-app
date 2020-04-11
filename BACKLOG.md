@@ -175,3 +175,14 @@ Klijent treba imati mogućnost pregleda svih recenzija koje se odnose na poslovn
 * Implementirati prikazivanje recenzija pomoću komentara
 * Uraditi push koda
 * Napraviti pull request
+
+# Feature
+Lajk na recenziju
+## Item
+Prilikom pregleda recenzije (reviewa) na određenu poslovnicu, korisniku treba omogućiti ostavljanje ‘’slažem se’’ reakcije na isti.
+### Task
+* Dodati prikaz broja lajkova recenzije
+* Kreirati dugme za lajk
+* Prilikom klika na dugme uraditi PUT request za azuriranje broja lajkova za datu recenziju
+* Uraditi push koda
+* Napraviti pull request
