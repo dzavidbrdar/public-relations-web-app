@@ -5,6 +5,7 @@ import {message} from 'antd';
 import StarRatingComponent from 'react-star-rating-component';
 var Recaptcha = require('react-recaptcha');
 let recaptchaInstance;
+
 const validEmailRegex = RegExp(/^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i);
 const validateForm = (errors) => {
   let valid = true;
@@ -23,7 +24,7 @@ class Forma extends Component {
           email: undefined,
           question: undefined,
           rating: 0,
-          Recaptcha: false,
+          recaptcha: false,
           postDisabled:true,
 
           errors: {
@@ -52,7 +53,7 @@ class Forma extends Component {
           recaptcha: true
         });
       }
-expiredCallback(){
+      expiredCallback(){
         this.setState({
           recaptcha: false
         });
@@ -111,7 +112,7 @@ expiredCallback(){
       }
       handleSubmit(event) {
         event.preventDefault();
-        if(validateForm(this.state.errors)) {
+        if(validateForm(this.state.errors) && this.state.recaptcha) {
             const object = {};
             object.firstName=this.state.name;
             object.lastName=this.state.lastname;
@@ -135,9 +136,9 @@ expiredCallback(){
                     question: ''
                 });
                 recaptchaInstance.reset();
-this.setState({
-	recaptcha: false
-});
+                this.setState({
+	                recaptcha: false
+                });
                 message.success('Your review has been successfully submitted!');
                 var mod= document.getElementById('btnCancel');
                 mod.click();
@@ -202,7 +203,9 @@ this.setState({
                       onStarHoverOut={this.handleRating}                   
                   />
                   <br/>
+                  <div className='nadijaDuzina'>
                   { (this.state.postDisabled==true) ? <Alert message="Don't forget to rate!" type="warning" /> : ""}
+                  </div>
 
                    
                 </div>
@@ -221,13 +224,13 @@ this.setState({
             </div>
             <div class="recaptchaIrma">
             <Recaptcha 
-	ref={e => recaptchaInstance = e}
-	sitekey="6LevSeYUAAAAAPJ8E2g1TCP4zwAgHWyryba2H7bH"
-	render="explicit"
-	verifyCallback={this.verifyCallback}
-	expiredCallback={this.expiredCallback}
-	/>
-   </div>
+	          ref={e => recaptchaInstance = e}
+	          sitekey="6LevSeYUAAAAAPJ8E2g1TCP4zwAgHWyryba2H7bH"
+	          render="explicit"
+	          verifyCallback={this.verifyCallback}
+	          expiredCallback={this.expiredCallback}
+	          />
+          </div>
             <div class="irma block"  style={{float:'left', width: '80px'}}>
               <input type="submit" value="Post" style={{ width: '80px', lineHeight: '1'}} disabled={this.state.postDisabled}/>
             </div>

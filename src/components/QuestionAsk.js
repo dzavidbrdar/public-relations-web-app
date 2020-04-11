@@ -45,7 +45,10 @@ class QuestionAsk extends Component {
       }
 
       onloadCallback() {
-        //console.log("Captcha loaded.");
+        console.log("Captcha loaded.");
+        this.setState({
+          recaptcha: false
+        });
       }
 
       verifyCallback(){
@@ -166,7 +169,9 @@ class QuestionAsk extends Component {
                     question: ''
                 });
                 recaptchaInstance.reset();
-                //alert("Your question has been successfully submitted.");
+                this.setState({
+                  recaptcha: false
+                });
                 ReactDOM.render(
                   <Alert message="Question successfully submitted." type="success" showIcon />, document.getElementById('alertmsgNadija')
                 );

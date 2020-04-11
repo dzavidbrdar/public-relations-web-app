@@ -43,7 +43,10 @@ class PostComment extends Component {
       }
 
       onloadCallback() {
-        //console.log("Captcha loaded.");
+        console.log("Captcha loaded.");
+        this.setState({
+          recaptcha: false
+        });
       }
 
       verifyCallback(){
@@ -168,6 +171,9 @@ class PostComment extends Component {
                     question: ''
                 });
                 recaptchaInstance.reset();
+                this.setState({
+                  recaptcha: false
+                });
                 ReactDOM.render(
                   <Alert message="Comment successfully posted." type="success" showIcon />, document.getElementById('alertmsg')
                 );
