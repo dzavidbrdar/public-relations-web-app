@@ -93,3 +93,7 @@ body {
   position: absolute;
 
 }
+.recaptchaIrma{
+  margin: 1em auto 1em auto;
+  width: min-content;
+}
