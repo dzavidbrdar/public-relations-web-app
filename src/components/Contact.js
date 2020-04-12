@@ -131,7 +131,7 @@ class Contact extends Component {
 <Drawer placement="right" 
                       closable={true}
                       onClose={this.onClose}
-                      visible={false}
+                      visible={this.state.visibleDrawer}
                       getContainer={false}
                       style={{ position: 'absolute' }}
                       width={640}
