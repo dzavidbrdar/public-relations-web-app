@@ -100,7 +100,7 @@ class Forma extends Component {
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(object)
             };
-            fetch( 'https://main-server-si.herokuapp.com/api/reviews/' + this.props.valueFromParent.id, requestOptions)
+            fetch( 'https://main-server-si.herokuapp.com/api/reviews/offices/' + this.props.valueFromParent.id, requestOptions)
                 .then(response => response.json())
                 .then(data => console.log(data));
                 this.setState({
