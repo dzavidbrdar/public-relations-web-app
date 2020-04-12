@@ -186,3 +186,14 @@ Prilikom pregleda recenzije (reviewa) na određenu poslovnicu, korisniku treba o
 * Prilikom klika na dugme uraditi PUT request za azuriranje broja lajkova za datu recenziju
 * Uraditi push koda
 * Napraviti pull request
+
+# Feature
+Pregled glavne poslovnice
+## Item
+Korisniku se trebaju ponuditi informacije o glavnoj poslovnici unutar svih. To podrazumijeva njenu lokaciju (adresu), kontakt telefon/fax i e-mail.
+### Task
+* Implementirati dohvacanje svih poslovnica kao i id glavne poslovnice
+* Filtrirati glavnu poslovnicu na osnovu id
+* Prikazati informacije o glavnoj poslovnici na vidljivom mjestu
+* Uraditi push koda
+* Napraviti pull request
