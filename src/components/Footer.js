@@ -1,7 +1,29 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-class Footer extends React.Component {
+import { MailOutlined, PhoneOutlined, EnvironmentOutlined, HourglassOutlined } from '@ant-design/icons';
+class Footer2 extends React.Component {
+  constructor(props){
+    super(props);
+    this.state={
+      glp:{}
+    }
+  }
+  async componentDidMount() {
+      const response =await fetch('https://main-server-si.herokuapp.com/api/business/allOffices');
+      const json = await response.json();
+      const response2 =await fetch('https://main-server-si.herokuapp.com/api/business/1/mainOffice');
+      const json2 = await response2.json();
+      const glp_id=json2.mainOfficeId;
+      const glavna = json.find((el)=>{if(el.id===glp_id) return el;});
+      console.log(glavna);
+      this.setState({
+        glp:  glavna
+      });
+  }
+
+
   render(){
+    let element=this.state.glp;
     return(
   <footer className="bootstrapiso site-footer_ek1">
     <div className="container">
@@ -12,15 +34,20 @@ class Footer extends React.Component {
         </div>
 
         <div className="col-xs-6 col-md-3">
-          <h6>Stores</h6>
+          <h6>Main Store Info</h6>
           <ul className="footer-links_ek1">
-            <li><a href="/contact">List of Stores</a></li>
+            <li>{this.state.glp.businessName+' '+this.state.glp.id}</li>
+            <li><EnvironmentOutlined /> {element.country + "-"+ element.city + ", " +element.address}</li>
+            <li><PhoneOutlined /> {element.phoneNumber}</li>
+            <li><MailOutlined /> {element.email}</li>
+            <li><HourglassOutlined /> {element.workDayStart + "h -" + element.workDayEnd + "h"}</li>
           </ul>
         </div>
 
         <div className="col-xs-6 col-md-3">
           <h6>Quick Links</h6>
           <ul className="footer-links_ek1">
+            <li><a href="/contact">List of Stores</a></li>
             <li><a href="/">Special Offers</a></li>
             <li><a href="/products">Products</a></li>
             <li><a href="/questions">Q&A</a></li>
@@ -54,4 +81,4 @@ class Footer extends React.Component {
   }
 }
 
-export default Footer;
+export default Footer2;
