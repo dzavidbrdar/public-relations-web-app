@@ -142,7 +142,7 @@ const linkHome = <Link class="effect-underline" style={linkStyle} to="/">Home</L
 const linkProducts = <Link class="effect-underline" style={linkStyle} to="/products">Products</Link>;
 const linkContact = <Link class="effect-underline" style={linkStyle} to="/contact">Contact</Link>;
 const linkQuestions = <Link class="effect-underline" style={linkStyle} to="/questions">Q&A</Link>;
-const linkAsk = <Link class="effect-underline" style={linkStyle} to="/questionask">Ask a Queston</Link>;
+const linkAsk = <Link class="effect-underline" style={linkStyle} to="/questionask">Ask a Question</Link>;
 //const avatarSlika = <Avatar class="effect-underline" size="medium" shape= "square" icon={<UserOutlined />} style = {{background: '#f56a00'}}></Avatar>;
 const avatarSlika = <Avatar class="effect-underline" size="medium" shape= "square" icon={<UserOutlined />} style = {{background: '#1890ff'}}></Avatar>;
 const linkLogin = <Link class="effect-underline" style={blackStyle} to="/login">Log in</Link>;
