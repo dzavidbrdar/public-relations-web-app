@@ -50,7 +50,7 @@ class Header extends React.Component {
                 </header>
             </div>
             <div style={navbarStyle}>
-                <div style={linkoviStyle}> {linkHome}  |  {linkProducts}  |  {linkComments}  |  {linkContact}  |  {linkQuestions}  |  {linkAsk}</div>
+                <div style={linkoviStyle}> {linkHome}  |  {linkProducts} | {linkProductsList} |  {linkComments}  |  {linkContact}  |  {linkQuestions}  |  {linkAsk}</div>
                <div style={loginStyle}>{avatarSlika}  {linkLogin}</div>
 
             </div>
@@ -139,7 +139,7 @@ let logOut=()=>{
 }
 
 const linkHome = <Link class="effect-underline" style={linkStyle} to="/">Home</Link>;
-const linkProducts = <Link class="effect-underline" style={linkStyle} to="/products">Products</Link>;
+const linkProducts = <Link class="effect-underline" style={linkStyle} to="/products">Gallery</Link>;
 const linkContact = <Link class="effect-underline" style={linkStyle} to="/contact">Contact</Link>;
 const linkQuestions = <Link class="effect-underline" style={linkStyle} to="/questions">Q&A</Link>;
 const linkAsk = <Link class="effect-underline" style={linkStyle} to="/questionask">Ask a Question</Link>;
@@ -151,6 +151,7 @@ const linkComments = <Link class="effect-underline" style={linkStyle} to="/comme
 const linkUnansweredQuestions = <Link class="effect-underline" style={linkStyle} to="/unansweredQuestions">Answer Questions</Link>;
 const linkCommentReview = <Link class="effect-underline" style={linkStyle} to="/commentReview">Review Comments</Link>;
 const linkLogout = <Link class="effect-underline" style={blackStyle} to="/" onClick={logOut}>Log out</Link>;
+const linkProductsList = <Link class="effect-underline" style={linkStyle} to="/productsList">Products</Link>;
 
 
 export default Header;

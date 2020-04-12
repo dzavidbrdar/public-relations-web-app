@@ -2,9 +2,9 @@ import React, { useState, useEffect } from 'react';
 import 'antd/dist/antd.css';
 import { Spin, Comment, List } from 'antd';
 
-function CommentsPublic() {
+function ProductComments(props) {
 
-    const url = 'https://main-server-si.herokuapp.com/api/products/comments';
+    const url = 'https://main-server-si.herokuapp.com/api/products/' + props.location.state.id + '/comments';
     const avatarUrl = 'https://toppng.com/uploads/preview/user-account-management-logo-user-icon-11562867145a56rus2zwu.png?fbclid=IwAR1JZbdxwQ0SX6Xi0c6sn_sYbI5j7llNRbJbTDWpdXRoIPrUDal52gX38Sc';
     const [comments, setComments] = useState([]);
     const [dataArray, setDataArray] = useState([]);
@@ -49,7 +49,7 @@ function CommentsPublic() {
       color: '#808080'
     }
 
-    let headerText = comments.length + ' comments';
+    let headerText = (comments.length != 0) ? (comments.length + ' comments') : ("There are currently no comments on this product.");
     const loadingCommentsText = <div style={loadingTextStyle}>Loading comments...</div>
     const komentari = <List
             className="comment-list"
@@ -71,7 +71,8 @@ function CommentsPublic() {
     
     return (
         <div>
-            { loading ? <div style={{marginTop: '100px'}}><Spin size="large" /></div> : <div style={frameStyle}>{komentari}</div> }
+          <h1>Comments on {props.location.state.productName}</h1>
+          { loading ? <div style={{marginTop: '100px'}}><Spin size="large" /></div> : <div style={frameStyle}>{komentari}</div> }
         </div>
     );
 }
@@ -81,4 +82,4 @@ const frameStyle = {
     marginLeft: "300px"
 }
 
-export default CommentsPublic;
+export default ProductComments;

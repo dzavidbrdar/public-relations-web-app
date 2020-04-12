@@ -10,6 +10,7 @@ function Products() {
     const [images, setImages] = useState([]);
     const [redirectaj, setRedirectaj] = useState(false);
     const [loading, setLoading] = useState(true);
+    const [trebaPozvatiFetch, setTrebaPozvatiFetch] = useState(true);
     const [currentPictureIndex, setCurrentPictureIndex] = useState(0);
     const thumbnailWidth = 500;
     const thumbnailHeight = 400;
@@ -34,10 +35,12 @@ function Products() {
         setProducts(productsTemp);
         setImages(imagesTemp);
         setLoading(false);
+        setTrebaPozvatiFetch(false);
+        console.log("fetch galerije pozvana");
     });
 
     useEffect(() => {
-        fetchProducts();
+        if (trebaPozvatiFetch) fetchProducts();
     });
 
     const galerija = <Gallery images={images} margin={10} 
@@ -48,14 +51,14 @@ function Products() {
 
     if (redirectaj) {
         return (<Redirect to = {{ 
-            pathname: '/postcomment', 
+            pathname: '/postComment', 
             state: { productName: products[currentPictureIndex].name, id: products[currentPictureIndex].id }}}/>
         );
     }
     
     return (
         <div>
-            <h1>Catalog</h1>
+            <h1>Products Gallery</h1>
             { loading ? <Spin size="large" /> : <div style={frameStyle}>{galerija}</div> }
         </div>
     );
