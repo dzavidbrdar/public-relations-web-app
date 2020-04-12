@@ -143,7 +143,7 @@ export default function ProductsList() {
       const oldProductPrice2 = secondProduct.price;
       const newProductPrice2 = oldProductPrice2 - (oldProductPrice2 * (secondProduct.discount.percentage / 100));
       const newRoundedPrice2 = Math.round(newProductPrice2 * 100) / 100;
-      return newRoundedPrice1 < newRoundedPrice2; 
+      return newRoundedPrice2 - newRoundedPrice1;
     });
     const cardsHigherToLowerTemp = makeCardsList(productsHigherToLowerTemp);
     setCardsHigherToLower(cardsHigherToLowerTemp);
