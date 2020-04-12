@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import { MailOutlined, PhoneOutlined, EnvironmentOutlined, HourglassOutlined } from '@ant-design/icons';
+import { MailOutlined, PhoneOutlined, EnvironmentOutlined, HourglassOutlined, StarTwoTone } from '@ant-design/icons';
 import { Card, Modal, BackTop, Button, Empty } from 'antd'
-import { Row, Col, Statistic, Spin, Drawer } from 'antd';
+import { Row, Col, Statistic, Spin, Drawer, Badge } from 'antd';
 import Modalni from "./Modal.js";
 import Forma from "./Form.js";
 
@@ -30,18 +30,43 @@ class Contact extends Component {
             visibleRate: false,
             visibleDrawer: false,
             ucitavanje: false,
-            clickedElement: []
+            clickedElement: [],
+            ocjena: []            
         };
     }
 
     //ucitavanje api podataka
     async componentDidMount() {
         const response = await fetch('https://main-server-si.herokuapp.com/api/business/allOffices'); 
+        const response2 = await fetch('https://main-server-si.herokuapp.com/api/reviews');
         const json = await response.json();
+        const json2 = await response2.json();
+        let tmp = [];
+
+        json.forEach(element1 => {
+          let brojac = 0;
+          let zbir = 0;
+          json2.forEach(element2 => {
+            if(element1.id == element2.office.id){
+              brojac++;
+              zbir += element2.starReview;
+            }
+          });
+
+          let finalRate = 3; ///UKOLIKO NEMA OCJENA JOS UVIJEK ZA OVU POSLOVNICU DEFAULTNA VRIJEDNOST PRIKAZA JE 3
+                             ///ONA NE UTICE NA RATE KORISNIKA PRILIKOM BUDUCEG UNOSENJA ISTIH
+
+          if(brojac != 0) finalRate = zbir/brojac;
+          if((finalRate - Math.floor(finalRate)) != 0) finalRate = finalRate.toFixed(1);
+
+          tmp.push({id: element1.id, prosjecnaOcjena: finalRate});
+        });
+
         this.setState({
           data:  json,
           brojPoslovnica: json.length,
-          ucitavanje: true
+          ucitavanje: true,
+          ocjena: tmp
         });
     }
 
@@ -65,10 +90,17 @@ class Contact extends Component {
 
     render() { 
         const items = []
+        const { ocjena } = this.state
 
         this.state.data.forEach(element => {
+          let index = ocjena.findIndex(x => x.id === element.id);
+
             items.push(
                 <Col className="gutter-row" span={6}>
+                  <Badge count = {<Statistic value={ ocjena[index].prosjecnaOcjena} prefix = {<StarTwoTone twoToneColor="gold"/>} suffix="/ 5" 
+                                             valueStyle={{ border: ocjena[index].prosjecnaOcjena<3?'2px solid #ffe58f':'2px solid #95de64',
+                                                           borderRadius: '15px 15px 15px 2px', width:'115px', height: '45px', boxShadow: '1px 5px 7px #888888'}}/> }>
+                    
                     <Card title={element.businessName + " " + element.id} style={{ width: 300 }} hoverable="true" 
                     actions={[  <Button type = "link"
                       onClick={e => {
@@ -84,12 +116,14 @@ class Contact extends Component {
                         <p><MailOutlined /> {element.email}</p>
                         <p><HourglassOutlined /> {element.workDayStart + "h -" + element.workDayEnd + "h"}</p>
                     </Card>
+                  
+                  </Badge>
                 </Col>
             )
         });
         return (  
-            <div class = "mainDiv" style={{ padding: '30px', paddingLeft: '70px' }}>
-                <Statistic title = "Active Offices" value = {this.state.brojPoslovnica}/> <br/>
+            <div class = "mainDiv" style={{ padding: '30px' }}>
+                <Statistic title = "Active Offices" value = {this.state.brojPoslovnica}/> <br/><br/>
                 {
                     (!this.state.ucitavanje) ? <div><Spin size="large" /></div>: null
                 }
