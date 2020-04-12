@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import { MailOutlined, PhoneOutlined, EnvironmentOutlined, HourglassOutlined } from '@ant-design/icons';
+import { MailOutlined, PhoneOutlined, EnvironmentOutlined, HourglassOutlined, StarTwoTone } from '@ant-design/icons';
 import { Card, Modal, BackTop, Button, Empty } from 'antd'
-import { Row, Col, Statistic, Spin, Drawer } from 'antd';
+import { Row, Col, Statistic, Spin, Drawer, Badge } from 'antd';
 import Modalni from "./Modal.js";
 import Forma from "./Form.js";
 import Proba from "./SeeReview.js";
@@ -76,8 +76,6 @@ class Contact extends Component {
       this.setState({
         visibleDrawer: true,
       });
-    };
-
     onClose = () => {	
       this.setState({	
         visibleDrawer: false,	
@@ -149,6 +147,6 @@ class Contact extends Component {
             </div>
         );
     }
-}
- 
+  }
+
 export default Contact;
