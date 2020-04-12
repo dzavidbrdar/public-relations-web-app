@@ -163,3 +163,37 @@ Korisnik treba da ima mogućnost filtriranja poslovnica kada u search box-u unes
 * Omogućiti prikaz filtriranih poslovnica sa njihovim popratnim informacijama
 * Uraditi push koda
 * Napraviti pull request
+
+# Feature
+Pregled recenzija
+## Item
+Klijent treba imati mogućnost pregleda svih recenzija koje se odnose na poslovnicu koja klijenta zanima. Tako klijent može vidjeti mišljenja i iskustva drugih klijenata što mu može pomoći pri donošenju odluka.
+### Task
+* Kreirati izgled prozora za prikazivanje recenzija
+* Implementirati dobavljenje svih recenzija sa servera
+* Implementirati filtriranje recenzija prema id-u poslovnice na koju se odnose
+* Implementirati prikazivanje recenzija pomoću komentara
+* Uraditi push koda
+* Napraviti pull request
+
+# Feature
+Lajk na recenziju
+## Item
+Prilikom pregleda recenzije (reviewa) na određenu poslovnicu, korisniku treba omogućiti ostavljanje ‘’slažem se’’ reakcije na isti.
+### Task
+* Dodati prikaz broja lajkova recenzije
+* Kreirati dugme za lajk
+* Prilikom klika na dugme uraditi PUT request za azuriranje broja lajkova za datu recenziju
+* Uraditi push koda
+* Napraviti pull request
+
+# Feature
+Pregled glavne poslovnice
+## Item
+Korisniku se trebaju ponuditi informacije o glavnoj poslovnici unutar svih. To podrazumijeva njenu lokaciju (adresu), kontakt telefon/fax i e-mail.
+### Task
+* Implementirati dohvacanje svih poslovnica kao i id glavne poslovnice
+* Filtrirati glavnu poslovnicu na osnovu id
+* Prikazati informacije o glavnoj poslovnici na vidljivom mjestu
+* Uraditi push koda
+* Napraviti pull request

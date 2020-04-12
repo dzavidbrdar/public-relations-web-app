@@ -26,6 +26,7 @@ class Contact extends Component {
   state = {
     show: false
   };
+
   constructor() {
     super();
     this.state = {
@@ -172,6 +173,7 @@ class Contact extends Component {
       });
       if (tempOffices.length === 0) { message.info("No results for " + value + '.'); }
       else this.setState({ data: tempOffices });
+
     }
   }
 }
