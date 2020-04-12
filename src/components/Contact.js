@@ -5,26 +5,28 @@ import { Row, Col, Statistic, Spin, Drawer, Badge } from 'antd';
 import Modalni from "./Modal.js";
 import Forma from "./Form.js";
 import { Input, Tooltip, message } from 'antd';
-
+import Proba from "./SeeReview.js";
 const { Search } = Input;
-
-
-const Komentari = ({ onClose, visibleDrawer }) => (
-  <Drawer placement="right" title="Comment section for selected Office"
-    closable={true}
-    onClose={onClose}
-    visible={!visibleDrawer}
-    getContainer={false}
-    style={{ position: 'absolute' }}
-    width={640}
-  >
-    <Empty />
-  </Drawer>
-);
 
 class Contact extends Component {
   state = {
-    show: false
+    visibleDrawer: false,
+    show: false,
+  
+  };
+
+  //state = { visible: false };
+
+  showDrawer = () => {
+    this.setState({
+      visibleDrawer: true,
+    });
+  };
+
+  onClose = () => {
+    this.setState({
+      visibleDrawer: false,
+    });
   };
 
   constructor() {
@@ -34,6 +36,7 @@ class Contact extends Component {
       data: [],
       brojPoslovnica: 0,
       visibleRate: false,
+      //visible: false, 
       visibleDrawer: false,
       ucitavanje: false,
       clickedElement: [],
@@ -83,18 +86,7 @@ class Contact extends Component {
     });
   };
 
-  showDrawer = () => {
-    this.setState({
-      visibleDrawer: true,
-    });
-  };
-
-  onClose = () => {
-    this.setState({
-      visibleDrawer: false,
-    });
-  };
-
+  
   render() {
     const items = []
     const { ocjena } = this.state
@@ -119,7 +111,11 @@ class Contact extends Component {
                 }}
               >
                 Rate
-                    </Button>, <Button type="link" onClick={this.showDrawer}>See comments</Button>]}>
+                    </Button>,  <Button type="link" onClick={e => {
+                      this.state.clickedElement = element;
+                      this.showDrawer(e);
+                    }}
+                    >Reviews</Button> ]}>
               <p style={{ fontWeight: "bold" }}><EnvironmentOutlined /> {element.country + "-" + element.city + ", " + element.address} </p>
               <p><PhoneOutlined /> {element.phoneNumber}</p>
               <p><MailOutlined /> {element.email}</p>
@@ -132,8 +128,19 @@ class Contact extends Component {
     });
     return (
       <div class="mainDiv" style={{ padding: '30px' }}>
-
-        <Statistic title="Active Offices" value={this.state.brojPoslovnica} /> <br />
+<Drawer placement="right" 
+                      closable={true}
+                      onClose={this.onClose}
+                      visible={false}
+                      getContainer={false}
+                      style={{ position: 'absolute' }}
+                      width={640}
+                      title={this.state.clickedElement.businessName + ", " +this.state.clickedElement.address}
+                      
+                    >
+                  <Proba valueFromParent={this.state.clickedElement} ></Proba>
+                </Drawer>
+        <Statistic title="Active Offices" value={this.state.brojPoslovnica}/> <br />
         <Tooltip title="If you search with no value, all active offices will be shown.">
           <Search
             placeholder="Input location"
@@ -145,17 +152,16 @@ class Contact extends Component {
           (!this.state.ucitavanje) ? <div><Spin size="large" /></div> : null
         }
 
-        <Row gutter={[16, 24]}>
+        <Row gutter={[16, 32]}>
           {items}
+      
         </Row>
 
         <Modalni onClose={this.showModal} show={this.state.show} valueFromParent={this.state.clickedElement}>
           <Forma valueFromParent={this.state.clickedElement} ></Forma>
         </Modalni>
 
-        {
-          this.state.visibleDrawer ? <Komentari onClose={this.onClose} visible={this.state.visibleDrawer} ></Komentari> : null
-        }
+      
 
         <BackTop />
       </div>
