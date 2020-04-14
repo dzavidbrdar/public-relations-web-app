@@ -93,12 +93,16 @@ class Contact extends Component {
 
     this.state.data.forEach(element => {
       let index = ocjena.findIndex(x => x.id === element.id);
+      let colorBadge;
+      if(ocjena[index].prosjecnaOcjena <= 2.5) colorBadge = '2px solid #ffe58f'
+      if(ocjena[index].prosjecnaOcjena > 2.5 && ocjena[index].prosjecnaOcjena < 4) colorBadge = '2px solid #95de64'
+      if(ocjena[index].prosjecnaOcjena >=4 ) colorBadge = '2px solid #52c41a'
 
       items.push(
         <Col className="gutter-row" span={6}>
           <Badge count={<Statistic value={ocjena[index].prosjecnaOcjena} prefix={<StarTwoTone twoToneColor="gold" />} suffix="/ 5"
             valueStyle={{
-              border: ocjena[index].prosjecnaOcjena < 3 ? '2px solid #ffe58f' : '2px solid #95de64',
+              border: colorBadge,
               borderRadius: '15px 15px 15px 2px', width: '115px', height: '45px', boxShadow: '1px 5px 7px #888888'
             }} />}>
 
