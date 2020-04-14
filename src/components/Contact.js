@@ -116,7 +116,7 @@ class Contact extends Component {
                       this.showDrawer(e);
                     }}
                     >Reviews</Button> ]}>
-              <p style={{ fontWeight: "bold" }}><EnvironmentOutlined /> {element.country + "-" + element.city + ", " + element.address} </p>
+              <p style={{ fontWeight: "bold", height: '45px' }}><EnvironmentOutlined /> {element.country + "-" + element.city + ", " + element.address} </p>
               <p><PhoneOutlined /> {element.phoneNumber}</p>
               <p><MailOutlined /> {element.email}</p>
               <p><HourglassOutlined /> {element.workDayStart + "h -" + element.workDayEnd + "h"}</p>

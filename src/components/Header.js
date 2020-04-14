@@ -46,7 +46,7 @@ class Header extends React.Component {
             <div>
                 <header style={headerStyle}>
                     <h1 style={{ color: 'white', margin: 0, fontSize: '55px', lineHeight: '40px', paddingTop: '30px', textShadow: 'black 5px 5px 3px'}}>Public Relations</h1>
-                    <h2 style={{color: 'white', opacity: '0.6', fontSize: '20px', margin: 0, lineHeight: '35px', paddingLeft: '150px'}}>#weStandByYourSide!</h2>
+                    <h2 style={{color: 'white', opacity: '0.6', fontSize: '20px', margin: 0, lineHeight: '35px', paddingLeft: '150px'}}>#WeStandByYourSide!</h2>
                 </header>
             </div>
             <div style={navbarStyle}>
