@@ -197,3 +197,14 @@ Korisniku se trebaju ponuditi informacije o glavnoj poslovnici unutar svih. To p
 * Prikazati informacije o glavnoj poslovnici na vidljivom mjestu
 * Uraditi push koda
 * Napraviti pull request
+
+# Feature
+Notifikacija za pitanje
+## Item
+Korisnik (uposlenik) treba dobiti notifikaciju u trenutku kada (potencijalni) kupac postavi novo pitanje.
+### Task
+* Template za prikaz notifikacija
+* Dohvacanje notifikacija u realnom vremenu
+* Spasavanje notifikacija u localstorage
+* Uraditi push koda
+* Napraviti pull request
