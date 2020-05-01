@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { Avatar } from 'antd';
 import { UserOutlined } from '@ant-design/icons';
 
+import Notifications from './Notifications2.js';
 
 class Header extends React.Component {
   constructor(props){
@@ -34,8 +35,12 @@ class Header extends React.Component {
             </div>
             <div style={navbarStyle}>
                 <div style={linkoviStyle}> {linkHome}  |  {linkProducts}  |  {linkCommentReview}  |  {linkUnansweredQuestions}</div>
-               <div style={loginStyle}>{avatarSlika}  {linkLogout}</div>
-
+               <div style={loginStyle}>
+                 {avatarSlika}  {linkLogout}
+               </div>
+            </div>
+            <div class='artboard'>
+              <Notifications/>
             </div>
         </div>
       );
