@@ -50,7 +50,7 @@ class Header extends React.Component {
                 </header>
             </div>
             <div style={navbarStyle}>
-                <div style={linkoviStyle}> {linkHome}  |  {linkProducts} | {linkProductsList} |  {linkComments}  |  {linkContact}  |  {linkQuestions}  |  {linkAsk}</div>
+                <div style={linkoviStyle}> {linkHome}  |  {linkProducts} | {linkProductsList} |  {linkComments}  |  {linkContact}  |  {linkReservations} | {linkQuestions}  |  {linkAsk}</div>
                <div style={loginStyle}>{avatarSlika}  {linkLogin}</div>
 
             </div>
@@ -152,6 +152,6 @@ const linkUnansweredQuestions = <Link class="effect-underline" style={linkStyle}
 const linkCommentReview = <Link class="effect-underline" style={linkStyle} to="/commentReview">Review Comments</Link>;
 const linkLogout = <Link class="effect-underline" style={blackStyle} to="/" onClick={logOut}>Log out</Link>;
 const linkProductsList = <Link class="effect-underline" style={linkStyle} to="/productsList">Products</Link>;
-
+const linkReservations = <Link class="effect-underline" style={linkStyle} to="/reservations">Reservations</Link>;
 
 export default Header;

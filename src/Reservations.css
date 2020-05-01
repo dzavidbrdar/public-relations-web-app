@@ -1,0 +1,25 @@
+
+  .components-grid-demo-playground{
+    height: 130px;
+  font-size: 15px;
+  line-height: 120px;
+  background:whitesmoke;
+  border-radius: 4px;
+ font-weight: bold;
+ text-align: bottom;
+ background-image: url("/orders.png");
+ background-position: center;
+ background-size: contain;
+ background-repeat: no-repeat;
+  }
+
+.tablesContainer {
+  padding-top: 20px;
+  padding-left: 30px;
+  padding-right: 30px;
+
+}
+
+
+
+ 
