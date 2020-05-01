@@ -101,6 +101,7 @@ class Reservations extends Component {
       
         return (
           <div className='tablesContainer'>
+              <h1>Tables</h1>
            <Select size="large" bordered="true" placeholder="Select the office" style={{ width: "40%" }} onChange={this.handleChange} >
              {options}
            </Select>
