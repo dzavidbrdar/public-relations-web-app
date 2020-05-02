@@ -8,8 +8,7 @@ import Stomp from 'stompjs';
 import './Notifications.css';
 
 //za stomp
-const socket = new SockJS('https://log-server-si.herokuapp.com/ws');
-const stompClient = Stomp.over(socket);
+let socket,stompClient;
 //zvuk notifikacije
 const soundUrl = `https://ia800203.us.archive.org/14/items/slack_sfx/been_tree.mp3`;
 const notificationSound = new Audio(soundUrl);
@@ -34,6 +33,9 @@ class Notifications extends React.Component {
   }
 
   async componentDidMount(){
+    socket = new SockJS('https://log-server-si.herokuapp.com/ws');
+    stompClient = Stomp.over(socket);
+
     //ucitat localStorage i definisat dataNotifikacije;localStorage je objekat
     const nizNotif=[];
     let dataNotifikacije=<div><Dropdown.Menu className="bootstrapiso">{nizNotif}</Dropdown.Menu></div>;//ubacujemo u div dinamicki, preko ref
@@ -52,6 +54,7 @@ class Notifications extends React.Component {
         let idNoveNotifikacije=localStorage.length;
         localStorage.setItem(idNoveNotifikacije,JSON.stringify(e.payload));
         this.notify();
+
         //formirat element pomocu f-je formirajDropDownItem i dodat u nizNotif, kao u questions.js
       });
     }, (err)=>{
@@ -105,6 +108,10 @@ class Notifications extends React.Component {
         <div ref="notif_ek1"></div>
       </Dropdown>
     )
+  }
+
+  componentWillUnmount(){
+    stompClient.disconnect();
   }
 }
 //fja za kreiranje Dropdown.Item od notifikacije
