@@ -197,3 +197,15 @@ Korisniku se trebaju ponuditi informacije o glavnoj poslovnici unutar svih. To p
 * Prikazati informacije o glavnoj poslovnici na vidljivom mjestu
 * Uraditi push koda
 * Napraviti pull request
+
+# Feature
+Brisanje postojeće rezervacije
+## Item
+Korisnik (potencijalna mušterija) treba moći obrisati rezervaciju u slučaju da se predomisli.
+### Task
+* Omogućiti pokretanje procesa brisanja rezervacije klikom na dugme "Cancel reservation"
+* Kreirati formu za unos podataka potrebnih za brisanje
+* Obaviti provjeru postojanja takve rezervacije
+* Obrisati postojeću rezervaciju
+* Uraditi push koda
+* Napraviti pull request
