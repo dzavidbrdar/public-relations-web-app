@@ -1,6 +1,9 @@
 import React, { Component } from "react";
 import "../Reservations.css";
-import { Row, Col, Empty, Select} from 'antd';
+import { Row, Col, Empty, Select, Modal} from 'antd';
+import Modalni from "./ModalRezervacija.js";
+import Forma from "./FormaRezervacija.js";
+
 
 class Reservations extends Component {
     gutters = {};
@@ -8,6 +11,10 @@ class Reservations extends Component {
     vgutters = {};
   
     colCounts = {};
+    //dodala ovo
+    state = {
+      show: false,
+    };
     
     constructor() {
       super();
@@ -18,7 +25,8 @@ class Reservations extends Component {
         colCountKey: 2,
         tables:[],
         selectedOffice: 0,
-        defaultOffice:[]
+        defaultOffice:[],
+        tableId: 0
       };
       // popraviti selected poslije da ne bude fiksirano
       [8, 16, 24, 32, 40, 48].forEach((value, i) => {
@@ -32,8 +40,12 @@ class Reservations extends Component {
       });
       this.handleChange = this.handleChange.bind(this);
     }
-
-
+    //dodala ovo
+    showModal = e => {
+      this.setState({
+        show: !this.state.show
+      });
+    };
   //dobavi sve poslovnice jer njima punimo drop listu
   async componentDidMount() {
     const response = await fetch('https://main-server-si.herokuapp.com/api/business/allOffices');
@@ -47,7 +59,7 @@ class Reservations extends Component {
     async handleChange(value) {
       const officeId = value;
 
-      const url = 'https://main-server-si.herokuapp.com/api/business/1/offices/'+officeId+'/tables';
+      const url = 'https://main-server-si.herokuapp.com/api/business/1/offices/'+ officeId +'/tables';
       //console.log("url: " + url);
       //const url='https://main-server-si.herokuapp.com/api/reviews/';
       const response = await fetch(url);
@@ -61,15 +73,21 @@ class Reservations extends Component {
     }
     //proslijedi potrebne podatke za rezervaciju ako kome zatreba
     handleReservation(event){
-      alert("office id: " + this.state.selectedOffice + ", id sa rute koja prikazuje stolove: " + event.id + ", redni broj stola: " + event.tableNumber);
+      //alert("office id: " + this.state.selectedOffice + ", id sa rute koja prikazuje stolove: " + event.id + ", redni broj stola: " + event.tableNumber);
+      //dodala ovo
+      this.setState({
+        tableId: event.id
+      });
+      this.showModal(event);
     }
   
     render(){
       //puni drop listu
     const options=[];
     this.state.data.forEach(element=>{
+      if(element.businessId == 1)
        options.push(
-        <option value={element.id}> {element.businessName}</option>
+        <option value={element.id}> {element.businessName + ', ' + element.address}</option>
        );
      })
      //za grid dio sa antd preuzet
@@ -107,6 +125,13 @@ class Reservations extends Component {
            </Select>
               <Row style={{marginTop: '30px'}} gutter={[this.gutters[gutterKey], this.vgutters[vgutterKey]]}>{cols}</Row>
               <Row style={{ marginTop: '80px', display: 'inline-flex', justifyContent: 'center', alignItems: 'center'}}>{noData}</Row>
+            
+
+
+
+            <Modalni onClose={this.showModal} show={this.state.show}>
+            <Forma tableIdParent={this.state.tableId} officeIdParent={this.state.selectedOffice}></Forma>
+            </Modalni>
             </div>
             );
           }
