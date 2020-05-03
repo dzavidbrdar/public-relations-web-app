@@ -37,12 +37,12 @@ class Notifications extends React.Component {
     stompClient = Stomp.over(socket);
 
     //ucitat localStorage i definisat dataNotifikacije;localStorage je objekat
-    const nizNotif=[];
-    let dataNotifikacije=<div><Dropdown.Menu className="bootstrapiso">{nizNotif}</Dropdown.Menu></div>;//ubacujemo u div dinamicki, preko ref
-    let refNotif=this.refs.notif_ek1;
     console.log('local '+JSON.stringify(localStorage));
     //popunit iz localStorage u nizNotif
-
+    /*for (let i = 0; i < localStorage.length; i++) {
+      let notifikacijaItem = <Dropdown.Item as="button">Action</Dropdown.Item>;
+      this.state.nizNotif.push(notifikacijaItem);
+    }*/
     //dobavljanje notifikacije
     stompClient.connect({}, ()=>{
       console.log('konektovao sam se');
@@ -54,14 +54,12 @@ class Notifications extends React.Component {
         let idNoveNotifikacije=localStorage.length;
         localStorage.setItem(idNoveNotifikacije,JSON.stringify(e.payload));
         this.notify();
-
+        this.props.addNotificationMethod(e);
         //formirat element pomocu f-je formirajDropDownItem i dodat u nizNotif, kao u questions.js
       });
     }, (err)=>{
       console.log('error pri konekciji '+err);
     });
-
-    ReactDOM.render(<div>{dataNotifikacije}</div>, refNotif);//ubacivanje u div
   }
 
   //metoda da zazvoni i poveca onaj broj
@@ -83,7 +81,6 @@ class Notifications extends React.Component {
     const { count, mute, isAnimating } = this.state;
     const CustomToggle = React.forwardRef(({ children, onClick }, ref) => (
       <a
-        href=""
         ref={ref}
         onClick={(e) => {
           e.preventDefault();
@@ -97,7 +94,6 @@ class Notifications extends React.Component {
         mute={ mute } />
 
         {children}
-        &#x25bc;
       </a>
     ));
 
@@ -105,7 +101,6 @@ class Notifications extends React.Component {
       <Dropdown>
         <Dropdown.Toggle as={CustomToggle} id="dropdown-custom-components">
         </Dropdown.Toggle>
-        <div ref="notif_ek1"></div>
       </Dropdown>
     )
   }
@@ -113,10 +108,6 @@ class Notifications extends React.Component {
   componentWillUnmount(){
     stompClient.disconnect();
   }
-}
-//fja za kreiranje Dropdown.Item od notifikacije
-function formirajDropDownItem(){
-
 }
 
 //za izgled i animaciju zvonceta
