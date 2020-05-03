@@ -75,7 +75,8 @@ class FormaBrisanjeRezervacija extends Component {
             ajax.onreadystatechange = () => {
                 var mod = document.getElementById('btnCancel');
                 console.log(ajax);
-                let res = JSON.parse(ajax.responseText);
+                let res = { message: '' };
+                if (ajax.readyState === 4) res = JSON.parse(ajax.responseText);
                 if (ajax.readyState === 4 && ajax.status === 200) {
                     message.success(res.message + '!');
                     mod.click();
@@ -84,7 +85,7 @@ class FormaBrisanjeRezervacija extends Component {
                     message.error(res.message + '!');
                     mod.click();
                 }
-                else if (ajax.readyState === 4){ message.error("ERROR"); mod.click(); }
+                else if (ajax.readyState === 4) { message.error("ERROR"); mod.click(); }
             }
             ajax.open("DELETE", 'https://main-server-si.herokuapp.com/api/reservations', true);
             ajax.setRequestHeader("Content-Type", "application/json");
