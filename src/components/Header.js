@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { Avatar } from 'antd';
 import { UserOutlined } from '@ant-design/icons';
+import { Menu, Dropdown, Button } from "antd";
 
 import Notifications from './Notifications2.js';
 
@@ -9,8 +10,12 @@ class Header extends React.Component {
   constructor(props){
     super(props);
     this.state={
-      logged:false
-    }
+      logged:false,
+      notifications: []
+    };
+    this.createQuestionNotification = this.createQuestionNotification.bind(this);
+    this.createCommentNotification = this.createCommentNotification.bind(this);
+    this.addNotificationToList = this.addNotificationToList.bind(this);
   }
 
   static getDerivedStateFromProps(props, state) {
@@ -39,8 +44,12 @@ class Header extends React.Component {
                  {avatarSlika}  {linkLogout}
                </div>
             </div>
-            <div class='artboard'>
-              <Notifications/>
+            <div style={{display: "flex", alignItems: "center", justifyContent: "center", position: "absolute", top: "25px", right: "130px" }}>
+              <Dropdown overlay={<Menu>{this.state.notifications}</Menu>} placement="bottomRight" trigger={['click']}>
+                <Button type="link" ghost size="large">
+                  <Notifications addNotificationMethod={this.addNotificationToList} />
+                </Button>
+              </Dropdown>
             </div>
         </div>
       );
@@ -61,6 +70,37 @@ class Header extends React.Component {
             </div>
         </div>
       );
+  }
+
+  addNotificationToList(notification) {
+    if (notification.payload.action == "question_add")
+      this.state.notifications.unshift(this.createQuestionNotification(notification.payload.description));
+    else if (notification.payload.action == "comment_add")
+      this.state.notifications.unshift(this.createCommentNotification(notification.payload.description));
+  }
+
+  createQuestionNotification(notificationDescription) {
+    let today = new Date();
+    let todayString = today.getDate() + "." + (today.getMonth() + 1) + "." + today.getFullYear();
+    let nowString = ((today.getHours() < 10) ? "0" : "") + today.getHours() + ":" + ((today.getMinutes() < 10) ? "0" : "") + today.getMinutes();
+    let notificationHeader = "(New question, " + todayString + " at " + nowString + ")";
+    return (<Menu.Item>
+      <Link class="effect-underline" style={blackLinkStyle} to="/unansweredQuestions">
+        <i style={{color: "blue"}}>{notificationHeader}</i><br></br>{notificationDescription}
+      </Link>
+    </Menu.Item>);
+  }
+
+  createCommentNotification(notificationDescription) {
+    let today = new Date();
+    let todayString = today.getDate() + "." + (today.getMonth() + 1) + "." + today.getFullYear();
+    let nowString = ((today.getHours() < 10) ? "0" : "") + today.getHours() + ":" + ((today.getMinutes() < 10) ? "0" : "") + today.getMinutes();
+    let notificationHeader = "(New comment, " + todayString + " at " + nowString + ")";
+    return (<Menu.Item>
+      <Link class="effect-underline" style={blackLinkStyle} to="/commentReview">
+        <i style={{color: "blue"}}>{notificationHeader}</i><br></br>{notificationDescription}
+      </Link>
+    </Menu.Item>);
   }
 }
 
@@ -136,6 +176,13 @@ const linkStyle = {
     padding:'10px',
     color: '#fff',
     textDecoration: 'none'
+}
+
+const blackLinkStyle = {
+  padding:'10px',
+  color: '#141414',
+  textDecoration: 'none',
+  height: '100%'
 }
 
 let logOut=()=>{
