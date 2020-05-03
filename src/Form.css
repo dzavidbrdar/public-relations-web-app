@@ -96,4 +96,18 @@ span.irma{
     width: 21.5em;
     margin: 1em auto 1em auto;
 }
-
+.nadija.block input
+{
+    display: inline-block;
+    width: 157px;
+}
+.nadija.block label {
+	display: inline-block;
+	width: 100px;
+	height: 30px;
+    text-align: left;
+    font-size: 14px; /* da stane u jedan red */
+    margin: 0.7em auto 1em auto;
+    font-weight: bold;
+    padding: 0.5em;
+}

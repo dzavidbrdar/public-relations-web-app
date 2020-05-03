@@ -4,10 +4,10 @@ import { Alert } from 'antd';
 import {message} from 'antd';
 import { DatePicker } from 'antd';
 import { TimePicker } from 'antd';
-//import StarRatingComponent from 'react-star-rating-component';
+import Demo from './demo';
+
 var Recaptcha = require('react-recaptcha');
 let recaptchaInstance;
-
 
 const validEmailRegex = RegExp(/^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i);
 const validateForm = (errors) => {
@@ -32,6 +32,8 @@ class FormaRezervacija extends Component {
           lastname: undefined,
           email: undefined,
           recaptcha: false,
+          submit: false, 
+          obj: null,
 
           errors: {
             name: '',
@@ -57,16 +59,20 @@ class FormaRezervacija extends Component {
       }
 
       onChangeDate = date => {
-        var datum = new Date(date._d.getFullYear(), date._d.getMonth(), date._d.getDate());
+        var datum = null;
+        if(date) datum = new Date(date._d.getFullYear(), date._d.getMonth(), date._d.getDate());
         console.log(datum);
         this.setState({ date: date});
         this.setState({ datum: datum});
       };
       onChangeTime = time => {
-        var vrijeme = new Date();
+        var vrijeme = null;
+        if(time){
+        vrijeme = new Date();
         vrijeme.setHours(time._d.getHours());
         vrijeme.setMinutes(time._d.getMinutes());
         vrijeme.setSeconds(time._d.getSeconds());
+        }
         console.log(vrijeme);
         this.setState({ time: time });
         this.setState({ vrijeme: vrijeme });
@@ -108,7 +114,7 @@ class FormaRezervacija extends Component {
 
         this.setState({errors, [name]: value});
       }
-      handleSubmit(event) {
+      async handleSubmit(event) {
         event.preventDefault();
         if(validateForm(this.state.errors) && this.state.recaptcha && this.state.time && this.state.date) {
             const object = {};
@@ -130,23 +136,66 @@ class FormaRezervacija extends Component {
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(object)
             };
-            fetch( 'https://main-server-si.herokuapp.com/api/business/1/offices/' + this.props.officeIdParent + '/reservations', requestOptions)
-                .then(response => response.json())
-                .then(data => console.log(data));
-                
+            const response = await fetch( 'https://main-server-si.herokuapp.com/api/business/1/offices/' + this.props.officeIdParent + '/reservations', requestOptions);
+            const data = await response.json();
+
+            console.log(data);
+            if(data.status == 500) {
+                message.error(data.message);
                 recaptchaInstance.reset();
                 this.setState({
 	                recaptcha: false
                 });
+            }
+            else{
+                this.setState({
+                    submit: true
+                });
+                var o = {};
+                o.id = data.id;
+                o.email = this.state.email;
+                o.verificationCode = data.verificationCode;
+                this.setState({
+                    obj: o
+                });
+                /*const id = data.id;
+                var code = prompt('Please enter verification code:');
+                console.log(code);
 
+                if(data.verificationCode != code) message.error("Wrong code"); //ovdje se može resendat
+                else{
+                const obj = {};
+                obj.email = this.state.email;
+                obj.verificationCode = code;
+                console.log(obj);
+
+                const requestOpt = {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(obj)
+                };
+                const res = await fetch( 'https://main-server-si.herokuapp.com/api/reservations/' + id, requestOpt);
+                const pod = await res.json();
+                console.log(pod);
+                }*/
+            }
+                /*.then(response => response.json())
+                .then(data => {
+                    if(data.status == 500) message.error(data.error);
+                    else{
+                        //otvara se novi prozor
+                        //this.showModal(event);
+                    }
+                    console.log(data)
+                });*/
+
+                //ovo ide ako je ok sve
+                /*
                 var mod= document.getElementById('btnCancel');
-                mod.click();
-
-                //unos verifikacijskog koda
-
+                mod.click();*/
 
           }else{
-            alert("Invalid form!");
+           message.error("Invalid form!");
           }
       }
 
@@ -194,12 +243,12 @@ class FormaRezervacija extends Component {
                 {errors.email.length > 0 &&
                 <span className='irma error'>{errors.email}</span>}
                 </div>
-                <div class="irma block">
-                <label class="irma">Date:</label>
+                <div class="nadija block">
+                <label class="nadija">Date:</label>
                 <DatePicker value={this.state.date} onChange={this.onChangeDate} />
                 </div>
-                <div class="irma block">
-                <label class="irma">Time:</label>
+                <div class="nadija block">
+                <label class="nadija">Time:</label>
                 <TimePicker value={this.state.time} onChange={this.onChangeTime} />
                 </div>
             <div class="recaptchaIrma">
@@ -211,6 +260,9 @@ class FormaRezervacija extends Component {
 	          expiredCallback={this.expiredCallback}
 	          />
           </div>
+        <div>
+            {this.state.submit ? <Demo objekat={this.state.obj}/> : ''} 
+        </div>
             <div class="irma block"  style={{float:'left', width: '80px'}}>
               <input type="submit" value="Make Reservation" style={{ width: '150px', lineHeight: '1'}}/>
             </div>
