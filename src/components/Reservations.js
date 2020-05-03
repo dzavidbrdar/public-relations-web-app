@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import "../Reservations.css";
-import { Row, Col, Empty, Select, Modal, Button } from 'antd';
+import { Row, Col, Empty, Select, Modal, Button, Slider} from 'antd';
 import Modalni from "./ModalRezervacija.js";
 import Forma from "./FormaRezervacija.js";
 import DeleteForm from "./FormaBrisanjeRezervacije.js";
@@ -95,7 +95,9 @@ class Reservations extends Component {
   setModal2Visible(value){
     this.setState({modal2Visible:value});
   }
-
+  onColCountChange = colCountKey => {
+    this.setState({ colCountKey });
+  };
   render() {
     //puni drop listu
     const options = [];
@@ -114,6 +116,20 @@ class Reservations extends Component {
 
     // ako je odgovor prazan ne treba se uci u for each, tj ako ima stolova prikazuj
     if (this.state.tables.length > 0) {
+      cols.push(
+        <div style={{ width: '100%', marginBottom: '20px' }}>
+          <div style={{ width: '40%', margin: '0 auto'}}>
+          <Slider
+            min={0}
+            max={Object.keys(this.colCounts).length - 1}
+            value={colCountKey}
+            onChange={this.onColCountChange}
+            marks={this.colCounts}
+            step={null}
+          /> 
+          </div>
+        </div>
+      )
       this.state.tables.forEach(element => {
         cols.push(
           <Col span={24 / colCount}>
@@ -125,11 +141,22 @@ class Reservations extends Component {
       )
       noData = [];
       //ako nema stolova prikazi Empty komponentu
-    } else {
-      noData.push(
-        <Empty />
-      );
+    } 
+    else {
+          
+      let opis = "No tables found in the office"
+      let slika="/noData.png";
+      if(this.state.selectedOffice==0) {
+        opis = "The office is not selected";
+        slika=Empty.PRESENTED_IMAGE_DEFAULT;
+      }
 
+      noData.push(
+        <Empty description={opis} image={slika}   imageStyle={{
+          height: 150,
+        }}/>
+      );
+    
     }
 
     return (
@@ -149,7 +176,7 @@ class Reservations extends Component {
           {options}
         </Select>
         <Row style={{ marginTop: '30px' }} gutter={[this.gutters[gutterKey], this.vgutters[vgutterKey]]}>{cols}</Row>
-        <Row style={{ marginTop: '80px', display: 'inline-flex', justifyContent: 'center', alignItems: 'center' }}>{noData}</Row>
+        <Row style={{ marginTop: '30px', display: 'inline-flex', justifyContent: 'center', alignItems: 'center' }}>{noData}</Row>
 
 
 
