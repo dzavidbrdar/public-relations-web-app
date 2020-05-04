@@ -244,3 +244,14 @@ Korisnik (uposlenik) treba dobiti notifikaciju u trenutku kada (potencijalni) ku
 * Spasavanje notifikacija u localstorage
 * Uraditi push koda
 * Napraviti pull request
+
+# Feature
+Notifikacija za komentar na proizvod
+## Item
+Korisnik (uposlenik) treba dobiti notifikaciju u trenutku kada (potencijalni) kupac ostavi komentar na neki proizvod.
+### Task
+* Template za prikaz notifikacija
+* Dohvacanje notifikacija u realnom vremenu
+* Spasavanje notifikacija u localstorage
+* Uraditi push koda
+* Napraviti pull request
