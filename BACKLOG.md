@@ -222,3 +222,15 @@ Korisnik (potencijalna mušterija) treba moći kreirati rezervaciju kako bi moga
 * Obavještavati korisnika u svakom trenutku o stanju rezervacije
 * Uraditi push koda
 * Napraviti pull request
+
+# Feature
+Grafički prikaz rasporeda stolova 
+## Item
+Korisnik (potencijalna mušterija) treba imati mogućnost pregleda grafičkog rasporeda stolova kako bi mogao znati kojim stolovima raspolaže konkretna poslovnica.
+### Task
+* Implementirati dropdown listu koja se sastoji od naziva poslovnica i njihovih adresa
+* Implementirati mogućnost da se za odabranu poslovnicu sa liste učitaju isključivo stolovi za istu
+* Implementirati prikaz stolova za konkretnu poslovnicu putem grid komponente
+* Implementirati slider koji korisniku omogućava da odredi broj stolova koji treba da se prikaže u jednom redu
+* Uraditi push koda
+* Napraviti pull request
