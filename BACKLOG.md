@@ -209,3 +209,16 @@ Korisnik (potencijalna mušterija) treba moći obrisati rezervaciju u slučaju d
 * Obrisati postojeću rezervaciju
 * Uraditi push koda
 * Napraviti pull request
+
+# Feature
+Kreiranje rezervacije
+## Item
+Korisnik (potencijalna mušterija) treba moći kreirati rezervaciju kako bi mogao na vrijeme zauzeti svoje mjesto.
+### Task
+* Kreirati formu za unos ličnih podataka(ime, prezime, mail) kao i datuma i vremena buduće rezervacije
+* Napraviti POST request sa unešenim parametrima, te čekati na odgovor servera
+* Ukoliko je rezervacija validna, kreirati dijalog za unošenje verifikacionog koda kojeg je korisnik dobio putem maila
+* Omogućiti odustajanje od rezervacije, kao i ponovno slanje(resend) verifikacionog koda ukoliko je došlo do greške
+* Obavještavati korisnika u svakom trenutku o stanju rezervacije
+* Uraditi push koda
+* Napraviti pull request
