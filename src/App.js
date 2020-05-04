@@ -14,7 +14,7 @@ import CommentsPublic from './components/CommentsPublic';
 import CommentReview from './components/CommentReview.js';
 import ProductsList from './components/ProductsList';
 import ProductComments from './components/ProductComments';
-
+import Reservations from'./components/Reservations.js';
 import Footer from './components/Footer.js';
 import './css4.1/bootstrapcustom.css';
 import './components/Footer.css';
@@ -39,6 +39,7 @@ class App extends React.Component {
             <Route path="/questions" component={Questions} />
             <Route path="/contact" component={Contact} />
             <Route path="/questionask" component={QuestionAsk} />
+            <Route path="/reservations" component={Reservations} />
             <Route path="/postComment" component={PostComment} />
             <Route path="/login" component={Login} />
             <Route path="/unansweredQuestions" render={(props) => <UnansweredQuestions {...props} headerHandler={this.headerHandler}/>}/>

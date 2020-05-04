@@ -2,14 +2,20 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { Avatar } from 'antd';
 import { UserOutlined } from '@ant-design/icons';
+import { Menu, Dropdown, Button } from "antd";
 
+import Notifications from './Notifications2.js';
 
 class Header extends React.Component {
   constructor(props){
     super(props);
     this.state={
-      logged:false
-    }
+      logged:false,
+      notifications: []
+    };
+    this.createQuestionNotification = this.createQuestionNotification.bind(this);
+    this.createCommentNotification = this.createCommentNotification.bind(this);
+    this.addNotificationToList = this.addNotificationToList.bind(this);
   }
 
   static getDerivedStateFromProps(props, state) {
@@ -34,8 +40,16 @@ class Header extends React.Component {
             </div>
             <div style={navbarStyle}>
                 <div style={linkoviStyle}> {linkHome}  |  {linkProducts}  |  {linkCommentReview}  |  {linkUnansweredQuestions}</div>
-               <div style={loginStyle}>{avatarSlika}  {linkLogout}</div>
-
+               <div style={loginStyle}>
+                 {avatarSlika}  {linkLogout}
+               </div>
+            </div>
+            <div style={{display: "flex", alignItems: "center", justifyContent: "center", position: "absolute", top: "25px", right: "130px" }}>
+              <Dropdown overlay={<Menu>{this.state.notifications}</Menu>} placement="bottomRight" trigger={['click']}>
+                <Button type="link" ghost size="large">
+                  <Notifications addNotificationMethod={this.addNotificationToList} />
+                </Button>
+              </Dropdown>
             </div>
         </div>
       );
@@ -46,16 +60,47 @@ class Header extends React.Component {
             <div>
                 <header style={headerStyle}>
                     <h1 style={{ color: 'white', margin: 0, fontSize: '55px', lineHeight: '40px', paddingTop: '30px', textShadow: 'black 5px 5px 3px'}}>Public Relations</h1>
-                    <h2 style={{color: 'white', opacity: '0.6', fontSize: '20px', margin: 0, lineHeight: '35px', paddingLeft: '150px'}}>#weStandByYourSide!</h2>
+                    <h2 style={{color: 'white', opacity: '0.6', fontSize: '20px', margin: 0, lineHeight: '35px', paddingLeft: '150px'}}>#WeStandByYourSide!</h2>
                 </header>
             </div>
             <div style={navbarStyle}>
-                <div style={linkoviStyle}> {linkHome}  |  {linkProducts} | {linkProductsList} |  {linkComments}  |  {linkContact}  |  {linkQuestions}  |  {linkAsk}</div>
+                <div style={linkoviStyle}> {linkHome}  |  {linkProducts} | {linkProductsList} |  {linkComments}  |  {linkContact}  |  {linkReservations} | {linkQuestions}  |  {linkAsk}</div>
                <div style={loginStyle}>{avatarSlika}  {linkLogin}</div>
 
             </div>
         </div>
       );
+  }
+
+  addNotificationToList(notification) {
+    if (notification.payload.action == "question_add")
+      this.state.notifications.unshift(this.createQuestionNotification(notification.payload.description));
+    else if (notification.payload.action == "comment_add")
+      this.state.notifications.unshift(this.createCommentNotification(notification.payload.description));
+  }
+
+  createQuestionNotification(notificationDescription) {
+    let today = new Date();
+    let todayString = today.getDate() + "." + (today.getMonth() + 1) + "." + today.getFullYear();
+    let nowString = ((today.getHours() < 10) ? "0" : "") + today.getHours() + ":" + ((today.getMinutes() < 10) ? "0" : "") + today.getMinutes();
+    let notificationHeader = "(New question, " + todayString + " at " + nowString + ")";
+    return (<Menu.Item>
+      <Link class="effect-underline" style={blackLinkStyle} to="/unansweredQuestions">
+        <i style={{color: "blue"}}>{notificationHeader}</i><br></br>{notificationDescription}
+      </Link>
+    </Menu.Item>);
+  }
+
+  createCommentNotification(notificationDescription) {
+    let today = new Date();
+    let todayString = today.getDate() + "." + (today.getMonth() + 1) + "." + today.getFullYear();
+    let nowString = ((today.getHours() < 10) ? "0" : "") + today.getHours() + ":" + ((today.getMinutes() < 10) ? "0" : "") + today.getMinutes();
+    let notificationHeader = "(New comment, " + todayString + " at " + nowString + ")";
+    return (<Menu.Item>
+      <Link class="effect-underline" style={blackLinkStyle} to="/commentReview">
+        <i style={{color: "blue"}}>{notificationHeader}</i><br></br>{notificationDescription}
+      </Link>
+    </Menu.Item>);
   }
 }
 
@@ -133,6 +178,13 @@ const linkStyle = {
     textDecoration: 'none'
 }
 
+const blackLinkStyle = {
+  padding:'10px',
+  color: '#141414',
+  textDecoration: 'none',
+  height: '100%'
+}
+
 let logOut=()=>{
   document.cookie="username=";
   document.cookie="token=";
@@ -152,6 +204,6 @@ const linkUnansweredQuestions = <Link class="effect-underline" style={linkStyle}
 const linkCommentReview = <Link class="effect-underline" style={linkStyle} to="/commentReview">Review Comments</Link>;
 const linkLogout = <Link class="effect-underline" style={blackStyle} to="/" onClick={logOut}>Log out</Link>;
 const linkProductsList = <Link class="effect-underline" style={linkStyle} to="/productsList">Products</Link>;
-
+const linkReservations = <Link class="effect-underline" style={linkStyle} to="/reservations">Reservations</Link>;
 
 export default Header;
