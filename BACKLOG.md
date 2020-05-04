@@ -199,8 +199,6 @@ Korisniku se trebaju ponuditi informacije o glavnoj poslovnici unutar svih. To p
 * Napraviti pull request
 
 # Feature
-<<<<<<< develop
-=======
 Brisanje postojeće rezervacije
 ## Item
 Korisnik (potencijalna mušterija) treba moći obrisati rezervaciju u slučaju da se predomisli.
@@ -237,7 +235,6 @@ Korisnik (potencijalna mušterija) treba imati mogućnost pregleda grafičkog ra
 * Napraviti pull request
 
 # Feature
->>>>>>> master
 Notifikacija za pitanje
 ## Item
 Korisnik (uposlenik) treba dobiti notifikaciju u trenutku kada (potencijalni) kupac postavi novo pitanje.
@@ -247,8 +244,6 @@ Korisnik (uposlenik) treba dobiti notifikaciju u trenutku kada (potencijalni) ku
 * Spasavanje notifikacija u localstorage
 * Uraditi push koda
 * Napraviti pull request
-<<<<<<< develop
-=======
 
 # Feature
 Notifikacija za komentar na proizvod
@@ -260,4 +255,3 @@ Korisnik (uposlenik) treba dobiti notifikaciju u trenutku kada (potencijalni) ku
 * Spasavanje notifikacija u localstorage
 * Uraditi push koda
 * Napraviti pull request
->>>>>>> master
