@@ -199,6 +199,45 @@ Korisniku se trebaju ponuditi informacije o glavnoj poslovnici unutar svih. To p
 * Napraviti pull request
 
 # Feature
+<<<<<<< develop
+=======
+Brisanje postojeće rezervacije
+## Item
+Korisnik (potencijalna mušterija) treba moći obrisati rezervaciju u slučaju da se predomisli.
+### Task
+* Omogućiti pokretanje procesa brisanja rezervacije klikom na dugme "Cancel reservation"
+* Kreirati formu za unos podataka potrebnih za brisanje
+* Obaviti provjeru postojanja takve rezervacije
+* Obrisati postojeću rezervaciju
+* Uraditi push koda
+* Napraviti pull request
+
+# Feature
+Kreiranje rezervacije
+## Item
+Korisnik (potencijalna mušterija) treba moći kreirati rezervaciju kako bi mogao na vrijeme zauzeti svoje mjesto.
+### Task
+* Kreirati formu za unos ličnih podataka(ime, prezime, mail) kao i datuma i vremena buduće rezervacije
+* Napraviti POST request sa unešenim parametrima, te čekati na odgovor servera
+* Ukoliko je rezervacija validna, kreirati dijalog za unošenje verifikacionog koda kojeg je korisnik dobio putem maila
+* Omogućiti odustajanje od rezervacije, kao i ponovno slanje(resend) verifikacionog koda ukoliko je došlo do greške
+* Obavještavati korisnika u svakom trenutku o stanju rezervacije
+* Uraditi push koda
+* Napraviti pull request
+
+# Feature
+Grafički prikaz rasporeda stolova 
+## Item
+Korisnik (potencijalna mušterija) treba imati mogućnost pregleda grafičkog rasporeda stolova kako bi mogao znati kojim stolovima raspolaže konkretna poslovnica.
+### Task
+* Implementirati dropdown listu koja se sastoji od naziva poslovnica i njihovih adresa
+* Implementirati prikaz stolova za konkretnu poslovnicu (odabranu sa dropdown liste) putem grid komponente
+* Implementirati slider koji korisniku omogućava da odredi broj stolova koji treba da se prikažu u jednom redu
+* Uraditi push koda
+* Napraviti pull request
+
+# Feature
+>>>>>>> master
 Notifikacija za pitanje
 ## Item
 Korisnik (uposlenik) treba dobiti notifikaciju u trenutku kada (potencijalni) kupac postavi novo pitanje.
@@ -208,3 +247,17 @@ Korisnik (uposlenik) treba dobiti notifikaciju u trenutku kada (potencijalni) ku
 * Spasavanje notifikacija u localstorage
 * Uraditi push koda
 * Napraviti pull request
+<<<<<<< develop
+=======
+
+# Feature
+Notifikacija za komentar na proizvod
+## Item
+Korisnik (uposlenik) treba dobiti notifikaciju u trenutku kada (potencijalni) kupac ostavi komentar na neki proizvod.
+### Task
+* Template za prikaz notifikacija
+* Dohvacanje notifikacija u realnom vremenu
+* Spasavanje notifikacija u localstorage
+* Uraditi push koda
+* Napraviti pull request
+>>>>>>> master
