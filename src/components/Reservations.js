@@ -30,8 +30,11 @@ class Reservations extends Component {
       colCountKey: 2,
       tables: [],
       selectedOffice: 0,
+      selectedBusiness: 0,
+      businessName : "",
       defaultOffice: [],
-      tableId: 0
+      tableId: 0,
+      biznisi:[]
     };
     // popraviti selected poslije da ne bude fiksirano
     [8, 16, 24, 32, 40, 48].forEach((value, i) => {
@@ -40,7 +43,7 @@ class Reservations extends Component {
     [8, 16, 24, 32, 40, 48].forEach((value, i) => {
       this.vgutters[i] = value;
     });
-    [2, 3, 4, 6, 8, 12].forEach((value, i) => {
+    [1,2,3,4,6,8].forEach((value, i) => {
       this.colCounts[i] = value;
     });
     this.handleChange = this.handleChange.bind(this);
@@ -51,20 +54,44 @@ class Reservations extends Component {
       show: !this.state.show
     });
   };
+ 
   //dobavi sve poslovnice jer njima punimo drop listu
   async componentDidMount() {
-    const response = await fetch('https://main-server-si.herokuapp.com/api/business/allOffices');
-    const json = await response.json();
+    
+    /* 
+     /api/business
+     /api/business/{id}/offices
+     json1[0]['id']
+    */
+    const responseBiznis=await fetch('https://main-server-si.herokuapp.com/api/business/allBusinesses');
+    const json1=await responseBiznis.json();
+
+    const json = json1[0]['offices'];
+
+    console.log("JSON  - " + json);
+    
     this.setState({
-      data: json
+      data: json,
+      selectedBusiness: json1[0]['id'],
+      businessName : json1[0]['name']
     });
   }
 
   //kada se odabere neka poslovnica iz liste, moraju se ucitati stolovi za tu poslovnicu
   async handleChange(value) {
     const officeId = value;
-
-    const url = 'https://main-server-si.herokuapp.com/api/business/1/offices/' + officeId + '/tables';
+    
+    /*
+    const responseBiznis=await fetch('https://main-server-si.herokuapp.com/api/business');
+    const json1=await responseBiznis.json();
+    
+    console.log("********* ");
+    console.log(responseBiznis);
+    console.log("********* ");
+    */
+    
+    const url = 'https://main-server-si.herokuapp.com/api/business/'+ this.state.selectedBusiness +'/offices/' + officeId + '/tables';
+    
     //console.log("url: " + url);
     //const url='https://main-server-si.herokuapp.com/api/reviews/';
     const response = await fetch(url);
@@ -102,9 +129,9 @@ class Reservations extends Component {
     //puni drop listu
     const options = [];
     this.state.data.forEach(element => {
-      if (element.businessId == 1)
+      //if (element.businessId == this.state.selectedBusiness)
         options.push(
-          <option value={element.id}> {element.businessName + ', ' + element.address}</option>
+          <option value={element.id}> {this.state.businessName + ', ' + element.address}</option>
         );
     })
     //za grid dio sa antd preuzet
@@ -133,7 +160,7 @@ class Reservations extends Component {
       this.state.tables.forEach(element => {
         cols.push(
           <Col span={24 / colCount}>
-            <div className="components-grid-demo-playground" onClick={this.handleReservation.bind(this, element)} >{"Table " + element.tableNumber}</div>
+            <div className="components-grid-demo-playground" onClick={this.handleReservation.bind(this, element)} >{element.tableName}</div>
           </Col>,
         );
         colCode += `  <Col span={${24 / colCount}} />\n`;
@@ -143,9 +170,8 @@ class Reservations extends Component {
       //ako nema stolova prikazi Empty komponentu
     } 
     else {
-          
-      let opis = "No tables found in the office"
-      let slika="/noData.png";
+      let opis = "No objects found in the office"
+      let slika="/noData.jpg";
       if(this.state.selectedOffice==0) {
         opis = "The office is not selected";
         slika=Empty.PRESENTED_IMAGE_DEFAULT;
