@@ -208,7 +208,7 @@ class Reservations extends Component {
 
 
         <Modalni onClose={this.showModal} show={this.state.show}>
-          <Forma tableIdParent={this.state.tableId} officeIdParent={this.state.selectedOffice}></Forma>
+          <Forma tableIdParent={this.state.tableId} officeIdParent={this.state.selectedOffice} selectedBusinessIdParent={this.state.selectedBusiness}></Forma>
         </Modalni>
       </div>
     );
