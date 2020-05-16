@@ -9,9 +9,14 @@ class Footer2 extends React.Component {
     }
   }
   async componentDidMount() {
+      const response0=await fetch('https://main-server-si.herokuapp.com/api/business/allBusinesses');
+      const json0=await response0.json();
+      const map0=json0.map(el=>el.id);
+      const minId=Math.min(...map0);
+
       const response =await fetch('https://main-server-si.herokuapp.com/api/business/allOffices');
       const json = await response.json();
-      const response2 =await fetch('https://main-server-si.herokuapp.com/api/business/1/mainOffice');
+      const response2 =await fetch('https://main-server-si.herokuapp.com/api/business/'+minId+'/mainOffice');
       const json2 = await response2.json();
       const glp_id=json2.mainOfficeId;
       const glavna = json.find((el)=>{if(el.id===glp_id) return el;});
