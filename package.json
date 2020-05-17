@@ -11,6 +11,8 @@
     "antd": "^4.0.4",
     "axios": "^0.19.2",
     "bootstrap": "^4.4.1",
+    "chai": "^4.2.0",
+    "mocha": "^7.1.2",
     "react": "^16.13.1",
     "react-bootstrap": "^1.0.1",
     "react-dom": "^16.13.1",
@@ -20,6 +22,7 @@
     "react-router-dom": "^5.1.2",
     "react-scripts": "3.4.1",
     "react-star-rating-component": "^1.4.1",
+    "selenium-webdriver": "^4.0.0-alpha.7",
     "sockjs-client": "^1.4.0",
     "stompjs": "^2.3.3"
   },
@@ -27,7 +30,8 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "testSelenium": "./node_modules/.bin/mocha seleniumTests.js"
   },
   "eslintConfig": {
     "extends": "react-app"
