@@ -73,3 +73,30 @@ describe("Test 3", function() {
             .then(textValue => { assert.equal('Invalid form!', textValue); }).then(() => driver.quit());
     });
 });
+
+describe("Test 4", function() {
+    
+    this.timeout(30000);
+
+    it ("Should show the 'Comment Review' in the table for a logged in user and deny access for others", async () => {
+
+        let driver = await new Builder().forBrowser("chrome").build();
+        await driver.get("https://public-relations-si.herokuapp.com/commentReview");
+        // Trebalo bi prikazati tekst Zabranjen pristup
+        await (await driver.findElement(By.xpath('/html/body/div/div/div[2]/p'))).getText()
+            .then(textValue => {assert.equal('Zabranjen pristup', textValue)});
+
+        await driver.get("https://public-relations-si.herokuapp.com");
+        await driver.findElement(By.xpath('/html/body/div/div/div[1]/div[2]/div[2]/a')).click();
+
+        // Login:
+        await driver.findElement(By.xpath('//*[@id="root"]/div/div[2]/form/input[1]')).sendKeys("dzavid");
+        await driver.findElement(By.xpath('//*[@id="root"]/div/div[2]/form/input[2]')).sendKeys("password");
+        await driver.findElement(By.xpath('//*[@id="root"]/div/div[2]/form/button')).click();
+
+        // Ulogovao se, sad treba provjerit postojanje teksta "Review Comments" za ulogovanog korisnika
+        await driver.wait(until.elementLocated(By.className('notification-bell__bow')), 30000);
+        await driver.findElement(By.xpath('//*[@id="root"]/div/div[1]/div[2]/div[1]/a[3]')).getText()
+        .then(textValue => { assert.equal('Review Comments', textValue); }).then(() => driver.quit());
+    });
+});
