@@ -51,3 +51,25 @@ describe("Test 2", function() {
             .then(textValue => { assert.equal('The username or password is incorrect', textValue); }).then(() => driver.quit());
     });
 });
+
+describe("Test 3", function() {
+    
+    this.timeout(30000);
+
+    it ("Shouldn't accept submitted question - we didn't confirmed reCAPTCHA", async () => {
+        let driver = await new Builder().forBrowser("chrome").build();
+        await driver.get("https://public-relations-si.herokuapp.com/");
+        
+        await driver.findElement(By.xpath('//*[@id="root"]/div/div[1]/div[2]/div[1]/a[8]')).click();
+
+        await driver.findElement(By.xpath('//*[@id="root"]/div/div[2]/form/input[1]')).sendKeys("Ime");
+        await driver.findElement(By.xpath('//*[@id="root"]/div/div[2]/form/input[2]')).sendKeys("Prezime");
+        await driver.findElement(By.xpath('//*[@id="root"]/div/div[2]/form/input[3]')).sendKeys("probni@etf.unsa.ba");
+        await driver.findElement(By.xpath('//*[@id="root"]/div/div[2]/form/textarea')).sendKeys("Ovo ne treba da radi!");
+        await driver.findElement(By.xpath('//*[@id="root"]/div/div[2]/form/button')).click();
+
+        await driver.wait(until.elementLocated(By.xpath('//*[@id="alertmsgNadija"]')), 15000);
+        await driver.findElement(By.xpath('//*[@id="alertmsgNadija"]')).getText()
+            .then(textValue => { assert.equal('Invalid form!', textValue); }).then(() => driver.quit());
+    });
+});
