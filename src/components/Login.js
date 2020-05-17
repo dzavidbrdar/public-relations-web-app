@@ -31,8 +31,8 @@ class Login extends React.Component {
     let err='';
     let regUsername=/^[a-zA-Z0-9]+$/;
     let regPass=/^[a-zA-Z0-9!@#$&*]+$/;
-    if (nam === "username" && !regUsername.test(val)) err=<p class="obavijest">Username can contain only letters or numbers</p>;
-    if (nam === "pass" && !regPass.test(val)) err=<p class="obavijest">Password can contain only letters, numbers or these characters: !,@,#,$,&,*</p>;
+    if (nam === "username" && !regUsername.test(val)) err='Username can contain only letters or numbers';
+    if (nam === "pass" && !regPass.test(val)) err='Password can contain only letters, numbers or these characters: !,@,#,$,&,*';
     this.setState({errormessage:err});
     this.setState({[nam]: val});
   }
@@ -64,7 +64,7 @@ class Login extends React.Component {
         if (ajax.readyState == 4 && ajax.status == 404)
           console.log('greska 404');
         if(ajax.readyState == 4 && ajax.status == 401) {
-          let err=<p class="obavijest">The username or password is incorrect</p>;
+          let err='The username or password is incorrect';
           this.setState({errormessage:err});
         }
 
@@ -85,10 +85,10 @@ class Login extends React.Component {
     let regUsername=/^[a-zA-Z0-9]+$/;
     let regPass=/^[a-zA-Z0-9!@#$&*]+$/;
     let err='';
-    if(user==='') err=<p class="obavijest">Username cannot be empty</p>;
-    else if(!regUsername.test(user)) err=<p class="obavijest">Username can contain only letters or numbers</p>;
-    else if(pass==='') err=<p class="obavijest">Password cannot be empty</p>;
-    else if(!regPass.test(pass)) err=<p class="obavijest">Password can contain only letters, numbers or these characters: !,@,#,$,&,*</p>;
+    if(user==='') err='Username cannot be empty';
+    else if(!regUsername.test(user)) err='Username can contain only letters or numbers';
+    else if(pass==='') err='Password cannot be empty';
+    else if(!regPass.test(pass)) err='Password can contain only letters, numbers or these characters: !,@,#,$,&,*';
     if(err!='') this.setState({errormessage:err});
     else this.loginAjax(0);
   }
@@ -105,9 +105,9 @@ class Login extends React.Component {
       <h1>Login</h1>
       <input type="text" name="username" onChange={this.changeHandler} style={inputStyle} placeholder="Username"/>
       <input type="password" name="pass" onChange={this.changeHandler} style={inputStyle} placeholder="Password"/>
-      {this.state.errormessage}
+      <p className="obavijest" data-testid="loginO1">{this.state.errormessage}</p>
       <Button type="primary" htmlType="submit">Submit</Button>
-      {this.state.odg}
+      <p className="obavijest" data-testid="loginO2">{this.state.odg}</p>
       </form>
     );
   }
