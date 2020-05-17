@@ -136,7 +136,7 @@ class FormaRezervacija extends Component {
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(object)
             };
-            const response = await fetch( 'https://main-server-si.herokuapp.com/api/business/1/offices/' + this.props.officeIdParent + '/reservations', requestOptions);
+            const response = await fetch( 'https://main-server-si.herokuapp.com/api/business/' + this.props.selectedBusinessIdParent + '/offices/' + this.props.officeIdParent + '/reservations', requestOptions);
             const data = await response.json();
 
             console.log(data);

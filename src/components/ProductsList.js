@@ -84,12 +84,12 @@ export default function ProductsList() {
                  color="primary"
                  aria-label="contained primary button group"
                >
-                  <Button onClick={() => { 
+                  <Button onClick={() => {
                    setSelectedProductId(product.id);
                    setSelectedProductName(product.name);
                    setRedirectToProductComments(true);
                   }}>View Comments</Button>
-                 <Button onClick={() => { 
+                 <Button onClick={() => {
                    setSelectedProductId(product.id);
                    setSelectedProductName(product.name);
                    setRedirectToCommentPost(true);
@@ -136,7 +136,7 @@ export default function ProductsList() {
     const productsTemp = await productsData.json();
     const cardsTemp = makeCardsList(productsTemp);
     let productsHigherToLowerTemp = productsTemp;
-    productsHigherToLowerTemp.sort((firstProduct, secondProduct) => { 
+    productsHigherToLowerTemp.sort((firstProduct, secondProduct) => {
       const oldProductPrice1 = firstProduct.price;
       const newProductPrice1 = oldProductPrice1 - (oldProductPrice1 * (firstProduct.discount.percentage / 100));
       const newRoundedPrice1 = Math.round(newProductPrice1 * 100) / 100;
@@ -163,15 +163,15 @@ export default function ProductsList() {
 
 
   if (redirectToCommentPost) {
-    return (<Redirect to = {{ 
-        pathname: '/postComment', 
+    return (<Redirect to = {{
+        pathname: '/postComment',
         state: { productName: selectedProductName, id: selectedProductId }}}/>
     );
   }
 
   if (redirectToProductComments) {
-    return (<Redirect to = {{ 
-      pathname: '/productComments', 
+    return (<Redirect to = {{
+      pathname: '/productComments',
       state: { productName: selectedProductName, id: selectedProductId }}}/>
     );
   }
