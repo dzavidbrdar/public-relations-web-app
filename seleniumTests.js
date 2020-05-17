@@ -73,8 +73,87 @@ describe("Test 3", function() {
             .then(textValue => { assert.equal('Invalid form!', textValue); }).then(() => driver.quit());
     });
 });
-
 describe("Test 4", function() {
+    
+    this.timeout(30000);
+
+    it ("Should show alert - name is not valid!", async () => {
+        let driver = await new Builder().forBrowser("chrome").build();
+        await driver.get("https://public-relations-si.herokuapp.com/");
+        
+        await driver.findElement(By.xpath('//*[@id="root"]/div/div[1]/div[2]/div[1]/a[8]')).click();
+
+        await driver.findElement(By.xpath('//*[@id="root"]/div/div[2]/form/input[1]')).sendKeys("Ime1");
+        await driver.findElement(By.xpath('//*[@id="root"]/div/div[2]/form/input[2]')).sendKeys("Prezime");
+        await driver.findElement(By.xpath('//*[@id="root"]/div/div[2]/form/input[3]')).sendKeys("probni@etf.unsa.ba");
+        await driver.findElement(By.xpath('//*[@id="root"]/div/div[2]/form/textarea')).sendKeys("Ovo ne treba da radi!");
+
+        await driver.wait(until.elementLocated(By.xpath('//*[@id="root"]/div/div[2]/form/span')), 15000);
+        await driver.findElement(By.xpath('//*[@id="root"]/div/div[2]/form/span')).getText()
+            .then(textValue => { assert.equal('Name is not valid!', textValue); }).then(() => driver.quit());
+    });
+});
+describe("Test 5", function() {
+    
+    this.timeout(30000);
+
+    it ("Should show alert - lastname is not valid!", async () => {
+        let driver = await new Builder().forBrowser("chrome").build();
+        await driver.get("https://public-relations-si.herokuapp.com/");
+        
+        await driver.findElement(By.xpath('//*[@id="root"]/div/div[1]/div[2]/div[1]/a[8]')).click();
+
+        await driver.findElement(By.xpath('//*[@id="root"]/div/div[2]/form/input[1]')).sendKeys("Ime");
+        await driver.findElement(By.xpath('//*[@id="root"]/div/div[2]/form/input[2]')).sendKeys("kpsd98");
+        await driver.findElement(By.xpath('//*[@id="root"]/div/div[2]/form/input[3]')).sendKeys("probni@etf.unsa.ba");
+        await driver.findElement(By.xpath('//*[@id="root"]/div/div[2]/form/textarea')).sendKeys("Ovo ne treba da radi!");
+
+        await driver.wait(until.elementLocated(By.xpath('//*[@id="root"]/div/div[2]/form/span')), 15000);
+        await driver.findElement(By.xpath('//*[@id="root"]/div/div[2]/form/span')).getText()
+            .then(textValue => { assert.equal('Last name is not valid!', textValue); }).then(() => driver.quit());
+    });
+});
+describe("Test 6", function() {
+    
+    this.timeout(30000);
+
+    it ("Should show alert - email is not valid!", async () => {
+        let driver = await new Builder().forBrowser("chrome").build();
+        await driver.get("https://public-relations-si.herokuapp.com/");
+        
+        await driver.findElement(By.xpath('//*[@id="root"]/div/div[1]/div[2]/div[1]/a[8]')).click();
+
+        await driver.findElement(By.xpath('//*[@id="root"]/div/div[2]/form/input[1]')).sendKeys("Ime");
+        await driver.findElement(By.xpath('//*[@id="root"]/div/div[2]/form/input[2]')).sendKeys("Prezime");
+        await driver.findElement(By.xpath('//*[@id="root"]/div/div[2]/form/input[3]')).sendKeys("probni.etf.unsa.ba");
+        await driver.findElement(By.xpath('//*[@id="root"]/div/div[2]/form/textarea')).sendKeys("Ovo ne treba da radi!");
+
+        await driver.wait(until.elementLocated(By.xpath('//*[@id="root"]/div/div[2]/form/span')), 15000);
+        await driver.findElement(By.xpath('//*[@id="root"]/div/div[2]/form/span')).getText()
+            .then(textValue => { assert.equal('Email is not valid!', textValue); }).then(() => driver.quit());
+    });
+});
+describe("Test 7", function() {
+    
+    this.timeout(30000);
+
+    it ("Should show alert - question must be 8 characters long!", async () => {
+        let driver = await new Builder().forBrowser("chrome").build();
+        await driver.get("https://public-relations-si.herokuapp.com/");
+        
+        await driver.findElement(By.xpath('//*[@id="root"]/div/div[1]/div[2]/div[1]/a[8]')).click();
+
+        await driver.findElement(By.xpath('//*[@id="root"]/div/div[2]/form/input[1]')).sendKeys("Ime");
+        await driver.findElement(By.xpath('//*[@id="root"]/div/div[2]/form/input[2]')).sendKeys("Prezime");
+        await driver.findElement(By.xpath('//*[@id="root"]/div/div[2]/form/input[3]')).sendKeys("probni@etf.unsa.ba");
+        await driver.findElement(By.xpath('//*[@id="root"]/div/div[2]/form/textarea')).sendKeys("kratko");
+
+        await driver.wait(until.elementLocated(By.xpath('//*[@id="root"]/div/div[2]/form/span')), 15000);
+        await driver.findElement(By.xpath('//*[@id="root"]/div/div[2]/form/span')).getText()
+            .then(textValue => { assert.equal('Question must be 8 characters long!', textValue); }).then(() => driver.quit());
+    });
+});
+describe("Test 8", function() {
     
     this.timeout(30000);
 
