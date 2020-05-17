@@ -31,9 +31,9 @@ describe("Test 1", function() {
 
 describe("Test 2", function() {
     
-    this.timeout(30000);
+    this.timeout(50000);
 
-    it ("Should show login error when we input incorrect data", async () => {
+    it ("Should show success message after reply", async () => {
 
         let driver = await new Builder().forBrowser("chrome").build();
         await driver.get("https://public-relations-si.herokuapp.com/");
@@ -41,14 +41,20 @@ describe("Test 2", function() {
         await driver.findElement(By.xpath('/html/body/div/div/div[1]/div[2]/div[2]/a')).click();
 
         // Login:
-        await driver.findElement(By.xpath('//*[@id="root"]/div/div[2]/form/input[1]')).sendKeys("dza");
+        await driver.findElement(By.xpath('//*[@id="root"]/div/div[2]/form/input[1]')).sendKeys("dzavid");
         await driver.findElement(By.xpath('//*[@id="root"]/div/div[2]/form/input[2]')).sendKeys("password");
         await driver.findElement(By.xpath('//*[@id="root"]/div/div[2]/form/button')).click();
 
-        // Ulogovao se, sad treba provjerit postojanje teksta "Question" za ulogovanog korisnika
-        await driver.wait(until.elementLocated(By.xpath('//*[@id="root"]/div/div[2]/form/p')), 15000);
-        await driver.findElement(By.xpath('//*[@id="root"]/div/div[2]/form/p')).getText()
-            .then(textValue => { assert.equal('The username or password is incorrect', textValue); }).then(() => driver.quit());
+        await driver.wait(until.elementLocated(By.xpath('/html/body/div/div/div[2]/section/main/div/div/div/div/div/div/div/div/table/tbody/tr[1]/td[5]/span/button')), 10000);
+        await driver.findElement(By.xpath('/html/body/div/div/div[2]/section/main/div/div/div/div/div/div/div/div/table/tbody/tr[1]/td[5]/span/button')).click();
+        await driver.wait(until.elementLocated(By.xpath('//*[@id="root"]/div/div[2]/section/main/div/div[2]/div[1]/div/div/div/textarea')), 20000);
+        await driver.findElement(By.xpath('//*[@id="root"]/div/div[2]/section/main/div/div[2]/div[1]/div/div/div/textarea')).sendKeys('Odgovoreno je!');
+        await driver.findElement(By.xpath('//*[@id="answer"]')).click();
+      
+        await driver.wait(until.elementLocated(By.xpath('/html/body/div[2]/div/span/div/div/div/span[2]')), 15000);
+        await driver.findElement(By.xpath('/html/body/div[2]/div/span/div/div/div/span[2]')).getText()
+            .then(textValue => { assert.equal('Your reply has been successfully submitted!', textValue); }).then(() => driver.quit());
+        
     });
 });
 
