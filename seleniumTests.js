@@ -51,7 +51,7 @@ describe("Test 2", function() {
         await driver.findElement(By.xpath('//*[@id="root"]/div/div[2]/section/main/div/div[2]/div[1]/div/div/div/textarea')).sendKeys('Odgovoreno je!');
         await driver.findElement(By.xpath('//*[@id="answer"]')).click();
       
-        await driver.wait(until.elementLocated(By.xpath('/html/body/div[2]/div/span/div/div/div/span[2]')), 15000);
+        await driver.wait(until.elementLocated(By.xpath('/html/body/div[2]/div/span/div/div/div/span[2]')), 20000);
         await driver.findElement(By.xpath('/html/body/div[2]/div/span/div/div/div/span[2]')).getText()
             .then(textValue => { assert.equal('Your reply has been successfully submitted!', textValue); }).then(() => driver.quit());
         
@@ -81,7 +81,7 @@ describe("Test 3", function() {
 });
 describe("Test 4", function() {
     
-    this.timeout(30000);
+    this.timeout(50000);
 
     it ("Should show alert - name is not valid!", async () => {
         let driver = await new Builder().forBrowser("chrome").build();
