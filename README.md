@@ -1,6 +1,7 @@
 # Team Charlie - Software Engineering 2019/2020
 
 ## Public Relations Web Application
+(The app is deployed to: https://public-relations-si.herokuapp.com/)
 
 **Team members**:
 1. [Esmina Radušić](https://github.com/cminaa)
@@ -9,7 +10,6 @@
 4. [Dalila Ćorović](https://github.com/dcorovic2)
 5. [Emir Kurtović](https://github.com/emirkurtovic)
 6. [Džavid Brdar](https://github.com/avid-dz)
-
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
